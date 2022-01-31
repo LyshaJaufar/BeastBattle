@@ -40,3 +40,15 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.card {
+
+}
+
+.card::before {
+
+}
+
+.card::after {
+    
+}
