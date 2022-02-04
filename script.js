@@ -41,6 +41,7 @@ startGame()
 function startGame() {
   const deck = new Deck()
   deck.shuffle()
+  console.log(deck.cards)
 
   const deckMidpoint = Math.ceil(deck.numberOfCards / 2)
   playerDeck = new Deck(deck.cards.slice(0, deckMidpoint))

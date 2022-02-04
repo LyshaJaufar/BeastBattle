@@ -5,12 +5,22 @@
 body {
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(2, 4rem);
-    grid-template-rows: 7rem 2rem 7rem;
+    grid-template-columns: repeat(4, 5.5rem);
+    grid-template-rows: 9rem  19rem 9rem;
     gap: .5rem;
     cursor: pointer;
     justify-content: center;
     padding-top: 1rem;    
+}
+
+.board {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  
+}
+
+.img-card {
+    width: 100px;
 }
 
 .deck {
