@@ -41,7 +41,7 @@ class Card {
       
         this.image = document.createElement("IMG"); 
         this.image.setAttribute("src", image); 
-        this.image.setAttribute("width", "228"); 
+        this.image.setAttribute("width", "100"); 
         document.body.appendChild(this.image); 
 
     }
@@ -52,7 +52,7 @@ class Card {
 
     getHTML() {
         const cardDiv = document.createElement('div')
-        cardDiv.innerText = this.suit
+        cardDiv.innerText = this.AGE
         cardDiv.classList.add("card", this.color)
         cardDiv.dataset.value = `${this.value} ${this.suit}`
         return cardDiv
@@ -63,7 +63,7 @@ class Card {
 // A brand new deck of cards with all 52 cards, one for each suit and value combination
 function freshDeck() {
     return [
-        new Card("Plexor", 253, 195, 201, 85, "torpixtest.png"),
+        new Card("Plexor", 253, 195, 201, 85, "torpix2.png"),
         new Card("Tauron", 0, 296, 155, 88),
         new Card("Soltra", 487, 196, 184, 72),
         new Card("Trema", 406, 178, 178, 95),

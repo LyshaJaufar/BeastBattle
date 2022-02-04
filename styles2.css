@@ -1,0 +1,11 @@
+.card {
+    height: 100px;
+    
+}
+
+
+.card::before {
+  content: attr(data-emoji); /* Returns '✅' */
+  margin-right: 5px;
+  height: 100px;
+}

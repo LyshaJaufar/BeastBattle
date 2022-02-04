@@ -59,6 +59,11 @@ body {
     color: black;
 }
 
+.background {
+    width: 376px;
+    
+}
+
 .card {
     position: relative;
     height: 100%;
@@ -74,7 +79,7 @@ body {
 .card::before,
 .card::after {
     position: absolute;
-    content: attr(data-value);
+    content: attr(data-image);
     font-size: 1rem;
 }
 
@@ -88,3 +93,4 @@ body {
     right: .5rem;
     transform: rotate(180deg);
 }
+
