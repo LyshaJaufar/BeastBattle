@@ -47,6 +47,7 @@ class Card {
         cardDiv.setAttribute("src", this.image); 
         cardDiv.classList.add("card")
         document.body.appendChild(cardDiv)
+
         return cardDiv
     }
     

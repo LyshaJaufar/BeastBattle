@@ -24,25 +24,30 @@ body {
 
 .background {
     width: 376px;
-    
+       
 }
 
 .deck {
-
     height: 100%;
     width: 100%;
     border: 1.5px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     background-color: rgb(47, 82, 51);
-    font-size: 3.5rem;
+    font-size: 2rem;
     font-family: Brush Script MT;
     border-radius: .5rem;
     color: black;
     user-select: none;
+    transform: scale(1);
 }
 
+.deck:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
 
 .card {
     height: 100%;
@@ -50,5 +55,9 @@ body {
     border: 1px solid black;
     border-radius: .5rem;
     user-select: none;
+}
+
+.flipCard {
+    transform: rotateY(180deg)
 }
 

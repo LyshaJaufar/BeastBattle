@@ -5,10 +5,27 @@ const playerDeck = document.querySelector('.player-deck')
 
 const deck = new Deck()
 //deck.shuffle()
-console.log(deck.cards)
 
-playerDeck.innerHTML = "BB"
+
+
+playerDeck.innerHTML = "Beast Battle"
 //playerCardSlot.appendChild(deck.cards[0].getHTML())
 
-const playerCard = deck.pop()
-playerCardSlot.appendChild(playerCard.getHTML())
+/*
+playerDeck.addEventListener('click', () => {
+    const playerCard = deck.pop()
+    playerCardSlot.appendChild(playerCard.getHTML())
+})
+*/
+
+playerDeck.addEventListener("click", flipCard)
+
+function flipCard() {
+
+    playerDeck.classList.toggle("flipCard")
+    var playerCard = deck.pop()
+    
+    document.body.appendChild(playerCard.getHTML())
+}
+
+
