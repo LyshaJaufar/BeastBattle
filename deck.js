@@ -38,23 +38,15 @@ class Card {
         this.power = power
         this.magicLevel = magicLevel
         this.frightFactor = frightFactor
-      
-        this.image = document.createElement("IMG"); 
-        this.image.setAttribute("src", image); 
-        this.image.setAttribute("width", "100"); 
-        document.body.appendChild(this.image); 
 
-    }
-
-    get color() {
-        return this.suit === "♠" || this.suit === "♣" ? 'black' : 'red'
+        this.image = image
     }
 
     getHTML() {
-        const cardDiv = document.createElement('div')
-        cardDiv.innerText = this.AGE
-        cardDiv.classList.add("card", this.color)
-        cardDiv.dataset.value = `${this.value} ${this.suit}`
+        const cardDiv = document.createElement('IMG')
+        cardDiv.setAttribute("src", this.image); 
+        cardDiv.classList.add("card")
+        document.body.appendChild(cardDiv)
         return cardDiv
     }
     

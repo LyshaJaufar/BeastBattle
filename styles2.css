@@ -1,11 +1,12 @@
 .card {
-    height: 100px;
-    
-}
-
-
-.card::before {
-  content: attr(data-emoji); /* Returns '✅' */
-  margin-right: 5px;
-  height: 100px;
+    width: 100px;
+    height: 150px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    border-radius: .5rem;
+    color: navy;
+    user-select: none;
 }
