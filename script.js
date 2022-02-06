@@ -18,14 +18,17 @@ playerDeck.addEventListener('click', () => {
 })
 */
 
-playerDeck.addEventListener("click", flipCard)
+var playerCard = deck.pop()
+    
+document.body.appendChild(playerCard.getHTML())
+console.log("test")
+
+const card = document.getElementById("card")
 
 function flipCard() {
 
-    playerDeck.classList.toggle("flipCard")
-    var playerCard = deck.pop()
-    
-    document.body.appendChild(playerCard.getHTML())
+    card.classList.toggle("flipCard")
+
 }
 
 

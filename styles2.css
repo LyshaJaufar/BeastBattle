@@ -1,15 +1,27 @@
-body {
-    background: white;
+*, *::after, *::before {
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 5.5rem);
+    grid-template-rows: 9rem  19rem 9rem;
+    gap: .5rem;
+    cursor: pointer;
+    justify-content: center;
+    padding-top: 1rem;    
+    padding-bottom: 1rem;
+}
+
+
 .maincontainer {
-    position: absolute;
-    width: 250px;
-    height: 320px;
+
+    width: 100px;
+    height: 100px;
+    display: flex;
     background: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
 }
 
 .card {
@@ -20,25 +32,33 @@ body {
     transition: all 0.8s ease;
 }
 
-.front {
+.back {
+    width: 100px;
+    height: 150px;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    border: 1.5px solid black;
+    display: flex;
     backface-visibility: hidden;
-    background: #ffc728;
-    color: #000;
+    background-color: rgb(47, 82, 51);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    font-family: Brush Script MT;
+    border-radius: .5rem;
+    color: black;
+    user-select: none;
 }
 
-.back {
+.front {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 150px;
     backface-visibility: hidden;
-    background: purple;
-    color: white;
+    border: 1px solid black;
+    border-radius: .5rem;
+    user-select: none;
     text-align: center;
-    transform: rotateY(180deg);
 }
 
 .flipCard {
