@@ -41,8 +41,8 @@ class Card {
 function freshDeck() {
     return [
         new Card("Plexor", 253, 195, 201, 85, "torpix2.png"),
-        new Card("Tauron", 0, 296, 155, 88),
-        new Card("Soltra", 487, 196, 184, 72),
+        new Card("Tauron", 0, 296, 155, 88, "torpixtest.png"),
+        new Card("Soltra", 487, 196, 184, 72, "template.jpg"),
         new Card("Trema", 406, 178, 178, 95),
         new Card("Claw", 465, 217, 134, 68),
         new Card("Flaymar", 0, 293, 190, 91),

@@ -1,4 +1,4 @@
-import Deck from "./deck.js"
+import Deck from "./deck2.js"
 
 const deck = new Deck()
 var playerCardImg;
@@ -10,25 +10,24 @@ var innerCardDiv = document.createElement('div')
 var innerInnerCardDiv = document.createElement('div')
 var innerInnerCardDiv2 = document.createElement('div')
 
-
-getHTML()
-getHTML()
-getHTML()
-
-
+createCard()
+createCard()
+createCard()
 
 var cards = Array.from(document.getElementsByClassName("card"))
 cards.forEach(card => {
     card.addEventListener("click", () => {
         card.classList.toggle("flipCard")
-        playerCardImg = deck.pop()
+        var playerCard = deck.pop()
+        playerCardImg = playerCard.image
+        console.log(playerCardImg)
         cardImg.setAttribute("src", playerCardImg); 
         innerInnerCardDiv.appendChild(cardImg)
+
     });
 });
 
-
-function getHTML() {
+function createCard() {
     var cardImg = document.createElement('IMG')
     var cardText = document.createElement('h1')
     var cardDiv = document.createElement('div')
