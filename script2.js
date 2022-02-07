@@ -17,15 +17,16 @@ getHTML()
 
 
 
-const card = document.getElementById("card")
-card.addEventListener("click", flipCard)
-function flipCard() {
-    card.classList.toggle("flipCard")
+var cards = Array.from(document.getElementsByClassName("card"))
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        card.classList.toggle("flipCard")
+        playerCardImg = deck.pop()
+        cardImg.setAttribute("src", playerCardImg); 
+        innerInnerCardDiv.appendChild(cardImg)
+    });
+});
 
-    playerCardImg = deck.pop()
-    cardImg.setAttribute("src", playerCardImg.image); 
-    innerInnerCardDiv.appendChild(cardImg)
-}
 
 function getHTML() {
     var cardImg = document.createElement('IMG')
@@ -37,7 +38,6 @@ function getHTML() {
 
     cardDiv.classList.add("maincontainer")
     innerCardDiv.classList.add("card")
-    innerCardDiv.setAttribute("id", "card"); 
     innerInnerCardDiv2.classList.add("back")   
 
     cardImg.setAttribute("src", playerCardImg); 
