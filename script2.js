@@ -2,6 +2,7 @@ import Deck from "./deck2.js"
 
 const deck = new Deck()
 var playerCardImg;
+deck.shuffle()
 
 var cardImg = document.createElement('IMG')
 var cardText = document.createElement('h1')
@@ -10,20 +11,17 @@ var innerCardDiv = document.createElement('div')
 var innerInnerCardDiv = document.createElement('div')
 var innerInnerCardDiv2 = document.createElement('div')
 
+var i = 0
+
 createCard()
 createCard()
 createCard()
+
 
 var cards = Array.from(document.getElementsByClassName("card"))
 cards.forEach(card => {
     card.addEventListener("click", () => {
         card.classList.toggle("flipCard")
-        var playerCard = deck.pop()
-        playerCardImg = playerCard.image
-        console.log(playerCardImg)
-        cardImg.setAttribute("src", playerCardImg); 
-        innerInnerCardDiv.appendChild(cardImg)
-
     });
 });
 
@@ -39,7 +37,7 @@ function createCard() {
     innerCardDiv.classList.add("card")
     innerInnerCardDiv2.classList.add("back")   
 
-    cardImg.setAttribute("src", playerCardImg); 
+    cardImg.setAttribute("src", deck.cards[i].image); 
     cardImg.classList.add("front")
 
     cardText.innerText = "Beast Battle"
@@ -50,6 +48,8 @@ function createCard() {
     innerCardDiv.appendChild(innerInnerCardDiv2)
     innerInnerCardDiv.appendChild(cardImg)
     innerInnerCardDiv2.appendChild(cardText)
+
+    i += 1
 
     return cardDiv
 }
