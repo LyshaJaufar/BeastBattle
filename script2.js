@@ -1,8 +1,7 @@
 import Deck from "./deck2.js"
 
 const deck = new Deck()
-var playerCardImg;
-deck.shuffle()
+//deck.shuffle()
 
 var cardImg = document.createElement('IMG')
 var cardText = document.createElement('h1')
@@ -35,9 +34,11 @@ function createCard() {
 
     cardDiv.classList.add("maincontainer")
     innerCardDiv.classList.add("card")
-    innerInnerCardDiv2.classList.add("back")   
-
-    cardImg.setAttribute("src", deck.cards[i].image); 
+    innerInnerCardDiv2.classList.add("back")  
+    
+    var playerCard = deck.pop()
+    var playerCardImg = playerCard.image
+    cardImg.setAttribute("src", playerCardImg); 
     cardImg.classList.add("front")
 
     cardText.innerText = "Beast Battle"
