@@ -1,9 +1,3 @@
-const NAME = ["Plexor", "Tauron", "Soltra", "Trema", "Claw" , "Flaymar", "Vipero", "Trillion","Koron", "Xerik", "Elko"]
-const AGE = [253, 0, 487, 406, 465, 0, 397, 303, 389, 320, 0]
-const POWER = [195, 296, 196, 178, 217, 293, 272, 202, 270, 235, 286]
-const MAGICLEVEL = [201, 155, 184, 178, 134, 190, 123, 193, 167, 149, 194]
-const FRIGHTFACTOR = [85, 88, 72, 95, 68, 91, 75, 85, 94, 94, 91]
-
 export default class Deck {
     constructor(cards = freshDeck()) {
         this.cards = cards
@@ -41,42 +35,14 @@ class Card {
 
         this.image = image
     }
-
-    getHTML() {
-        const cardImg = document.createElement('IMG')
-        const cardText = document.createElement('h1')
-        const cardDiv = document.createElement('div')
-        const innerCardDiv = document.createElement('div')
-        const innerInnerCardDiv = document.createElement('div')
-        const innerInnerCardDiv2 = document.createElement('div')
-
-        cardDiv.classList.add("maincontainer")
-        innerCardDiv.classList.add("card")
-        innerCardDiv.setAttribute("id", "card"); 
-        innerInnerCardDiv2.classList.add("back")   
-
-        cardImg.setAttribute("src", "torpix2.png"); 
-        cardImg.classList.add("front")
-
-        cardText.innerText = "Beast Battle"
-
-        document.body.appendChild(cardDiv)
-        cardDiv.appendChild(innerCardDiv)
-        innerCardDiv.appendChild(innerInnerCardDiv)
-        innerCardDiv.appendChild(innerInnerCardDiv2)
-        innerInnerCardDiv.appendChild(cardImg)
-        innerInnerCardDiv2.appendChild(cardText)
-        return cardDiv
-    }
-    
 }
  
 // A brand new deck of cards with all 52 cards, one for each suit and value combination
 function freshDeck() {
     return [
         new Card("Plexor", 253, 195, 201, 85, "torpix2.png"),
-        new Card("Tauron", 0, 296, 155, 88),
-        new Card("Soltra", 487, 196, 184, 72),
+        new Card("Tauron", 0, 296, 155, 88, "torpixtest.png"),
+        new Card("Soltra", 487, 196, 184, 72, "template.jpg"),
         new Card("Trema", 406, 178, 178, 95),
         new Card("Claw", 465, 217, 134, 68),
         new Card("Flaymar", 0, 293, 190, 91),
