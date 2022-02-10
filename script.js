@@ -1,30 +1,31 @@
 import Deck from "./deck.js"
 
-const deck = new Deck()
-const deckMidpoint = Math.ceil(deck.numberOfCards / 2)
-var playerDeck = new Deck(deck.cards.slice(0, deckMidpoint))
-var computerDeck = new Deck(deck.cards.slice(deckMidpoint, deck.numberOfCards))
+var deck;
+var slotted = false;
 
-
-//deck.shuffle()
-
-var cardImg = document.createElement('IMG')
-var cardText = document.createElement('h1')
-var cardDiv = document.createElement('div')
-var innerCardDiv = document.createElement('div')
-var innerInnerCardDiv = document.createElement('div')
-var innerInnerCardDiv2 = document.createElement('div')
 
 var i = 0
 
-createCard()
-createCard()
-createCard()
-createCard()
-createCard()
-createCard()
-createCard()
-createCard()
+startGame()
+function startGame() {
+    deck = new Deck()
+    //deck.shuffle()
+    const deckMidpoint = Math.ceil(deck.numberOfCards / 2)
+    var playerDeck = new Deck(deck.cards.slice(0, deckMidpoint))
+    var computerDeck = new Deck(deck.cards.slice(deckMidpoint, deck.numberOfCards))
+
+    createCard()
+    createCard()
+    createCard()
+    createCard()
+    createCard()
+    createCard()
+    createCard()
+    createCard()
+
+}
+
+
 
 
 var cards = Array.from(document.getElementsByClassName("card"))
@@ -43,7 +44,7 @@ function createCard() {
     var innerInnerCardDiv2 = document.createElement('div')
 
     cardDiv.setAttribute("draggable", "true")
-    cardDiv.addEventListener('dragstart', dragStart);
+
     cardDiv.classList.add("maincontainer")
     innerCardDiv.classList.add("card")
     innerInnerCardDiv2.classList.add("back")  
@@ -67,45 +68,45 @@ function createCard() {
     return cardDiv
 }
 
-function dragStart(e) {
-    e.dataTransfer.setData('text/plain', e.target.id);
-}
-
 const boxes = document.querySelectorAll('.box');
+var draggables = document.querySelectorAll('.maincontainer')
+
+draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', () => {
+        draggable.classList.add("dragging")
+    })
+    draggable.addEventListener('dragend', () => {
+        draggable.classList.remove('dragging')
+    })
+
+})
 
 boxes.forEach(box => {
-    box.addEventListener('dragenter', dragEnter)
-    box.addEventListener('dragover', dragOver);
-    box.addEventListener('dragleave', dragLeave);
-    box.addEventListener('drop', drop);
-});
+    box.addEventListener('dragover', e => {
+        e.preventDefault()
+        e.target.classList.remove('drag-over');
+        const afterElement = getDragAfterElement(box, e.clientY)
+        const draggable = document.querySelector('.dragging')
+        if (afterElement == null) {
+            box.appendChild(draggable)
+            createCard()
+        }
 
+    })
+})
 
-function dragEnter(e) {
-    e.preventDefault();
-    e.target.classList.add('drag-over');
+function getDragAfterElement(box, y) {
+    var draggableElements = [...box.querySelectorAll('.maincontainer:not(.dragging)')]
+    
+    return draggableElements.reduce((closest, child) => {
+        const boxBound = child.getBoundingClientRect()
+        const offset = y - boxBound.top - boxBound.height / 2
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child } 
+        } else {
+            return closest
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element
 }
 
-function dragOver(e) {
-    e.preventDefault();
-    e.target.classList.add('drag-over');
-}
 
-function dragLeave(e) {
-    e.target.classList.remove('drag-over');
-}
-
-function drop(e) {
-    e.target.classList.remove('drag-over');
-
-    // get the draggable element
-    const id = e.dataTransfer.getData('text/plain');
-    const draggable = document.getElementById(id);
-
-    // add it to the drop target
-    console.log(draggable)
-    e.target.appendChild(draggable);
-
-    // display the draggable element
-    draggable.classList.remove('hide');
-}
