@@ -109,4 +109,3 @@ function getDragAfterElement(box, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element
 }
 
-
