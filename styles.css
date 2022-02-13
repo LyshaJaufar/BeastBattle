@@ -5,7 +5,7 @@
 body {
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(4, 5.5rem);
+    grid-template-columns: repeat(5, 5.5rem);
     grid-template-rows: 9rem  19rem 9rem;
     gap: .5rem;
     cursor: pointer;
@@ -78,7 +78,10 @@ body {
 
 .flipCard {
     transform: rotateY(180deg);
-    transform: translateX(-10px) translateY(-2500%) rotateY(180deg) scale(1.4,1.4);z-index:-10;
+}
+
+.zoomCard {
+    transform: translateX(-10px) translateY(-2500%) rotateY(180deg) scale(1.4,1.4);
 }
 
 .box {
@@ -103,4 +106,50 @@ body {
     align-items: center;
 
     margin: 20px 0;
+}
+
+.computer-card-slot0{
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.computer-card-slot1{
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.computer-card-slot2{
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.computer-card-slot3{
+    grid-row: 1;
+    grid-column: 4;
+}
+
+.player-card-slot0{
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.player-card-slot1{
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.player-card-slot2{
+    grid-row: 3;
+    grid-column: 3;
+}
+
+.player-card-slot3{
+    grid-row: 3;
+    grid-column: 4;
+}
+
+.startButton {
+    display: flex;
+    grid-column: 5;
+    grid-row: 2;
 }

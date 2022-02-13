@@ -24,25 +24,32 @@ function startGame() {
     playerDeck = new Deck(wholeDeck.cards.slice(0, deckMidpoint))
     computerDeck = new Deck(wholeDeck.cards.slice(deckMidpoint, wholeDeck.numberOfCards))
 
-    createCard(playerDeck, playerCardSlot0)
-    createCard(playerDeck, playerCardSlot1)
-    createCard(playerDeck, playerCardSlot2)
-    createCard(playerDeck, playerCardSlot3)
+    var playerCard0 = createCard(playerDeck, playerCardSlot0)
+    var playerCard1 = createCard(playerDeck, playerCardSlot1)
+    var playerCard2 = createCard(playerDeck, playerCardSlot2)
+    var playerCard3 = createCard(playerDeck, playerCardSlot3)
+
+    playerCard0.classList.add('playerCard')
+    playerCard1.classList.add('playerCard')
+    playerCard2.classList.add('playerCard')
+    playerCard3.classList.add('playerCard')
 
     createCard(computerDeck, computerCardSlot0)
     createCard(computerDeck, computerCardSlot1)
     createCard(computerDeck, computerCardSlot2)
     createCard(computerDeck, computerCardSlot3)
+
+
 }
 
-
-
-
+document.getElementById('button').onclick = function() {
+    playerDeckFlip()
+};
 
 var cards = Array.from(document.getElementsByClassName("card"))
 cards.forEach(card => {
     card.addEventListener("click", () => {
-        card.classList.toggle("flipCard")
+        card.classList.toggle("zoomCard")
     });
 });
 
@@ -77,7 +84,7 @@ function createCard(deck, cardSlot) {
     innerInnerCardDiv2.appendChild(cardText)
 
     i += 1
-
+    return innerCardDiv
     //return cardDiv
 }
 
@@ -125,5 +132,12 @@ function getDragAfterElement(box, y) {
 
 function setPlayerDeck() {
     console.log('test')
-    
+}
+
+
+function playerDeckFlip() {
+    var playerCards = Array.from(document.getElementsByClassName("playerCard"))
+    playerCards.forEach(playerCard => {
+        playerCard.classList.toggle("flipCard")
+    })
 }
