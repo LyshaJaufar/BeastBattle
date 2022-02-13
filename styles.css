@@ -77,11 +77,28 @@ body {
 }
 
 .flipCard {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) rotateZ(15deg); z-index: 1px;
+}
+
+.flip-player-card0 {
+    transition: 1.5s;
+    transform: translateY(-3250%) translateX(-120px) rotateY(180deg) rotateZ(15deg) scale(1.5, 1.5); 
+}
+.flip-player-card1 {
+    transition: 1.5s;
+    transform: translateY(-4000%) translateX(-48px) rotateY(180deg) rotateZ(7deg) scale(1.5, 1.5); 
+}
+.flip-player-card2 {
+    transition: 1.5s;
+    transform: translateY(-4000%) translateX(48px) rotateY(180deg) rotateZ(-7deg) scale(1.5, 1.5); 
+}
+.flip-player-card3 {
+    transition: 1.5s;
+    transform: translateY(-3250%) translateX(120px) rotateY(180deg) rotateZ(-15deg) scale(1.5, 1.5); 
 }
 
 .zoomCard {
-    transform: translateX(-10px) translateY(-2500%) rotateY(180deg) scale(1.4,1.4);
+    transform: translateX(-10px) translateY(-2500%) rotateY(180deg) scale(1.4,1.4); z-index:1px;
 }
 
 .box {

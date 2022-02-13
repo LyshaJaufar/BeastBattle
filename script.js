@@ -13,6 +13,7 @@ const playerCardSlot3 = document.querySelector(".player-card-slot3")
 
 var wholeDeck;
 var playerDeck, computerDeck;
+var playerCard0, playerCard1, playerCard2, playerCard3;
 
 var i = 0
 
@@ -24,10 +25,10 @@ function startGame() {
     playerDeck = new Deck(wholeDeck.cards.slice(0, deckMidpoint))
     computerDeck = new Deck(wholeDeck.cards.slice(deckMidpoint, wholeDeck.numberOfCards))
 
-    var playerCard0 = createCard(playerDeck, playerCardSlot0)
-    var playerCard1 = createCard(playerDeck, playerCardSlot1)
-    var playerCard2 = createCard(playerDeck, playerCardSlot2)
-    var playerCard3 = createCard(playerDeck, playerCardSlot3)
+    playerCard0 = createCard(playerDeck, playerCardSlot0, "flip-player-card0")
+    playerCard1 = createCard(playerDeck, playerCardSlot1, "flip-player-card1")
+    playerCard2 = createCard(playerDeck, playerCardSlot2, "flip-player-card2")
+    playerCard3 = createCard(playerDeck, playerCardSlot3, "flip-player-card3")
 
     playerCard0.classList.add('playerCard')
     playerCard1.classList.add('playerCard')
@@ -49,11 +50,12 @@ document.getElementById('button').onclick = function() {
 var cards = Array.from(document.getElementsByClassName("card"))
 cards.forEach(card => {
     card.addEventListener("click", () => {
+        console.log(card)
         card.classList.toggle("zoomCard")
     });
 });
 
-function createCard(deck, cardSlot) {
+function createCard(deck, cardSlot, flip) {
     var cardImg = document.createElement('IMG')
     var cardText = document.createElement('h1')
     //var cardDiv = document.createElement('div')
@@ -136,8 +138,10 @@ function setPlayerDeck() {
 
 
 function playerDeckFlip() {
-    var playerCards = Array.from(document.getElementsByClassName("playerCard"))
-    playerCards.forEach(playerCard => {
-        playerCard.classList.toggle("flipCard")
-    })
+
+    playerCard0.classList.toggle("flip-player-card0")
+    playerCard1.classList.toggle("flip-player-card1")
+    playerCard2.classList.toggle("flip-player-card2")
+    playerCard3.classList.toggle("flip-player-card3")
+
 }
