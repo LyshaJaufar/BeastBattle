@@ -1,29 +1,40 @@
 import Deck from "./deck.js"
 
-var deck;
-var slotted = false;
 
+const computerCardSlot0 = document.querySelector(".computer-card-slot0")
+const computerCardSlot1 = document.querySelector(".computer-card-slot1")
+const computerCardSlot2 = document.querySelector(".computer-card-slot2")
+const computerCardSlot3 = document.querySelector(".computer-card-slot3")
+const playerCardSlot0 = document.querySelector(".player-card-slot0")
+const playerCardSlot1 = document.querySelector(".player-card-slot1")
+const playerCardSlot2 = document.querySelector(".player-card-slot2")
+const playerCardSlot3 = document.querySelector(".player-card-slot3")
+
+
+var wholeDeck;
+var playerDeck, computerDeck;
 
 var i = 0
 
 startGame()
 function startGame() {
-    deck = new Deck()
+    wholeDeck = new Deck()
     //deck.shuffle()
-    const deckMidpoint = Math.ceil(deck.numberOfCards / 2)
-    var playerDeck = new Deck(deck.cards.slice(0, deckMidpoint))
-    var computerDeck = new Deck(deck.cards.slice(deckMidpoint, deck.numberOfCards))
+    const deckMidpoint = Math.ceil(wholeDeck.numberOfCards / 2)
+    playerDeck = new Deck(wholeDeck.cards.slice(0, deckMidpoint))
+    computerDeck = new Deck(wholeDeck.cards.slice(deckMidpoint, wholeDeck.numberOfCards))
 
-    createCard()
-    createCard()
-    createCard()
-    createCard()
-    createCard()
-    createCard()
-    createCard()
-    createCard()
+    createCard(playerDeck, playerCardSlot0)
+    createCard(playerDeck, playerCardSlot1)
+    createCard(playerDeck, playerCardSlot2)
+    createCard(playerDeck, playerCardSlot3)
 
+    createCard(computerDeck, computerCardSlot0)
+    createCard(computerDeck, computerCardSlot1)
+    createCard(computerDeck, computerCardSlot2)
+    createCard(computerDeck, computerCardSlot3)
 }
+
 
 
 
@@ -35,29 +46,31 @@ cards.forEach(card => {
     });
 });
 
-function createCard() {
+function createCard(deck, cardSlot) {
     var cardImg = document.createElement('IMG')
     var cardText = document.createElement('h1')
-    var cardDiv = document.createElement('div')
+    //var cardDiv = document.createElement('div')
     var innerCardDiv = document.createElement('div')
     var innerInnerCardDiv = document.createElement('div')
     var innerInnerCardDiv2 = document.createElement('div')
 
-    cardDiv.setAttribute("draggable", "true")
+    //cardDiv.setAttribute("draggable", "true")
 
-    cardDiv.classList.add("maincontainer")
+    //cardDiv.classList.add("maincontainer")
     innerCardDiv.classList.add("card")
     innerInnerCardDiv2.classList.add("back")  
     
-    var playerCard = deck.pop()
-    var playerCardImg = playerCard.image
-    cardImg.setAttribute("src", playerCardImg); 
+    var currentCard = deck.pop()
+    var currentCardImg = currentCard.image
+    cardImg.setAttribute("src", currentCardImg); 
     cardImg.classList.add("front")
 
     cardText.innerText = "Beast Battle"
 
-    document.body.appendChild(cardDiv)
-    cardDiv.appendChild(innerCardDiv)
+    cardSlot.appendChild(innerCardDiv)
+    //document.body.appendChild(cardDiv)
+    //cardDiv.appendChild(innerCardDiv)
+
     innerCardDiv.appendChild(innerInnerCardDiv)
     innerCardDiv.appendChild(innerInnerCardDiv2)
     innerInnerCardDiv.appendChild(cardImg)
@@ -65,7 +78,7 @@ function createCard() {
 
     i += 1
 
-    return cardDiv
+    //return cardDiv
 }
 
 const boxes = document.querySelectorAll('.box');
@@ -109,3 +122,8 @@ function getDragAfterElement(box, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element
 }
 
+
+function setPlayerDeck() {
+    console.log('test')
+    
+}

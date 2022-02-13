@@ -31,6 +31,20 @@ var card,
 	majestyvoltarget,
 	audioloaded;
 
+createCard()
+function createCard() {
+	var cardDiv = document.createElement("DIV");
+	var cardImage = document.createElement("IMG");
+
+	cardImage.setAttribute("src", "https://s3-us-west-2.amazonaws.com/s.cdpn.io/836/hearthstone-ragnaros.png");
+	cardImage.setAttribute("draggable", "true");
+	cardImage.classList.add("card-image");
+
+	cardDiv.classList.add("card");
+	cardDiv.appendChild(cardImage);
+	document.body.appendChild(cardDiv);
+}
+
 function audioload() {
 	audioloaded++;
 	if( audioloaded == 2 ) {
