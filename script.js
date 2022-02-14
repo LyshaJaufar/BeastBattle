@@ -14,6 +14,7 @@ const playerCardSlot3 = document.querySelector(".player-card-slot3")
 var wholeDeck;
 var playerDeck, computerDeck;
 var playerCard0, playerCard1, playerCard2, playerCard3;
+var roundStarted = false;
 
 var i = 0
 
@@ -45,13 +46,14 @@ function startGame() {
 
 document.getElementById('button').onclick = function() {
     playerDeckFlip()
+    roundStarted = true;
 };
 
 var cards = Array.from(document.getElementsByClassName("card"))
 cards.forEach(card => {
-    card.addEventListener("click", () => {
-        console.log(card)
-        card.classList.toggle("zoomCard")
+    card.addEventListener("dragstart", () => {
+        console.log("checking")
+        card.classList.add("zoomCard")
     });
 });
 
@@ -96,9 +98,13 @@ var draggables = document.querySelectorAll('.maincontainer')
 draggables.forEach(draggable => {
     draggable.addEventListener('dragstart', () => {
         draggable.classList.add("dragging")
+            setTimeout(() => {
+                draggable.classList.add('hide');
+        }, 0);
     })
     draggable.addEventListener('dragend', () => {
         draggable.classList.remove('dragging')
+        draggable.classList.remove('hide');
     })
 
 })
@@ -138,10 +144,10 @@ function setPlayerDeck() {
 
 
 function playerDeckFlip() {
-
-    playerCard0.classList.toggle("flip-player-card0")
-    playerCard1.classList.toggle("flip-player-card1")
-    playerCard2.classList.toggle("flip-player-card2")
-    playerCard3.classList.toggle("flip-player-card3")
-
+    if (!roundStarted){
+        playerCard0.classList.toggle("flip-player-card0")
+        playerCard1.classList.toggle("flip-player-card1")
+        playerCard2.classList.toggle("flip-player-card2")
+        playerCard3.classList.toggle("flip-player-card3")
+    }
 }

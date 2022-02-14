@@ -82,23 +82,23 @@ body {
 
 .flip-player-card0 {
     transition: 1.5s;
-    transform: translateY(-3250%) translateX(-120px) rotateY(180deg) rotateZ(15deg) scale(1.5, 1.5); 
+    transform: translateY(-2250%) translateX(-120px) rotateY(180deg) rotateZ(15deg) scale(1.5, 1.5); 
 }
 .flip-player-card1 {
     transition: 1.5s;
-    transform: translateY(-4000%) translateX(-48px) rotateY(180deg) rotateZ(7deg) scale(1.5, 1.5); 
+    transform: translateY(-3000%) translateX(-48px) rotateY(180deg) rotateZ(7deg) scale(1.5, 1.5); 
 }
 .flip-player-card2 {
     transition: 1.5s;
-    transform: translateY(-4000%) translateX(48px) rotateY(180deg) rotateZ(-7deg) scale(1.5, 1.5); 
+    transform: translateY(-3000%) translateX(48px) rotateY(180deg) rotateZ(-7deg) scale(1.5, 1.5); 
 }
 .flip-player-card3 {
     transition: 1.5s;
-    transform: translateY(-3250%) translateX(120px) rotateY(180deg) rotateZ(-15deg) scale(1.5, 1.5); 
+    transform: translateY(-2250%) translateX(120px) rotateY(180deg) rotateZ(-15deg) scale(1.5, 1.5); 
 }
 
 .zoomCard {
-  
+    transition: 2s;
     transform: rotateY(180deg) scale(1, 1);
 }
 
@@ -170,4 +170,8 @@ body {
     display: flex;
     grid-column: 5;
     grid-row: 2;
+}
+
+.hide {
+    display: none;
 }
