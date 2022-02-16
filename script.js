@@ -16,6 +16,7 @@ var playerDeck, computerDeck;
 var playerCard0, playerCard1, playerCard2, playerCard3, computerCard0, computerCard1, computerCard2, computerCard3;
 var roundStarted;
 var playerBoxes;
+var draggable;
 
 var i = 0
 
@@ -124,6 +125,11 @@ function deckFlip() {
         computerCard2.classList.toggle("flip-computer-card2")
         computerCard3.classList.toggle("flip-computer-card3")
 
+        playerCard0.classList.add("flippedPlayerCard")
+        playerCard1.classList.add("flippedPlayerCard")
+        playerCard2.classList.add("flippedPlayerCard")
+        playerCard3.classList.add("flippedPlayerCard")
+
         roundStarted = true
 
         startPhase()
@@ -158,7 +164,8 @@ function startPhase(){
             e.preventDefault()
             e.target.classList.remove('drag-over');
             const afterElement = getDragAfterElement(playerBox, e.clientY)
-            const draggable = document.querySelector('.dragging')
+            draggable = document.querySelector('.dragging')
+            console.log(draggable)
             if (afterElement == null) {
                 playerBox.appendChild(draggable)
                 createCard()
@@ -168,6 +175,8 @@ function startPhase(){
 
         playerBox.addEventListener('drop', e => {
             playerBox.setAttribute("empty", "false")
+            var target = draggable.getElementsByClassName("flippedPlayerCard")[0];
+            target.removeClass("flippedPlayerCard")
         })
     })
     

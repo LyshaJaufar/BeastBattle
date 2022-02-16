@@ -77,6 +77,22 @@ body {
     text-align: center;
 }
 
+.flippedPlayerCard:hover .front {
+	 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(173, 153, 255, 0.75);
+	 transform: translateY(-100px) rotate(0deg) scale(2);
+	 transition-duration: 0ms;
+	 z-index: 5;
+}
+
+.flippedPlayerCard:hover .front:after {
+    animation: fade 250ms ease out fowards;
+}
+
+.flippedPlayerCard:hover:after {
+    top: -175px;
+}
+
+
 .flipCard {
     transform: rotateY(180deg) rotateZ(15deg); z-index: 1px;
 }
@@ -200,4 +216,15 @@ body {
 
 .hide {
     display: none;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
 }
