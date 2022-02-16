@@ -66,7 +66,7 @@ document.getElementById('battleButton').onclick = function() {
             if (playerBoxes[i].getAttribute("empty") !== "false") {
             }
         }
-        battlePhase()
+        battlePhaseAnimation()
     }
 };
 
@@ -199,6 +199,28 @@ function startPhase(){
 }
 
 
-function battlePhase() {
-    
+function battlePhaseAnimation() {
+
+    var computerBox0 = document.querySelector(".computerBox0") 
+    var computerBox1 = document.querySelector(".computerBox1")
+    var computerBox2 = document.querySelector(".computerBox2")
+    var computerBox3 = document.querySelector(".computerBox3")
+
+
+    setTimeout(() => {
+        computerCard0.classList.add("computer-card-battle-start-lane-0")
+        computerCard1.classList.add("computer-card-battle-start-lane-3")
+        computerCard2.classList.add("computer-card-battle-start-lane-2")
+        computerCard3.classList.add("computer-card-battle-start-lane-1")
+
+
+        
+        computerBox0.appendChild(computerCard0)
+        computerBox1.appendChild(computerCard3)
+        computerBox2.appendChild(computerCard2)
+        computerBox3.appendChild(computerCard1)
+    },800);
+
+    console.log("battle")
 }
+
