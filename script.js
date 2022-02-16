@@ -246,5 +246,6 @@ function battlePhaseAnimation() {
         overlay.classList.add("overlay-text-gone")
         overlay.innerHTML = ""
     },2450);
+    
 }
 
