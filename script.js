@@ -165,7 +165,7 @@ function startPhase(){
             e.target.classList.remove('drag-over');
             const afterElement = getDragAfterElement(playerBox, e.clientY)
             draggable = document.querySelector('.dragging')
-            console.log(draggable)
+
             if (afterElement == null) {
                 playerBox.appendChild(draggable)
                 createCard()
@@ -175,8 +175,11 @@ function startPhase(){
 
         playerBox.addEventListener('drop', e => {
             playerBox.setAttribute("empty", "false")
-            var target = draggable.getElementsByClassName("flippedPlayerCard")[0];
-            target.removeClass("flippedPlayerCard")
+        })
+
+        playerBox.addEventListener('drop', e => {
+            var target = draggable.getElementsByClassName("playerCard")[0]
+            target.classList.remove("flippedPlayerCard")
         })
     })
     
