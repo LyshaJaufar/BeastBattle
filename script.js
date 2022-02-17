@@ -62,11 +62,15 @@ document.getElementById('button').onclick = function() {
 document.getElementById('battleButton').onclick = function() {
     allHaveAttribute()
     function allHaveAttribute() {
+        var start = true;
         for (var i = 0; i < playerBoxes.length; i++) {
             if (playerBoxes[i].getAttribute("empty") !== "false") {
+                var start = false;
             }
         }
-        battlePhaseAnimation()
+        if (start) {
+            battlePhaseAnimation()
+        }
     }
 };
 

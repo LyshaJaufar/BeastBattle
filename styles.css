@@ -55,7 +55,7 @@ body {
 }
 
 .back {
-    width: 90px;
+    width: 100px;
     height: 145px;
     position: absolute;
     border: 1.5px solid black;
@@ -74,11 +74,9 @@ body {
 
 .front {
     position: absolute;
-    width: 90px;
+    width: 100px;
     height: 145px;
     backface-visibility: hidden;
-    border: 1px solid black;
-    border-radius: .5rem;
     user-select: none;
     text-align: center;
 }
