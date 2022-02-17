@@ -48,6 +48,7 @@ function freshDeck() {
         new Card("Tauron", 0, 296, 155, 88, "torpixtest.png"),
         new Card("Trema", 406, 178, 178, 95),
         new Card("Elko", 0, 286, 194, 91, "assets/elko.png"),
+        new Card("Brutus", 0, 285, 189, 90, "assets/brutus.png"),
         new Card("Claw", 465, 217, 134, 68),
         new Card("Flaymar", 0, 293, 190, 91),
         new Card("Trillion", 303, 202, 193, 85),
