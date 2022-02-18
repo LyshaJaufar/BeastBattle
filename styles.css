@@ -152,51 +152,68 @@ body {
 }
 
 .playerBox0 {
-    width: 100px;
+    height: 200px;
+    width: 120px;
     grid-row: 3;
     grid-column: 3;
+    background-color: #0E273C;
+
 }
 
 .playerBox1 {
-    width: 100px;
+    height: 200px;
+    width: 120px;
     grid-row: 3;
     grid-column: 4;
+    background-color: #1F0F2E;
 }
 
 .playerBox2 {
-    width: 100px;
+    height: 200px;
+    width: 120px;
     grid-row: 3;
     grid-column: 5;
+    background-color: #4F000B;
 }
 
 .playerBox3 {
-    width: 100px;
+    height: 200px;
+    width: 110px;
     grid-row: 3;
     grid-column: 6;
+    background-color: #04471C;
 }
 
 .computerBox0 {
-    width: 100px;
+    height: 200px;
+    width: 120px;
     grid-row: 2;
     grid-column: 3;
+    background-color: #0E273C;
 }
 
 .computerBox1 {
-    width: 100px;
+    height: 200px;
+    width: 120px;
     grid-row: 2;
     grid-column: 4;
+    background-color: #1F0F2E;
 }
 
 .computerBox2 {
-    width: 100px;
+    height: 200px;
+    width: 120px;
     grid-row: 2;
     grid-column: 5;
+    background-color: #4F000B;
 }
 
 .computerBox3 {
-    width: 100px;
+    height: 200px;
+    width: 110px;
     grid-row: 2;
     grid-column: 6;
+    background-color: #04471C;
 }
 
 .computer-card-slot0{
