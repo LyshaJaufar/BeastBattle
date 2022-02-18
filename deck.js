@@ -44,7 +44,7 @@ function freshDeck() {
         new Card("Vipero", 397, 272, 123, 75, "assets/vipero.png"),
         new Card("Soltra", 487, 196, 184, 72, "assets/soltra.png"),
         new Card("Epos", 457, 243, 192, 92, "assets/epos.png"), 
-        new Card("Tauron", 0, 296, 155, 88, "torpixtest.png"),
+        new Card("Tauron", 0, 296, 155, 88, "assets/tauron.png"),
         new Card("Trema", 406, 178, 178, 95, "assets/trema.png"),
         new Card("Trillion", 303, 202, 193, 85, "assets/trillion.png"),
         new Card("Elko", 0, 286, 194, 91, "assets/elko.png"),

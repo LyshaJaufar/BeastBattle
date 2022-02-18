@@ -1,65 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Drag n Drop</title>
+.front,
+.back {
+  width: 120px;
+  height: 175px;
+ 
+  position: absolute;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  user-select: none
+}
 
-	<link rel="stylesheet" href="styles2.css" />
-</head>
-<body>
-	<div class="cards">
-		<div class="card">
-			<div class="card-face">
-				<div class="card-label">0</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-face">
-				<div class="card-label">1</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-face">
-				<div class="card-label">2</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-face">
-				<div class="card-label">3</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-face">
-				<div class="card-label">4</div>
-			</div>
-		</div>
-			<div class="card">
-			<div class="card-face">
-				<div class="card-label">5</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-face">
-				<div class="card-label">6</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-face">
-				<div class="card-label">7</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-face">
-				<div class="card-label">8</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-face">
-				<div class="card-label">9</div>
-			</div>
-		</div>
+.front {
+  transform: rotateY(180deg);
+}
 
-</body>
-</html>
+
+function createCard(deck, cardSlot) {
+    var cardImg = document.createElement('IMG')
+    var backCardImg = document.createElement('IMG')
+    //var cardDiv = document.createElement('div')
+    var innerCardDiv = document.createElement('div')
+
+    //cardDiv.setAttribute("draggable", "true")
+    innerCardDiv.classList.add("card")
+    
+
+    backCardImg.setAttribute("src", "assets/cardBack.jpg")
+    backCardImg.classList.add("back")
+    
+    var currentCard = deck.pop()
+    var currentCardImg = currentCard.image
+    cardImg.setAttribute("src", currentCardImg); 
+    cardImg.classList.add("front")
+
+
+    cardSlot.appendChild(innerCardDiv)
+    innerCardDiv.appendChild(cardImg)
+    innerCardDiv.appendChild(backCardImg)
+
+    i += 1
+    return innerCardDiv
+}
+

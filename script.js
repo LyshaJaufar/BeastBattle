@@ -10,10 +10,15 @@ const playerCardSlot1 = document.querySelector(".player-card-slot1")
 const playerCardSlot2 = document.querySelector(".player-card-slot2")
 const playerCardSlot3 = document.querySelector(".player-card-slot3")
 
+var playerBox0 = document.querySelector(".playerBox0")
+var playerBox1 = document.querySelector(".playerBox1")
+var playerBox2 = document.querySelector(".playerBox2")
+var playerBox3 = document.querySelector(".playerBox3")
 
 var wholeDeck;
 var playerDeck, computerDeck;
 var playerCard0, playerCard1, playerCard2, playerCard3, computerCard0, computerCard1, computerCard2, computerCard3;
+var playerHand = [], computerHand = [];
 var roundStarted;
 var playerBoxes;
 var draggable;
@@ -34,20 +39,20 @@ function setupGame() {
 
     roundStarted = false
 
-    playerCard0 = createCard(playerDeck, playerCardSlot0)
-    playerCard1 = createCard(playerDeck, playerCardSlot1)
-    playerCard2 = createCard(playerDeck, playerCardSlot2)
-    playerCard3 = createCard(playerDeck, playerCardSlot3)
+    playerCard0 = createCard(playerDeck, playerCardSlot0, "playerD")
+    playerCard1 = createCard(playerDeck, playerCardSlot1, "playerD")
+    playerCard2 = createCard(playerDeck, playerCardSlot2, "playerD")
+    playerCard3 = createCard(playerDeck, playerCardSlot3, "playerD")
 
     playerCard0.classList.add('playerCard')
     playerCard1.classList.add('playerCard')
     playerCard2.classList.add('playerCard')
     playerCard3.classList.add('playerCard')
 
-    computerCard0 = createCard(computerDeck, computerCardSlot0)
-    computerCard1 = createCard(computerDeck, computerCardSlot1)
-    computerCard2 = createCard(computerDeck, computerCardSlot2)
-    computerCard3 = createCard(computerDeck, computerCardSlot3)
+    computerCard0 = createCard(computerDeck, computerCardSlot0, "computerD")
+    computerCard1 = createCard(computerDeck, computerCardSlot1, "computerD")
+    computerCard2 = createCard(computerDeck, computerCardSlot2, "computerD")
+    computerCard3 = createCard(computerDeck, computerCardSlot3, "computerD")
 
     computerCard0.classList.add('computerCard')
     computerCard1.classList.add('computerCard')
@@ -57,6 +62,16 @@ function setupGame() {
 
 document.getElementById('button').onclick = function() {
     deckFlip()
+
+    //createCard(computerDeck, computerCardSlot0)
+    //createCard(computerDeck, computerCardSlot1)
+    //createCard(computerDeck, computerCardSlot2)
+    //createCard(computerDeck, computerCardSlot3)
+
+    //createCard(playerDeck, playerCardSlot0)
+    //createCard(playerDeck, playerCardSlot1)
+    //createCard(playerDeck, playerCardSlot2)
+    //createCard(playerDeck, playerCardSlot3)
 };
 
 document.getElementById('battleButton').onclick = function() {
@@ -81,7 +96,7 @@ cards.forEach(card => {
     });
 });
 
-function createCard(deck, cardSlot) {
+function createCard(deck, cardSlot, deckId) {
     var cardImg = document.createElement('IMG')
     var cardText = document.createElement('h1')
     //var cardDiv = document.createElement('div')
@@ -90,10 +105,8 @@ function createCard(deck, cardSlot) {
     var innerInnerCardDiv2 = document.createElement('div')
 
     //cardDiv.setAttribute("draggable", "true")
-
-    //cardDiv.classList.add("maincontainer")
     innerCardDiv.classList.add("card")
-    innerInnerCardDiv2.classList.add("back")  
+    innerInnerCardDiv2.classList.add("back")   
     
     var currentCard = deck.pop()
     var currentCardImg = currentCard.image
@@ -103,17 +116,20 @@ function createCard(deck, cardSlot) {
     cardText.innerText = "Beast Battle"
 
     cardSlot.appendChild(innerCardDiv)
-    //document.body.appendChild(cardDiv)
-    //cardDiv.appendChild(innerCardDiv)
-
     innerCardDiv.appendChild(innerInnerCardDiv)
     innerCardDiv.appendChild(innerInnerCardDiv2)
     innerInnerCardDiv.appendChild(cardImg)
     innerInnerCardDiv2.appendChild(cardText)
 
+    if (deckId == "playerD") {
+        playerHand[i] = currentCard
+    }
+    if (deckId == "computerD") {
+        computerHand[i - 4] = currentCard
+    }
+
     i += 1
     return innerCardDiv
-    //return cardDiv
 }
 
 
@@ -172,7 +188,6 @@ function startPhase(){
 
             if (afterElement == null) {
                 playerBox.appendChild(draggable)
-                createCard()
             }
 
         })
@@ -251,5 +266,10 @@ function battlePhaseAnimation() {
         overlay.innerHTML = ""
     },2450);
     
+    battlePhase()
 }
 
+function battlePhase() {
+    console.log(playerHand)
+    console.log(computerHand)
+}
