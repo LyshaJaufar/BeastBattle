@@ -165,7 +165,7 @@ body {
     grid-row: 3;
     grid-column: 4;
     background-color: #1F0F2E;
-    background-image: url(textures/magic1.jpg);
+    background-image: url(textures/magic.jpg);
     background-repeat: repeat;
 }
 
@@ -204,7 +204,7 @@ body {
     grid-row: 2;
     grid-column: 4;
     background-color: #1F0F2E;
-    background-image: url(textures/magic1.jpg);
+    background-image: url(textures/magic.jpg);
     background-repeat: repeat;
 }
 

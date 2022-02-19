@@ -14,6 +14,10 @@ var playerBox0 = document.querySelector(".playerBox0")
 var playerBox1 = document.querySelector(".playerBox1")
 var playerBox2 = document.querySelector(".playerBox2")
 var playerBox3 = document.querySelector(".playerBox3")
+var computerBox0 = document.querySelector(".computerBox0") 
+var computerBox1 = document.querySelector(".computerBox1")
+var computerBox2 = document.querySelector(".computerBox2")
+var computerBox3 = document.querySelector(".computerBox3")
 
 var wholeDeck;
 var playerDeck, computerDeck;
@@ -22,6 +26,8 @@ var playerHand = [], computerHand = [];
 var roundStarted;
 var playerBoxes;
 var draggable;
+var card_lane_map;
+
 
 var i = 0
 
@@ -62,16 +68,6 @@ function setupGame() {
 
 document.getElementById('button').onclick = function() {
     deckFlip()
-
-    //createCard(computerDeck, computerCardSlot0)
-    //createCard(computerDeck, computerCardSlot1)
-    //createCard(computerDeck, computerCardSlot2)
-    //createCard(computerDeck, computerCardSlot3)
-
-    //createCard(playerDeck, playerCardSlot0)
-    //createCard(playerDeck, playerCardSlot1)
-    //createCard(playerDeck, playerCardSlot2)
-    //createCard(playerDeck, playerCardSlot3)
 };
 
 document.getElementById('battleButton').onclick = function() {
@@ -109,6 +105,7 @@ function createCard(deck, cardSlot, deckId) {
     innerInnerCardDiv2.classList.add("back")   
     
     var currentCard = deck.pop()
+    innerCardDiv.id = currentCard.name
     var currentCardImg = currentCard.image
     cardImg.setAttribute("src", currentCardImg); 
     cardImg.classList.add("front")
@@ -242,11 +239,6 @@ function battlePhaseAnimation() {
     sword.appendChild(handle)
     document.body.appendChild(square)
 
-    var computerBox0 = document.querySelector(".computerBox0") 
-    var computerBox1 = document.querySelector(".computerBox1")
-    var computerBox2 = document.querySelector(".computerBox2")
-    var computerBox3 = document.querySelector(".computerBox3")
-
     setTimeout(() => {
         computerCard0.classList.add("computer-card-battle-start-lane-0")
         computerCard1.classList.add("computer-card-battle-start-lane-3")
@@ -265,11 +257,62 @@ function battlePhaseAnimation() {
         overlay.classList.add("overlay-text-gone")
         overlay.innerHTML = ""
     },2450);
+
+    card_lane_map = {
+        "computerBox0" : computerCard0,
+        "computerBox1" : computerCard3,
+        "computerBox2" : computerCard2,
+        "computerBox3" : computerCard3
+    }
     
     battlePhase()
 }
 
 function battlePhase() {
-    console.log(playerHand)
-    console.log(computerHand)
+
+    var frightFactorPlayerCard = playerBox0.getElementsByClassName("card")[0].id
+    var magicLevelPlayerCard = playerBox1.getElementsByClassName("card")[0].id
+    var powerPlayerCard = playerBox2.getElementsByClassName("card")[0].id
+    var agePlayerCard = playerBox3.getElementsByClassName("card")[0].id
+
+    var frightFactorComputerCard = card_lane_map["computerBox0"].id
+    var magicLevelComputerCard = card_lane_map["computerBox1"].id
+    var powerComputerCard = card_lane_map["computerBox2"].id
+    var ageComputerCard = card_lane_map["computerBox3"].id
+
+    for (var i = 0; i < playerHand.length; i++) {
+        if (frightFactorPlayerCard == playerHand[i].name) {
+            var playerFrightFactor = playerHand[i].frightFactor
+        }
+        if (magicLevelPlayerCard == playerHand[i].name) {
+            var playerMagicLevel = playerHand[i].magicLevel
+        }
+        if (powerPlayerCard == playerHand[i].name) {
+            var playerPower = playerHand[i].power
+        }
+        if (agePlayerCard == playerHand[i].name) {
+            var playerAge = playerHand[i].age
+        }
+        if (frightFactorComputerCard == computerHand[i].name) {
+            var computerFrightFactor = computerHand[i].frightFactor
+        }
+        if (magicLevelComputerCard == computerHand[i].name) {
+            var computerMagicLevel = computerHand[i].magicLevel
+        }
+        if (powerComputerCard == computerHand[i].name) {
+            var computerPower = computerHand[i].power
+        }
+        if (ageComputerCard == computerHand[i].name) {
+            var playerAge = computerHand[i].age
+        }
+    }
+
+    if (playerFrightFactor > computerFrightFactor) {
+        console.log("player wins")
+    } else if (playerFrightFactor < computerCRightFactor) {
+        console.log("computer wins")
+    } else {
+        console.log("draw")
+    }
+
 }
