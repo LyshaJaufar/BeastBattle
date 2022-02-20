@@ -248,6 +248,16 @@ body {
     grid-column: 6;
 }
 
+.player-card-slot {
+  grid-row: 4; 
+  grid-column: 7;
+}
+
+.computer-card-slot {
+  grid-row: 1; 
+  grid-column: 7;
+}
+
 .player-card-slot0{
     grid-row: 4;
     grid-column: 3;

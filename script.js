@@ -1,14 +1,9 @@
 import Deck from "./deck.js"
 
 
-const computerCardSlot0 = document.querySelector(".computer-card-slot0")
-const computerCardSlot1 = document.querySelector(".computer-card-slot1")
-const computerCardSlot2 = document.querySelector(".computer-card-slot2")
-const computerCardSlot3 = document.querySelector(".computer-card-slot3")
-const playerCardSlot0 = document.querySelector(".player-card-slot0")
-const playerCardSlot1 = document.querySelector(".player-card-slot1")
-const playerCardSlot2 = document.querySelector(".player-card-slot2")
-const playerCardSlot3 = document.querySelector(".player-card-slot3")
+const computerCardSlot = document.querySelector(".computer-card-slot")
+
+const playerCardSlot = document.querySelector(".player-card-slot")
 
 var playerBox0 = document.querySelector(".playerBox0")
 var playerBox1 = document.querySelector(".playerBox1")
@@ -45,29 +40,40 @@ function setupGame() {
 
     roundStarted = false
 
-    playerCard0 = createCard(playerDeck, playerCardSlot0, "playerD")
-    playerCard1 = createCard(playerDeck, playerCardSlot1, "playerD")
-    playerCard2 = createCard(playerDeck, playerCardSlot2, "playerD")
-    playerCard3 = createCard(playerDeck, playerCardSlot3, "playerD")
+    playerCard0 = createCard(playerDeck, "playerD")
+    playerCard1 = createCard(playerDeck, "playerD")
+    playerCard2 = createCard(playerDeck, "playerD")
+    playerCard3 = createCard(playerDeck, "playerD")
 
     playerCard0.classList.add('playerCard')
     playerCard1.classList.add('playerCard')
     playerCard2.classList.add('playerCard')
     playerCard3.classList.add('playerCard')
 
-    computerCard0 = createCard(computerDeck, computerCardSlot0, "computerD")
-    computerCard1 = createCard(computerDeck, computerCardSlot1, "computerD")
-    computerCard2 = createCard(computerDeck, computerCardSlot2, "computerD")
-    computerCard3 = createCard(computerDeck, computerCardSlot3, "computerD")
+    computerCard0 = createCard(computerDeck, "computerD")
+    computerCard1 = createCard(computerDeck, "computerD")
+    computerCard2 = createCard(computerDeck, "computerD")
+    computerCard3 = createCard(computerDeck, "computerD")
 
     computerCard0.classList.add('computerCard')
     computerCard1.classList.add('computerCard')
     computerCard2.classList.add('computerCard')
     computerCard3.classList.add('computerCard')
+
+    playerCardSlot.appendChild(playerCard0)
+    playerCardSlot.appendChild(playerCard1)
+    playerCardSlot.appendChild(playerCard2)
+    computerCardSlot.appendChild(computerCard0)
 }
 
 document.getElementById('button').onclick = function() {
     deckFlip()
+    var cards = Array.from(document.getElementsByClassName("card"))
+    cards.forEach(card => {
+        card.addEventListener("dragstart", () => {
+            card.classList.add("zoomCard")
+        });
+    });
 };
 
 document.getElementById('battleButton').onclick = function() {
@@ -85,14 +91,9 @@ document.getElementById('battleButton').onclick = function() {
     }
 };
 
-var cards = Array.from(document.getElementsByClassName("card"))
-cards.forEach(card => {
-    card.addEventListener("dragstart", () => {
-        card.classList.add("zoomCard")
-    });
-});
 
-function createCard(deck, cardSlot, deckId) {
+
+function createCard(deck, deckId) {
     var cardImg = document.createElement('IMG')
     var cardText = document.createElement('h1')
     //var cardDiv = document.createElement('div')
@@ -112,7 +113,7 @@ function createCard(deck, cardSlot, deckId) {
 
     cardText.innerText = "Beast Battle"
 
-    cardSlot.appendChild(innerCardDiv)
+    
     innerCardDiv.appendChild(innerInnerCardDiv)
     innerCardDiv.appendChild(innerInnerCardDiv2)
     innerInnerCardDiv.appendChild(cardImg)
@@ -133,8 +134,11 @@ function createCard(deck, cardSlot, deckId) {
 
 function deckFlip() {
     if (!roundStarted){
+        playerCardSlot.appendChild(playerCard3)
         playerCard0.classList.toggle("flip-player-card0")
+     
         playerCard1.classList.toggle("flip-player-card1")
+       
         playerCard2.classList.toggle("flip-player-card2")
         playerCard3.classList.toggle("flip-player-card3")
         computerCard0.classList.toggle("flip-computer-card0")
@@ -153,13 +157,15 @@ function deckFlip() {
     }
 }
 
+
+
 function startPhase(){
     playerBoxes = document.querySelectorAll('.playerBox');
     var playerBoxes1 = Array.from(document.querySelectorAll('.playerBox'))
     playerBoxes1.forEach(playerBox1 => {
         playerBox1.setAttribute("empty", "true")
     })
-    var draggables = document.querySelectorAll('.maincontainer')
+    var draggables = document.querySelectorAll('.playerCard')
 
     draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', () => {
@@ -184,7 +190,7 @@ function startPhase(){
             draggable = document.querySelector('.dragging')
 
             if (afterElement == null) {
-                playerBox.appendChild(draggable)
+                playerBox.appendChild(draggable) 
             }
 
         })
@@ -195,12 +201,13 @@ function startPhase(){
 
         playerBox.addEventListener('drop', e => {
             var target = draggable.getElementsByClassName("playerCard")[0]
+            console.log(target)
             target.classList.remove("flippedPlayerCard")
         })
     })
     
     function getDragAfterElement(box, y) {
-        var draggableElements = [...box.querySelectorAll('.maincontainer:not(.dragging)')]
+        var draggableElements = [...box.querySelectorAll('.playerCard:not(.dragging)')]
  
         return draggableElements.reduce((closest, child) => {
             const boxBound = child.getBoundingClientRect()
@@ -309,7 +316,7 @@ function battlePhase() {
 
     if (playerFrightFactor > computerFrightFactor) {
         console.log("player wins")
-    } else if (playerFrightFactor < computerCRightFactor) {
+    } else if (playerFrightFactor < computerFrightFactor) {
         console.log("computer wins")
     } else {
         console.log("draw")
