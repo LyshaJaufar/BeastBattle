@@ -1,8 +1,6 @@
 import Deck from "./deck.js"
 
-
 const computerCardSlot = document.querySelector(".computer-card-slot")
-
 const playerCardSlot = document.querySelector(".player-card-slot")
 
 var playerBox0 = document.querySelector(".playerBox0")
@@ -22,8 +20,6 @@ var roundStarted;
 var playerBoxes;
 var draggable;
 var card_lane_map;
-
-
 var i = 0
 
 startGame()
@@ -61,19 +57,11 @@ function setupGame() {
     computerCard3.classList.add('computerCard')
 
     playerCardSlot.appendChild(playerCard0)
-    playerCardSlot.appendChild(playerCard1)
-    playerCardSlot.appendChild(playerCard2)
     computerCardSlot.appendChild(computerCard0)
 }
 
 document.getElementById('button').onclick = function() {
     deckFlip()
-    var cards = Array.from(document.getElementsByClassName("card"))
-    cards.forEach(card => {
-        card.addEventListener("dragstart", () => {
-            card.classList.add("zoomCard")
-        });
-    });
 };
 
 document.getElementById('battleButton').onclick = function() {
@@ -91,17 +79,13 @@ document.getElementById('battleButton').onclick = function() {
     }
 };
 
-
-
 function createCard(deck, deckId) {
     var cardImg = document.createElement('IMG')
     var cardText = document.createElement('h1')
-    //var cardDiv = document.createElement('div')
     var innerCardDiv = document.createElement('div')
     var innerInnerCardDiv = document.createElement('div')
     var innerInnerCardDiv2 = document.createElement('div')
 
-    //cardDiv.setAttribute("draggable", "true")
     innerCardDiv.classList.add("card")
     innerInnerCardDiv2.classList.add("back")   
     
@@ -112,7 +96,6 @@ function createCard(deck, deckId) {
     cardImg.classList.add("front")
 
     cardText.innerText = "Beast Battle"
-
     
     innerCardDiv.appendChild(innerInnerCardDiv)
     innerCardDiv.appendChild(innerInnerCardDiv2)
@@ -130,22 +113,40 @@ function createCard(deck, deckId) {
     return innerCardDiv
 }
 
-
-
 function deckFlip() {
     if (!roundStarted){
-        playerCardSlot.appendChild(playerCard3)
         playerCard0.classList.toggle("flip-player-card0")
-     
-        playerCard1.classList.toggle("flip-player-card1")
-       
-        playerCard2.classList.toggle("flip-player-card2")
-        playerCard3.classList.toggle("flip-player-card3")
         computerCard0.classList.toggle("flip-computer-card0")
-        computerCard1.classList.toggle("flip-computer-card1")
-        computerCard2.classList.toggle("flip-computer-card2")
-        computerCard3.classList.toggle("flip-computer-card3")
+        playerCardSlot.appendChild(playerCard1)
+        computerCardSlot.appendChild(computerCard1)
 
+        setTimeout(() => {
+            playerCard1.classList.toggle("flip-player-card1")
+            computerCard1.classList.toggle("flip-computer-card1")
+        },300);
+        setTimeout(() => {
+           playerCardSlot.appendChild(playerCard2)
+           computerCardSlot.appendChild(computerCard2)
+        },750);
+        setTimeout(() => {
+            playerCard2.classList.toggle("flip-player-card2")
+            computerCard2.classList.toggle("flip-computer-card2")
+        },800);
+        setTimeout(() => {
+           playerCardSlot.appendChild(playerCard3)
+           computerCardSlot.appendChild(computerCard3)
+        },1250);
+        setTimeout(() => {
+            playerCard3.classList.toggle("flip-player-card3")
+            computerCard3.classList.toggle("flip-computer-card3")
+            var cards = Array.from(document.getElementsByClassName("card"))
+            cards.forEach(card => {
+                card.addEventListener("dragstart", () => {
+                    card.classList.add("zoomCard")
+                });
+            });
+        },1300);      
+        
         playerCard0.classList.add("flippedPlayerCard")
         playerCard1.classList.add("flippedPlayerCard")
         playerCard2.classList.add("flippedPlayerCard")
@@ -157,31 +158,29 @@ function deckFlip() {
     }
 }
 
-
-
 function startPhase(){
     playerBoxes = document.querySelectorAll('.playerBox');
     var playerBoxes1 = Array.from(document.querySelectorAll('.playerBox'))
     playerBoxes1.forEach(playerBox1 => {
         playerBox1.setAttribute("empty", "true")
     })
-    var draggables = document.querySelectorAll('.playerCard')
-
-    draggables.forEach(draggable => {
-        draggable.addEventListener('dragstart', () => {
-            draggable.classList.add("dragging")
-                setTimeout(() => {
-                    draggable.classList.add('hide');
-            }, 0);
+    
+    setTimeout(() => {
+        var draggables = document.querySelectorAll('.playerCard')
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', () => {
+                draggable.classList.add("dragging")
+                    setTimeout(() => {
+                        draggable.classList.add('hide');
+                }, 0);
+            })
+            draggable.addEventListener('dragend', () => {
+                draggable.classList.remove('dragging')
+                draggable.classList.remove('hide');
+            })
         })
-        draggable.addEventListener('dragend', () => {
-            draggable.classList.remove('dragging')
-            draggable.classList.remove('hide');
-        })
-
-    })
-
-
+    },1250);
+    
     playerBoxes.forEach(playerBox => {
         playerBox.addEventListener('dragover', e => {
             e.preventDefault()
@@ -192,7 +191,6 @@ function startPhase(){
             if (afterElement == null) {
                 playerBox.appendChild(draggable) 
             }
-
         })
 
         playerBox.addEventListener('drop', e => {
@@ -200,8 +198,7 @@ function startPhase(){
         })
 
         playerBox.addEventListener('drop', e => {
-            var target = draggable.getElementsByClassName("playerCard")[0]
-            console.log(target)
+            var target = draggable.getElementsByClassName("playerCard")[0] 
             target.classList.remove("flippedPlayerCard")
         })
     })
@@ -220,8 +217,6 @@ function startPhase(){
         }, { offset: Number.NEGATIVE_INFINITY }).element
     }
 }
-
-
 
 function battlePhaseAnimation() {
 

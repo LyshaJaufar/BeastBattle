@@ -101,37 +101,37 @@ body {
 }
 
 .flip-player-card0 {
-    transition: 1.5s;
-    transform: translateY(-2250%) translateX(-120px) rotateY(180deg) rotateZ(15deg) scale(1.5, 1.5); 
+    transition: 1.8s;
+    transform: translateY(-2650%) translateX(-510px) rotateY(180deg) rotateZ(15deg) scale(1.5, 1.5); 
 }
 .flip-player-card1 {
-    transition: 1.5s;
-    transform: translateY(-3000%) translateX(-48px) rotateY(180deg) rotateZ(7deg) scale(1.5, 1.5); 
+    transition: 1.8s;
+    transform: translateY(-3350%) translateX(-335px) rotateY(180deg) rotateZ(7deg) scale(1.5, 1.5); 
 }
 .flip-player-card2 {
-    transition: 1.5s;
-    transform: translateY(-3000%) translateX(48px) rotateY(180deg) rotateZ(-7deg) scale(1.5, 1.5); 
+    transition: 1.8s;
+    transform: translateY(-3050%) translateX(-140px) rotateY(180deg) rotateZ(-7deg) scale(1.5, 1.5); 
 }
 .flip-player-card3 {
-    transition: 1.5s;
-    transform: translateY(-2250%) translateX(120px) rotateY(180deg) rotateZ(-15deg) scale(1.5, 1.5); 
+    transition: 1.8s;
+    transform: translateY(-2050%) translateX(30px) rotateY(180deg) rotateZ(-15deg) scale(1.5, 1.5); 
 }
 
 .flip-computer-card0 {
-    transition: 1.5s;
-    transform: translateY(170%) translateX(8px)  rotateZ(5deg);
+    transition: 1.8s;
+    transform: translateY(100%) translateX(-485px)  rotateZ(5deg);
 }
 .flip-computer-card1 {
-    transition: 1.5s;
-    transform: translateY(300%) translateX(3px) rotateZ(3deg); 
+    transition: 1.8s;
+    transform: translateY(300%) translateX(-390px) rotateZ(3deg); 
 }
 .flip-computer-card2 {
-    transition: 1.5s;
-    transform: translateY(300%) translateX(-3px) rotateZ(-3deg); 
+    transition: 1.8s;
+    transform: translateY(360%) translateX(-295px) rotateZ(-3deg); 
 }
 .flip-computer-card3 {
-    transition: 1.5s;
-    transform: translateY(170%) translateX(-8px) rotateZ(-5deg); 
+    transition: 1.8s;
+    transform: translateY(200%) translateX(-200px) rotateZ(-5deg); 
 }
 
 .zoomCard {

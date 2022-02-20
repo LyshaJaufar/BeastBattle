@@ -34,3 +34,44 @@ function setupGame() {
 document.getElementById('button').onclick = function() {
     deckFlip()
 };
+
+
+
+
+function deckFlip() {
+    if (!roundStarted){
+        playerCard0.classList.toggle("flip-player-card0")
+        computerCard0.classList.toggle("flip-computer-card0")
+        playerCardSlot.appendChild(playerCard1)
+
+        setTimeout(() => {
+            playerCard1.classList.toggle("flip-player-card1")
+            computerCard1.classList.toggle("flip-computer-card1")
+        },300);
+        setTimeout(() => {
+           playerCardSlot.appendChild(playerCard2)
+           computerCardSlot.appendChild(computerCard2)
+        },750);
+        setTimeout(() => {
+            playerCard2.classList.toggle("flip-player-card2")
+            computerCard2.classList.toggle("flip-computer-card2")
+        },800);
+        setTimeout(() => {
+           playerCardSlot.appendChild(playerCard3)
+           computerCardSlot.appendChild(computerCard3)
+        },1250);
+        setTimeout(() => {
+            playerCard3.classList.toggle("flip-player-card3")
+            computerCard3.classList.toggle("flip-computer-card3")
+        },1300);
+        
+        playerCard0.classList.add("flippedPlayerCard")
+        playerCard1.classList.add("flippedPlayerCard")
+        playerCard2.classList.add("flippedPlayerCard")
+        playerCard3.classList.add("flippedPlayerCard")
+
+        roundStarted = true
+
+        startPhase()
+    }
+}
