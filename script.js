@@ -150,6 +150,7 @@ function deckFlip() {
             });
         },1300);      
         
+        // hover effect
         playerCard0.classList.add("flippedPlayerCard")
         playerCard1.classList.add("flippedPlayerCard")
         playerCard2.classList.add("flippedPlayerCard")
@@ -274,6 +275,12 @@ function battlePhaseAnimation() {
 }
 
 function battlePhase() {
+
+    playerCard0.classList.remove("flippedPlayerCard")
+    playerCard1.classList.remove("flippedPlayerCard")
+    playerCard2.classList.remove("flippedPlayerCard")
+    playerCard3.classList.remove("flippedPlayerCard")
+
     setTimeout(() => {
         document.body.removeChild(overlay)
     }, 4500)
@@ -324,7 +331,6 @@ function battlePhase() {
     }
 
     playerBox3.addEventListener('click', () => {
-    
 
         if (playerAge > computerAge) {
             document.getElementById(agePlayerCard).classList.toggle("battle-win-playercard3")
