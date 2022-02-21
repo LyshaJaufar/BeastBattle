@@ -21,6 +21,9 @@ var playerBoxes;
 var draggable;
 var card_lane_map;
 var i = 0
+var overlay;
+
+var battleStarted = false
 
 startGame()
 function startGame() {
@@ -220,7 +223,7 @@ function startPhase(){
 
 function battlePhaseAnimation() {
 
-    var overlay = document.createElement("DIV")
+    overlay = document.createElement("DIV")
     var square = document.createElement("V")
     var sword = document.createElement("div")
     var blade = document.createElement("div")
@@ -271,7 +274,10 @@ function battlePhaseAnimation() {
 }
 
 function battlePhase() {
-
+    setTimeout(() => {
+        document.body.removeChild(overlay)
+    }, 4500)
+    
     var frightFactorPlayerCard = playerBox0.getElementsByClassName("card")[0].id
     var magicLevelPlayerCard = playerBox1.getElementsByClassName("card")[0].id
     var powerPlayerCard = playerBox2.getElementsByClassName("card")[0].id
@@ -317,4 +323,22 @@ function battlePhase() {
         console.log("draw")
     }
 
+    playerBox3.addEventListener('click',function(e){
+
+        if (playerAge > computerAge) {
+            playerCard0.classList.toggle("battle-win-playercard0")
+            computerCard0.classList.toggle("battle-lose-computerCard0")
+        } else if (playerFrightFactor < computerFrightFactor) {
+            playerCard0.classList.toggle("battle-lose-playercard0")
+            computerCard0.classList.toggle("battle-win-computerCard0")
+        } else {
+            playerCard0.classList.toggle("battle-draw-playercard0")
+            computerCard0.classList.toggle("battle-draw-computerCard0")
+        }
+    });
 }
+    
+
+           
+
+
