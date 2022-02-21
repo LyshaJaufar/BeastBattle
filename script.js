@@ -267,7 +267,7 @@ function battlePhaseAnimation() {
         "computerBox0" : computerCard0,
         "computerBox1" : computerCard3,
         "computerBox2" : computerCard2,
-        "computerBox3" : computerCard3
+        "computerBox3" : computerCard1
     }
     
     battlePhase()
@@ -311,7 +311,7 @@ function battlePhase() {
             var computerPower = computerHand[i].power
         }
         if (ageComputerCard == computerHand[i].name) {
-            var playerAge = computerHand[i].age
+            var computerAge = computerHand[i].age
         }
     }
 
@@ -323,19 +323,22 @@ function battlePhase() {
         console.log("draw")
     }
 
-    playerBox3.addEventListener('click',function(e){
+    playerBox3.addEventListener('click', () => {
+    
 
         if (playerAge > computerAge) {
-            playerCard0.classList.toggle("battle-win-playercard0")
-            computerCard0.classList.toggle("battle-lose-computerCard0")
-        } else if (playerFrightFactor < computerFrightFactor) {
-            playerCard0.classList.toggle("battle-lose-playercard0")
-            computerCard0.classList.toggle("battle-win-computerCard0")
+            document.getElementById(agePlayerCard).classList.toggle("battle-win-playercard3")
+            document.getElementById(ageComputerCard).classList.toggle("battle-lose-computerCard3")   
+        } else if (computerAge > playerAge) {
+            document.getElementById(agePlayerCard).classList.toggle("battle-lose-playercard3")
+            document.getElementById(ageComputerCard).classList.toggle("battle-win-computerCard3")
+            console.log(playerAge, computerAge)
         } else {
-            playerCard0.classList.toggle("battle-draw-playercard0")
-            computerCard0.classList.toggle("battle-draw-computerCard0")
+            document.getElementById(agePlayerCard).classList.toggle("battle-draw-playercard0")
+            document.getElementById(ageComputerCard).classList.toggle("battle-draw-computerCard3")
         }
     });
+   
 }
     
 

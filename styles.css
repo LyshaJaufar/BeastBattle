@@ -336,40 +336,6 @@ body {
     animation: overlay-fade 1800ms forwards;
 }
 
-@keyframes overlay-grow {
-  from {
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 0;
-  }
-  to {
-    background-color: rgba(0, 0, 0, 0.8);
-    font-size: 10em;
-  }
-}
-
-@keyframes overlay-fade {
-  from {
-    background-color: rgba(0, 0, 0, 0.8);
-    font-size: 0;
-  }
-  to {
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 10em;
-  }
-}
-
-
-@keyframes fade {
-  0% {
-    opacity: 0.9;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.15);
-  }
-}
-
 .sword {
   position: absolute;
   bottom: 25%;
@@ -434,6 +400,21 @@ body {
   animation: shake var(--dur) linear infinite;
 }
 
+.battle-win-playercard3 {
+	 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(173, 153, 255, 0.75);
+	 transform: translateY(-100px) rotate(0deg) scale(2);
+	 transition-duration: 0ms;
+	 z-index: 5; 
+}
+
+.battle-lose-computerCard3 {
+	 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(173, 153, 255, 0.75);
+	 transform: translateY(-100px) rotate(0deg) scale(0.7);
+	 transition-duration: 0ms;
+	 z-index: 5; 
+}
+
+
 @keyframes square-left {
   26% { transform: translateX(0); }
   100% { transform: translate(-5%, -5%) rotate(-1deg); }
@@ -482,4 +463,38 @@ body {
   29% { transform: translateX(-3%); }
   30% { transform: translateX(1%); }
   31% { transform: translateX(0); }
+}
+
+@keyframes overlay-grow {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 0;
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 10em;
+  }
+}
+
+@keyframes overlay-fade {
+  from {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 0;
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 10em;
+  }
+}
+
+
+@keyframes fade {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
 }
