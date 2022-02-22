@@ -401,18 +401,15 @@ body {
 }
 
 .battle-win-playercard3 {
-	 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(173, 153, 255, 0.75);
-
-   animation: fight 2s infinite;
-   transform: rotateY(180deg) translateY(-100px)  scale(2);
-
-
-	 transition-duration: 0ms;
-	 z-index: 5; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transform: rotateY(180deg);
+    animation: fight 3.5s infinite;
+    
+    z-index: 5; 
 }
 
 .battle-lose-computerCard3 {
-	 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(173, 153, 255, 0.75);
+	 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 	 transform: translateY(-100px) rotateY(180deg) rotate(0deg) scale(0.7);
 	 transition-duration: 0ms;
 	 z-index: 5; 
@@ -458,10 +455,19 @@ body {
 
 @keyframes fight {
 
+  25.5% { 
+    transform:  rotateY(180deg) translateY(-200px) scale(2);
+ 
+  }
   26% {
-      transform:  rotateY(180deg) translateY(-200px) scale(1.2);
-  
-  };]
+    transform: translateX(-200px) translateY(-200px) scale(2);
+  }
+  28% { transform: rotateY(180deg) translateY(-200px) translateX(2%) scale(2); }
+  29% { transform: rotateY(180deg)  translateY(-200px) translateX(10%) scale(2); }
+  30% { transform: rotateY(180deg)  translateY(-200px) translateX(-10%) scale(2); }
+  31% { transform: rotateY(180deg)  translateY(-200px) translateX(-3%) scale(2); }
+  32% { transform: rotateY(180deg)  translateY(-200px) translateX(1%) scale(2); }
+  33% { transform: rotateY(180deg)  translateY(-200px) translateX(0%) scale(2); }
  
 }
 
