@@ -22,8 +22,7 @@ var draggable;
 var card_lane_map;
 var i = 0
 var overlay;
-
-var battleStarted = false
+var battlePhaseStarted = true
 
 startGame()
 function startGame() {
@@ -224,58 +223,63 @@ function startPhase(){
 
 function battlePhaseAnimation() {
 
-    overlay = document.createElement("DIV")
-    var square = document.createElement("V")
-    var sword = document.createElement("div")
-    var blade = document.createElement("div")
-    var handle = document.createElement("div")
+    if (battlePhaseStarted) {
+        battlePhaseStarted = false
 
-    overlay.classList.add("overlay-text")
-    overlay.classList.add("visible")
-    overlay.innerHTML = "BATTLE"
-    document.body.appendChild(overlay)
+        overlay = document.createElement("DIV")
+        var square = document.createElement("V")
+        var sword = document.createElement("div")
+        var blade = document.createElement("div")
+        var handle = document.createElement("div")
 
-    square.classList.add("square")
-    sword.classList.add("sword")
-    blade.classList.add("blade")
-    handle.classList.add("handle")
+        overlay.classList.add("overlay-text")
+        overlay.classList.add("visible")
+        overlay.innerHTML = "BATTLE"
+        document.body.appendChild(overlay)
 
-    square.appendChild(sword)
-    sword.appendChild(blade)
-    sword.appendChild(handle)
-    document.body.appendChild(square)
+        square.classList.add("square")
+        sword.classList.add("sword")
+        blade.classList.add("blade")
+        handle.classList.add("handle")
 
-    setTimeout(() => {
-        computerCard0.classList.add("computer-card-battle-start-lane-0")
-        computerCard1.classList.add("computer-card-battle-start-lane-3")
-        computerCard2.classList.add("computer-card-battle-start-lane-2")
-        computerCard3.classList.add("computer-card-battle-start-lane-1")
+        square.appendChild(sword)
+        sword.appendChild(blade)
+        sword.appendChild(handle)
+        document.body.appendChild(square)
+
+        setTimeout(() => {
+            computerCard0.classList.add("computer-card-battle-start-lane-0")
+            computerCard1.classList.add("computer-card-battle-start-lane-3")
+            computerCard2.classList.add("computer-card-battle-start-lane-2")
+            computerCard3.classList.add("computer-card-battle-start-lane-1")
+            
+            computerBox0.appendChild(computerCard0)
+            computerBox1.appendChild(computerCard3)
+            computerBox2.appendChild(computerCard2)
+            computerBox3.appendChild(computerCard1)
+
+        },1500);
+
+        setTimeout(() => {
+            document.body.removeChild(square)
+            overlay.classList.add("overlay-text-gone")
+            overlay.innerHTML = ""
+        },2450);
+
+        card_lane_map = {
+            "computerBox0" : computerCard0,
+            "computerBox1" : computerCard3,
+            "computerBox2" : computerCard2,
+            "computerBox3" : computerCard1
+        }
         
-        computerBox0.appendChild(computerCard0)
-        computerBox1.appendChild(computerCard3)
-        computerBox2.appendChild(computerCard2)
-        computerBox3.appendChild(computerCard1)
-
-    },1500);
-
-    setTimeout(() => {
-        document.body.removeChild(square)
-        overlay.classList.add("overlay-text-gone")
-        overlay.innerHTML = ""
-    },2450);
-
-    card_lane_map = {
-        "computerBox0" : computerCard0,
-        "computerBox1" : computerCard3,
-        "computerBox2" : computerCard2,
-        "computerBox3" : computerCard1
+        battlePhase()
     }
-    
-    battlePhase()
 }
 
 function battlePhase() {
 
+    // remove hover effect
     playerCard0.classList.remove("flippedPlayerCard")
     playerCard1.classList.remove("flippedPlayerCard")
     playerCard2.classList.remove("flippedPlayerCard")
@@ -346,8 +350,3 @@ function battlePhase() {
     });
    
 }
-    
-
-           
-
-
