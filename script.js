@@ -355,6 +355,13 @@ function battlePhase() {
         } else if (computerAge > playerAge) {
             document.getElementById(agePlayerCard).classList.toggle("battle-lose-playercard")
             document.getElementById(ageComputerCard).classList.toggle("battle-win-computerCard")
+            playerBox3.getElementsByClassName("card")[0].appendChild(img)
+            setTimeout(() => {
+                createImage()
+            }, 1400);
+            setTimeout(() => {
+                document.getElementById(agePlayerCard).classList.toggle("battle-lose") 
+            }, 1650); 
         } else {
             document.getElementById(agePlayerCard).classList.toggle("battle-draw-playercard")
             document.getElementById(ageComputerCard).classList.toggle("battle-draw-computerCard")
@@ -376,6 +383,13 @@ function battlePhase() {
         } else if (computerPower > playerPower) {
             document.getElementById(powerPlayerCard).classList.toggle("battle-lose-playercard")
             document.getElementById(powerComputerCard).classList.toggle("battle-win-computerCard")
+            playerBox2.getElementsByClassName("card")[0].appendChild(img)
+            setTimeout(() => {
+                createImage()
+            }, 1400);
+            setTimeout(() => {
+                document.getElementById(powerPlayerCard).classList.toggle("battle-lose") 
+            }, 1650); 
         } else {
             document.getElementById(powerPlayerCard).classList.toggle("battle-draw-playercard")
             document.getElementById(powerComputerCard).classList.toggle("battle-draw-computerCard")
@@ -397,6 +411,13 @@ function battlePhase() {
         } else if (computerMagicLevel > playerMagicLevel) {
             document.getElementById(magicLevelPlayerCard).classList.toggle("battle-lose-playercard")
             document.getElementById(magicLevelComputerCard).classList.toggle("battle-win-computerCard")
+            playerBox1.getElementsByClassName("card")[0].appendChild(img)
+            setTimeout(() => {
+                createImage()
+            }, 1400);
+            setTimeout(() => {
+                document.getElementById(magicLevelPlayerCard).classList.toggle("battle-lose") 
+            }, 1650); 
         } else {
             document.getElementById(magicLevelPlayerCard).classList.toggle("battle-draw-playercard")
             document.getElementById(magicLevelComputerCard).classList.toggle("battle-draw-computerCard")
@@ -418,6 +439,13 @@ function battlePhase() {
         } else if (computerFrightFactor > playerFrightFactor) {
             document.getElementById(frightFactorPlayerCard).classList.toggle("battle-lose-playercard")
             document.getElementById(frightFactorComputerCard).classList.toggle("battle-win-computerCard")
+            playerBox0.getElementsByClassName("card")[0].appendChild(img)
+            setTimeout(() => {
+                createImage()
+            }, 1400);
+            setTimeout(() => {
+                document.getElementById(frightFactorPlayerCard).classList.toggle("battle-lose") 
+            }, 1650); 
         } else {
             document.getElementById(frightFactorPlayerCard).classList.toggle("battle-draw-playercard")
             document.getElementById(frightFactorComputerCard).classList.toggle("battle-draw-computerCard")
