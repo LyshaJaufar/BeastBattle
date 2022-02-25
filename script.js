@@ -44,7 +44,6 @@ function setupGame() {
         playerDeck.shuffle()
         computerDeck.shuffle()
     }
-
   
     roundStarted = false
 
