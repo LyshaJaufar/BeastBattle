@@ -120,19 +120,19 @@ body {
 
 .flip-computer-card0 {
     transition: 1.8s;
-    transform: translateY(100%) translateX(-485px)  rotateZ(5deg);
+    transform: translateY(100%) translateX(-470px)  rotateZ(5deg);
 }
 .flip-computer-card1 {
     transition: 1.8s;
-    transform: translateY(300%) translateX(-390px) rotateZ(3deg); 
+    transform: translateY(300%) translateX(-385px) rotateZ(2deg); 
 }
 .flip-computer-card2 {
     transition: 1.8s;
-    transform: translateY(360%) translateX(-295px) rotateZ(-3deg); 
+    transform: translateY(360%) translateX(-300px) rotateZ(-2deg); 
 }
 .flip-computer-card3 {
     transition: 1.8s;
-    transform: translateY(200%) translateX(-200px) rotateZ(-5deg); 
+    transform: translateY(250%) translateX(-215px) rotateZ(-5deg); 
 }
 
 .zoomCard {
@@ -229,26 +229,6 @@ body {
     background-repeat: repeat;
 }
 
-.computer-card-slot0{
-    grid-row: 1;
-    grid-column: 3;
-}
-
-.computer-card-slot1{
-    grid-row: 1;
-    grid-column: 4;
-}
-
-.computer-card-slot2{
-    grid-row: 1;
-    grid-column: 5;
-}
-
-.computer-card-slot3{
-    grid-row: 1;
-    grid-column: 6;
-}
-
 .player-card-slot {
   grid-row: 4; 
   grid-column: 7;
@@ -259,24 +239,9 @@ body {
   grid-column: 7;
 }
 
-.player-card-slot0{
-    grid-row: 4;
-    grid-column: 3;
-}
-
-.player-card-slot1{
-    grid-row: 4;
-    grid-column: 4;
-}
-
-.player-card-slot2{
-    grid-row: 4;
-    grid-column: 5;
-}
-
-.player-card-slot3{
-    grid-row: 4;
-    grid-column: 6;
+.next-card {
+  z-index: -1;
+  position: fixed;
 }
 
 .startButton {

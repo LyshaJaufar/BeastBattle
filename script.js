@@ -15,6 +15,7 @@ var computerBox3 = document.querySelector(".computerBox3")
 var wholeDeck;
 var playerDeck, computerDeck;
 var playerCard0, playerCard1, playerCard2, playerCard3, computerCard0, computerCard1, computerCard2, computerCard3;
+var playerCard4, computerCard4;
 var playerHand = [], computerHand = [];
 var roundStarted;
 var playerBoxes;
@@ -42,21 +43,25 @@ function setupGame() {
     playerCard1 = createCard(playerDeck, "playerD")
     playerCard2 = createCard(playerDeck, "playerD")
     playerCard3 = createCard(playerDeck, "playerD")
+    playerCard4 = createCard(playerDeck, "playerND")
 
     playerCard0.classList.add('playerCard')
     playerCard1.classList.add('playerCard')
     playerCard2.classList.add('playerCard')
     playerCard3.classList.add('playerCard')
+    playerCard4.classList.add("next-card")
 
     computerCard0 = createCard(computerDeck, "computerD")
     computerCard1 = createCard(computerDeck, "computerD")
     computerCard2 = createCard(computerDeck, "computerD")
     computerCard3 = createCard(computerDeck, "computerD")
+    computerCard4 = createCard(computerDeck, "computerND")
 
     computerCard0.classList.add('computerCard')
     computerCard1.classList.add('computerCard')
     computerCard2.classList.add('computerCard')
     computerCard3.classList.add('computerCard')
+    computerCard4.classList.add("next-card")
 
     playerCardSlot.appendChild(playerCard0)
     computerCardSlot.appendChild(computerCard0)
@@ -108,7 +113,7 @@ function createCard(deck, deckId) {
         playerHand[i] = currentCard
     }
     if (deckId == "computerD") {
-        computerHand[i - 4] = currentCard
+        computerHand[i - 5] = currentCard
     }
 
     i += 1
@@ -148,7 +153,11 @@ function deckFlip() {
                 });
             });
         },1300);      
-        
+        setTimeout(() => {
+            playerCardSlot.appendChild(playerCard4)
+            computerCardSlot.appendChild(computerCard4)
+        },1750);   
+
         // hover effect
         playerCard0.classList.add("flippedPlayerCard")
         playerCard1.classList.add("flippedPlayerCard")
@@ -294,6 +303,8 @@ function battlePhase() {
     setTimeout(() => {
         document.body.removeChild(overlay)
     }, 4500)
+
+    console.log(computerHand, playerHand)
     
     var frightFactorPlayerCard = playerBox0.getElementsByClassName("card")[0].id
     var magicLevelPlayerCard = playerBox1.getElementsByClassName("card")[0].id
@@ -465,10 +476,3 @@ function battlePhase() {
         }, 820);
     };
 }
-
-
-
-
-
-
-
