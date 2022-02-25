@@ -24,6 +24,7 @@ var card_lane_map;
 var i = 0
 var overlay;
 var battlePhaseStarted = true
+var playerPoints = 0, computerPoints = 0;
 
 startGame()
 function startGame() {
@@ -348,6 +349,8 @@ function battlePhase() {
         if (!ageClicked) {
             ageClicked = true
             if (playerAge > computerAge) {
+                playerPoints++;
+
                 document.getElementById(agePlayerCard).classList.toggle("battle-win-playercard")
                 document.getElementById(ageComputerCard).classList.toggle("battle-lose-computerCard")   
                 computerBox3.getElementsByClassName("card")[0].appendChild(img)
@@ -359,6 +362,8 @@ function battlePhase() {
                 }, 1650); 
                 
             } else if (computerAge > playerAge) {
+                computerPoints++;
+
                 document.getElementById(agePlayerCard).classList.toggle("battle-lose-playercard")
                 document.getElementById(ageComputerCard).classList.toggle("battle-win-computerCard")
                 playerBox3.getElementsByClassName("card")[0].appendChild(img)
@@ -376,9 +381,11 @@ function battlePhase() {
     }),
 
     playerBox2.addEventListener('click', () => {
-        if (!powerClicked) {
+        if (!powerClicked && ageClicked == true) {
             powerClicked = true
             if (playerPower > computerPower) {
+                playerPoints++;
+
                 document.getElementById(powerPlayerCard).classList.toggle("battle-win-playercard")
                 document.getElementById(powerComputerCard).classList.toggle("battle-lose-computerCard")   
                 computerBox2.getElementsByClassName("card")[0].appendChild(img)
@@ -390,6 +397,8 @@ function battlePhase() {
                 }, 1650); 
                 
             } else if (computerPower > playerPower) {
+                computerPoints++;
+                
                 document.getElementById(powerPlayerCard).classList.toggle("battle-lose-playercard")
                 document.getElementById(powerComputerCard).classList.toggle("battle-win-computerCard")
                 playerBox2.getElementsByClassName("card")[0].appendChild(img)
@@ -407,9 +416,11 @@ function battlePhase() {
     }),
     
     playerBox1.addEventListener('click', () => {
-        if (!magicLevelClicked) {
+        if (!magicLevelClicked && powerClicked == true) {
             magicLevelClicked = true
             if (playerMagicLevel > computerMagicLevel) {
+                playerPoints++;
+
                 document.getElementById(magicLevelPlayerCard).classList.toggle("battle-win-playercard")
                 document.getElementById(magicLevelComputerCard).classList.toggle("battle-lose-computerCard")   
                 computerBox1.getElementsByClassName("card")[0].appendChild(img)
@@ -421,6 +432,8 @@ function battlePhase() {
                 }, 1650); 
                 
             } else if (computerMagicLevel > playerMagicLevel) {
+                computerPoints++;
+
                 document.getElementById(magicLevelPlayerCard).classList.toggle("battle-lose-playercard")
                 document.getElementById(magicLevelComputerCard).classList.toggle("battle-win-computerCard")
                 playerBox1.getElementsByClassName("card")[0].appendChild(img)
@@ -438,9 +451,11 @@ function battlePhase() {
     });
 
     playerBox0.addEventListener('click', () => {
-        if (!frightFactorClicked) {
+        if (!frightFactorClicked && magicLevelClicked == true) {
             frightFactorClicked = true
             if (playerFrightFactor > computerFrightFactor) {
+                playerPoints++;
+
                 document.getElementById(frightFactorPlayerCard).classList.toggle("battle-win-playercard")
                 document.getElementById(frightFactorComputerCard).classList.toggle("battle-lose-computerCard")   
                 computerBox0.getElementsByClassName("card")[0].appendChild(img)
@@ -452,6 +467,8 @@ function battlePhase() {
                 }, 1650); 
                 
             } else if (computerFrightFactor > playerFrightFactor) {
+                computerPoints++;
+
                 document.getElementById(frightFactorPlayerCard).classList.toggle("battle-lose-playercard")
                 document.getElementById(frightFactorComputerCard).classList.toggle("battle-win-computerCard")
                 playerBox0.getElementsByClassName("card")[0].appendChild(img)
@@ -465,6 +482,9 @@ function battlePhase() {
                 document.getElementById(frightFactorPlayerCard).classList.toggle("battle-draw-playercard")
                 document.getElementById(frightFactorComputerCard).classList.toggle("battle-draw-computerCard")
             }
+            setTimeout(() => {
+                battleEnd()
+            }, 4000)
         }
     });
 
@@ -475,4 +495,16 @@ function battlePhase() {
             img.style.opacity = 0;
         }, 820);
     };
+}
+
+function battleEnd() {
+    if (playerPoints > computerPoints)
+    {
+        for (var i = 0; i < computerHand.length; i++) {
+            playerHand[4 + i] = computerHand[i]
+        }
+        computerHand.splice(0, 4)
+        console.log(playerHand)
+        console.log(computerHand)
+    }
 }
