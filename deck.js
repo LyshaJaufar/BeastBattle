@@ -55,6 +55,8 @@ function freshDeck() {
         new Card("Koron", 389, 270, 167, 94, "assets/koron.png"),
         new Card("Xerik", 320, 235, 149, 94, "assets/xerik.png"),
         new Card("BloodBoar", 233, 350, 180, 86, "assets/bloodboar.png"),
-        new Card("Serpio", 0, 284, 180, 87, "assets/serpio.png")
+        new Card("Serpio", 0, 284, 180, 87, "assets/serpio.png"),
+        new Card("Polkai", 35, 187, 100, 83, "assets/polkai.png"),
+        new Card("Murk", 271, 212, 181, 87, "assets/murk.png")
     ]
 }

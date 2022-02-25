@@ -25,6 +25,8 @@ var i = 0
 var overlay;
 var battlePhaseStarted = true
 var playerPoints = 0, computerPoints = 0;
+var nextPlayerCard, nextComputerCard;
+var firstRound = true;
 
 startGame()
 function startGame() {
@@ -32,19 +34,25 @@ function startGame() {
 }
 
 function setupGame() {
-    wholeDeck = new Deck()
-    //deck.shuffle()
-    const deckMidpoint = Math.ceil(wholeDeck.numberOfCards / 2)
-    playerDeck = new Deck(wholeDeck.cards.slice(0, deckMidpoint))
-    computerDeck = new Deck(wholeDeck.cards.slice(deckMidpoint, wholeDeck.numberOfCards))
+    if (firstRound) {
+        wholeDeck = new Deck()
+        //deck.shuffle()
+        const deckMidpoint = Math.ceil(wholeDeck.numberOfCards / 2)
+        playerDeck = new Deck(wholeDeck.cards.slice(0, deckMidpoint))
+        computerDeck = new Deck(wholeDeck.cards.slice(deckMidpoint, wholeDeck.numberOfCards))
+    } else {
+        playerDeck.shuffle()
+        computerDeck.shuffle()
+    }
 
+  
     roundStarted = false
 
     playerCard0 = createCard(playerDeck, "playerD")
     playerCard1 = createCard(playerDeck, "playerD")
     playerCard2 = createCard(playerDeck, "playerD")
     playerCard3 = createCard(playerDeck, "playerD")
-    playerCard4 = createCard(playerDeck, "playerND")
+    playerCard4 = createCard(playerDeck, "playerNC")
 
     playerCard0.classList.add('playerCard')
     playerCard1.classList.add('playerCard')
@@ -56,7 +64,7 @@ function setupGame() {
     computerCard1 = createCard(computerDeck, "computerD")
     computerCard2 = createCard(computerDeck, "computerD")
     computerCard3 = createCard(computerDeck, "computerD")
-    computerCard4 = createCard(computerDeck, "computerND")
+    computerCard4 = createCard(computerDeck, "computerNC")
 
     computerCard0.classList.add('computerCard')
     computerCard1.classList.add('computerCard')
@@ -69,6 +77,7 @@ function setupGame() {
 }
 
 document.getElementById('button').onclick = function() {
+    firstRound = false
     deckFlip()
 };
 
@@ -116,6 +125,13 @@ function createCard(deck, deckId) {
     if (deckId == "computerD") {
         computerHand[i - 5] = currentCard
     }
+    if (deckId == "playerNC") {
+        nextPlayerCard = currentCard
+    }
+    if (deckId == "computerNC") {
+        nextComputerCard = currentCard
+    }
+
 
     i += 1
     return innerCardDiv
@@ -304,8 +320,6 @@ function battlePhase() {
     setTimeout(() => {
         document.body.removeChild(overlay)
     }, 4500)
-
-    console.log(computerHand, playerHand)
     
     var frightFactorPlayerCard = playerBox0.getElementsByClassName("card")[0].id
     var magicLevelPlayerCard = playerBox1.getElementsByClassName("card")[0].id
@@ -483,7 +497,7 @@ function battlePhase() {
                 document.getElementById(frightFactorComputerCard).classList.toggle("battle-draw-computerCard")
             }
             setTimeout(() => {
-                battleEnd()
+                updateDeck()
             }, 4000)
         }
     });
@@ -497,14 +511,35 @@ function battlePhase() {
     };
 }
 
-function battleEnd() {
+function updateDeck() {
     if (playerPoints > computerPoints)
     {
         for (var i = 0; i < computerHand.length; i++) {
             playerHand[4 + i] = computerHand[i]
         }
         computerHand.splice(0, 4)
-        console.log(playerHand)
-        console.log(computerHand)
+
+        for (var i = 0; i < playerHand.length; i++) {
+            playerDeck.push(playerHand[i])
+        }
+
+        playerCard4.classList.remove("next-card")
+        computerCard4.classList.remove("next-card")
+        playerDeck.push(nextPlayerCard)
+        computerDeck.push(nextComputerCard)
     }
+    cleanUpBeforeRound()
+    setupGame()
+}
+
+function cleanUpBeforeRound() {
+    playerBox0.removeChild(playerBox0.getElementsByClassName("card")[0])
+    playerBox1.removeChild(playerBox1.getElementsByClassName("card")[0])
+    playerBox2.removeChild(playerBox2.getElementsByClassName("card")[0])
+    playerBox3.removeChild(playerBox3.getElementsByClassName("card")[0])
+
+    computerBox0.removeChild(computerBox0.getElementsByClassName("card")[0])
+    computerBox1.removeChild(computerBox1.getElementsByClassName("card")[0])
+    computerBox2.removeChild(computerBox2.getElementsByClassName("card")[0])
+    computerBox3.removeChild(computerBox3.getElementsByClassName("card")[0])
 }
