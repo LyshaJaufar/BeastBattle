@@ -21,9 +21,9 @@ var roundStarted;
 var playerBoxes;
 var draggable;
 var card_lane_map;
-var i = 0
+var i;
 var overlay;
-var battlePhaseStarted = true
+var battlePhaseStarted;
 var playerPoints = 0, computerPoints = 0;
 var nextPlayerCard, nextComputerCard;
 var firstRound = true;
@@ -44,8 +44,10 @@ function setupGame() {
         playerDeck.shuffle()
         computerDeck.shuffle()
     }
-  
+    
+    i = 0
     roundStarted = false
+    battlePhaseStarted = true
 
     playerCard0 = createCard(playerDeck, "playerD")
     playerCard1 = createCard(playerDeck, "playerD")
@@ -330,7 +332,8 @@ function battlePhase() {
     var powerComputerCard = card_lane_map["computerBox2"].id
     var ageComputerCard = card_lane_map["computerBox3"].id
 
-    for (var i = 0; i < playerHand.length; i++) {
+    for (var i = 0; i < computerHand.length; i++) {
+
         if (frightFactorPlayerCard == playerHand[i].name) {
             var playerFrightFactor = playerHand[i].frightFactor
         }
@@ -526,6 +529,7 @@ function updateDeck() {
         computerCard4.classList.remove("next-card")
         playerDeck.push(nextPlayerCard)
         computerDeck.push(nextComputerCard)
+        playerHand.splice(0, 8)
     }
     cleanUpBeforeRound()
     setupGame()
