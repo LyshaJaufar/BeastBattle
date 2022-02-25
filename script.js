@@ -279,6 +279,7 @@ function battlePhaseAnimation() {
 
 function battlePhase() {
 
+    var ageClicked = false, powerClicked = false, magicLevelClicked = false, frightFactorClicked = false;
     let img_src =
 	"data:image/gif;base64,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";
     let img = document.createElement("img");
@@ -331,124 +332,128 @@ function battlePhase() {
         }
     }
 
-    if (playerFrightFactor > computerFrightFactor) {
-        console.log("player wins")
-    } else if (playerFrightFactor < computerFrightFactor) {
-        console.log("computer wins")
-    } else {
-        console.log("draw")
-    }
-
     playerBox3.addEventListener('click', () => {
 
-        if (playerAge > computerAge) {
-            document.getElementById(agePlayerCard).classList.toggle("battle-win-playercard")
-            document.getElementById(ageComputerCard).classList.toggle("battle-lose-computerCard")   
-            computerBox3.getElementsByClassName("card")[0].appendChild(img)
-            setTimeout(() => {
-                createImage()
-            }, 1400);
-            setTimeout(() => {
-                document.getElementById(ageComputerCard).classList.toggle("battle-lose") 
-            }, 1650); 
-            
-        } else if (computerAge > playerAge) {
-            document.getElementById(agePlayerCard).classList.toggle("battle-lose-playercard")
-            document.getElementById(ageComputerCard).classList.toggle("battle-win-computerCard")
-            playerBox3.getElementsByClassName("card")[0].appendChild(img)
-            setTimeout(() => {
-                createImage()
-            }, 1400);
-            setTimeout(() => {
-                document.getElementById(agePlayerCard).classList.toggle("battle-lose") 
-            }, 1650); 
-        } else {
-            document.getElementById(agePlayerCard).classList.toggle("battle-draw-playercard")
-            document.getElementById(ageComputerCard).classList.toggle("battle-draw-computerCard")
+        if (!ageClicked) {
+            ageClicked = true
+            if (playerAge > computerAge) {
+                document.getElementById(agePlayerCard).classList.toggle("battle-win-playercard")
+                document.getElementById(ageComputerCard).classList.toggle("battle-lose-computerCard")   
+                computerBox3.getElementsByClassName("card")[0].appendChild(img)
+                setTimeout(() => {
+                    createImage()
+                }, 1400);
+                setTimeout(() => {
+                    document.getElementById(ageComputerCard).classList.toggle("battle-lose") 
+                }, 1650); 
+                
+            } else if (computerAge > playerAge) {
+                document.getElementById(agePlayerCard).classList.toggle("battle-lose-playercard")
+                document.getElementById(ageComputerCard).classList.toggle("battle-win-computerCard")
+                playerBox3.getElementsByClassName("card")[0].appendChild(img)
+                setTimeout(() => {
+                    createImage()
+                }, 1400);
+                setTimeout(() => {
+                    document.getElementById(agePlayerCard).classList.toggle("battle-lose") 
+                }, 1650); 
+            } else {
+                document.getElementById(agePlayerCard).classList.toggle("battle-draw-playercard")
+                document.getElementById(ageComputerCard).classList.toggle("battle-draw-computerCard")
+            }
         }
     }),
 
     playerBox2.addEventListener('click', () => {
-        if (playerPower > computerPower) {
-            document.getElementById(powerPlayerCard).classList.toggle("battle-win-playercard")
-            document.getElementById(powerComputerCard).classList.toggle("battle-lose-computerCard")   
-            computerBox2.getElementsByClassName("card")[0].appendChild(img)
-            setTimeout(() => {
-                createImage()
-            }, 1400);
-            setTimeout(() => {
-                document.getElementById(powerComputerCard).classList.toggle("battle-lose") 
-            }, 1650); 
-            
-        } else if (computerPower > playerPower) {
-            document.getElementById(powerPlayerCard).classList.toggle("battle-lose-playercard")
-            document.getElementById(powerComputerCard).classList.toggle("battle-win-computerCard")
-            playerBox2.getElementsByClassName("card")[0].appendChild(img)
-            setTimeout(() => {
-                createImage()
-            }, 1400);
-            setTimeout(() => {
-                document.getElementById(powerPlayerCard).classList.toggle("battle-lose") 
-            }, 1650); 
-        } else {
-            document.getElementById(powerPlayerCard).classList.toggle("battle-draw-playercard")
-            document.getElementById(powerComputerCard).classList.toggle("battle-draw-computerCard")
+        if (!powerClicked) {
+            powerClicked = true
+            if (playerPower > computerPower) {
+                document.getElementById(powerPlayerCard).classList.toggle("battle-win-playercard")
+                document.getElementById(powerComputerCard).classList.toggle("battle-lose-computerCard")   
+                computerBox2.getElementsByClassName("card")[0].appendChild(img)
+                setTimeout(() => {
+                    createImage()
+                }, 1400);
+                setTimeout(() => {
+                    document.getElementById(powerComputerCard).classList.toggle("battle-lose") 
+                }, 1650); 
+                
+            } else if (computerPower > playerPower) {
+                document.getElementById(powerPlayerCard).classList.toggle("battle-lose-playercard")
+                document.getElementById(powerComputerCard).classList.toggle("battle-win-computerCard")
+                playerBox2.getElementsByClassName("card")[0].appendChild(img)
+                setTimeout(() => {
+                    createImage()
+                }, 1400);
+                setTimeout(() => {
+                    document.getElementById(powerPlayerCard).classList.toggle("battle-lose") 
+                }, 1650); 
+            } else {
+                document.getElementById(powerPlayerCard).classList.toggle("battle-draw-playercard")
+                document.getElementById(powerComputerCard).classList.toggle("battle-draw-computerCard")
+            }
         }
     }),
     
     playerBox1.addEventListener('click', () => {
-        if (playerMagicLevel > computerMagicLevel) {
-            document.getElementById(magicLevelPlayerCard).classList.toggle("battle-win-playercard")
-            document.getElementById(magicLevelComputerCard).classList.toggle("battle-lose-computerCard")   
-            computerBox1.getElementsByClassName("card")[0].appendChild(img)
-            setTimeout(() => {
-                createImage()
-            }, 1400);
-            setTimeout(() => {
-                document.getElementById(magicLevelComputerCard).classList.toggle("battle-lose") 
-            }, 1650); 
-            
-        } else if (computerMagicLevel > playerMagicLevel) {
-            document.getElementById(magicLevelPlayerCard).classList.toggle("battle-lose-playercard")
-            document.getElementById(magicLevelComputerCard).classList.toggle("battle-win-computerCard")
-            playerBox1.getElementsByClassName("card")[0].appendChild(img)
-            setTimeout(() => {
-                createImage()
-            }, 1400);
-            setTimeout(() => {
-                document.getElementById(magicLevelPlayerCard).classList.toggle("battle-lose") 
-            }, 1650); 
-        } else {
-            document.getElementById(magicLevelPlayerCard).classList.toggle("battle-draw-playercard")
-            document.getElementById(magicLevelComputerCard).classList.toggle("battle-draw-computerCard")
+        if (!magicLevelClicked) {
+            magicLevelClicked = true
+            if (playerMagicLevel > computerMagicLevel) {
+                document.getElementById(magicLevelPlayerCard).classList.toggle("battle-win-playercard")
+                document.getElementById(magicLevelComputerCard).classList.toggle("battle-lose-computerCard")   
+                computerBox1.getElementsByClassName("card")[0].appendChild(img)
+                setTimeout(() => {
+                    createImage()
+                }, 1400);
+                setTimeout(() => {
+                    document.getElementById(magicLevelComputerCard).classList.toggle("battle-lose") 
+                }, 1650); 
+                
+            } else if (computerMagicLevel > playerMagicLevel) {
+                document.getElementById(magicLevelPlayerCard).classList.toggle("battle-lose-playercard")
+                document.getElementById(magicLevelComputerCard).classList.toggle("battle-win-computerCard")
+                playerBox1.getElementsByClassName("card")[0].appendChild(img)
+                setTimeout(() => {
+                    createImage()
+                }, 1400);
+                setTimeout(() => {
+                    document.getElementById(magicLevelPlayerCard).classList.toggle("battle-lose") 
+                }, 1650); 
+            } else {
+                document.getElementById(magicLevelPlayerCard).classList.toggle("battle-draw-playercard")
+                document.getElementById(magicLevelComputerCard).classList.toggle("battle-draw-computerCard")
+            }
         }
     });
 
     playerBox0.addEventListener('click', () => {
-        if (playerFrightFactor > computerFrightFactor) {
-            document.getElementById(frightFactorPlayerCard).classList.toggle("battle-win-playercard")
-            document.getElementById(frightFactorComputerCard).classList.toggle("battle-lose-computerCard")   
-            computerBox0.getElementsByClassName("card")[0].appendChild(img)
-            setTimeout(() => {
-                createImage()
-            }, 1400);
-            setTimeout(() => {
-                document.getElementById(frightFactorComputerCard).classList.toggle("battle-lose") 
-            }, 1650); 
-            
-        } else if (computerFrightFactor > playerFrightFactor) {
-            document.getElementById(frightFactorPlayerCard).classList.toggle("battle-lose-playercard")
-            document.getElementById(frightFactorComputerCard).classList.toggle("battle-win-computerCard")
-            playerBox0.getElementsByClassName("card")[0].appendChild(img)
-            setTimeout(() => {
-                createImage()
-            }, 1400);
-            setTimeout(() => {
-                document.getElementById(frightFactorPlayerCard).classList.toggle("battle-lose") 
-            }, 1650); 
-        } else {
-            document.getElementById(frightFactorPlayerCard).classList.toggle("battle-draw-playercard")
-            document.getElementById(frightFactorComputerCard).classList.toggle("battle-draw-computerCard")
+        if (!frightFactorClicked) {
+            frightFactorClicked = true
+            if (playerFrightFactor > computerFrightFactor) {
+                document.getElementById(frightFactorPlayerCard).classList.toggle("battle-win-playercard")
+                document.getElementById(frightFactorComputerCard).classList.toggle("battle-lose-computerCard")   
+                computerBox0.getElementsByClassName("card")[0].appendChild(img)
+                setTimeout(() => {
+                    createImage()
+                }, 1400);
+                setTimeout(() => {
+                    document.getElementById(frightFactorComputerCard).classList.toggle("battle-lose") 
+                }, 1650); 
+                
+            } else if (computerFrightFactor > playerFrightFactor) {
+                document.getElementById(frightFactorPlayerCard).classList.toggle("battle-lose-playercard")
+                document.getElementById(frightFactorComputerCard).classList.toggle("battle-win-computerCard")
+                playerBox0.getElementsByClassName("card")[0].appendChild(img)
+                setTimeout(() => {
+                    createImage()
+                }, 1400);
+                setTimeout(() => {
+                    document.getElementById(frightFactorPlayerCard).classList.toggle("battle-lose") 
+                }, 1650); 
+            } else {
+                document.getElementById(frightFactorPlayerCard).classList.toggle("battle-draw-playercard")
+                document.getElementById(frightFactorComputerCard).classList.toggle("battle-draw-computerCard")
+            }
         }
     });
 
