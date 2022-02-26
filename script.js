@@ -536,13 +536,10 @@ function updateDeck() {
 }
 
 function cleanUpBeforeRound() {
-    playerBox0.removeChild(playerBox0.getElementsByClassName("card")[0])
-    playerBox1.removeChild(playerBox1.getElementsByClassName("card")[0])
-    playerBox2.removeChild(playerBox2.getElementsByClassName("card")[0])
-    playerBox3.removeChild(playerBox3.getElementsByClassName("card")[0])
-
-    computerBox0.removeChild(computerBox0.getElementsByClassName("card")[0])
-    computerBox1.removeChild(computerBox1.getElementsByClassName("card")[0])
-    computerBox2.removeChild(computerBox2.getElementsByClassName("card")[0])
-    computerBox3.removeChild(computerBox3.getElementsByClassName("card")[0])
+    console.log(playerBox0.getElementsByClassName("card")[0])
+    playerBox0.getElementsByClassName("card")[0].classList.toggle("clean-deck-p0")
+   
+    playerBox1.getElementsByClassName("card")[0].classList.toggle("clean-deck-p1")
+    playerBox2.getElementsByClassName("card")[0].classList.toggle("clean-deck-p2")
+    playerBox3.getElementsByClassName("card")[0].classList.toggle("clean-deck-p3")                                                                                  
 }

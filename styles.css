@@ -408,6 +408,35 @@ body {
 	position: absolute;
 }
 
+.clean-deck-p0 {
+  
+  animation: cardSpin;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear; 
+
+}
+
+.clean-deck-p1 {
+  transform: translateY(-10500%) rotateY(180deg) translateX(-60%) scale(1.3);
+}
+.clean-deck-p2 {
+  transform: translateY(-10500%) rotateY(180deg) translateX(25%) scale(1.3);
+}
+.clean-deck-p3 {
+  transform: translateY(-10500%) rotateY(180deg) translateX(110%) scale(1.3);
+}
+
+@keyframes cardSpin {                                                                       
+ 
+    from {
+        transform:rotateY(0deg) scale(1.3) ;
+    }
+    to {
+        transform:rotateY(360deg) scale(1.3) translateX(-150%) translateY(-1500%);
+    }
+}
+
 @keyframes square-left {
   26% { transform: translateX(0); }
   100% { transform: translate(-5%, -5%) rotate(-1deg); }
