@@ -527,9 +527,16 @@ function updateDeck() {
 
         playerCard4.classList.remove("next-card")
         computerCard4.classList.remove("next-card")
+
+        playerCard4.classList.add("playerCard")
+        computerCard4.classList.add("computerCard")
+        
         playerDeck.push(nextPlayerCard)
         computerDeck.push(nextComputerCard)
-        playerHand.splice(0, 8)
+
+        document.body.getElementsByClassName("computer-card-slot")[0].removeChild(document.body.getElementsByClassName("maincontainer")[0].getElementsByClassName("card")[0])
+        document.body.getElementsByClassName("player-card-slot")[0].removeChild(document.body.getElementsByClassName("player-card-slot")[0].getElementsByClassName("card")[0])                                                                                            
+        playerHand.splice(0, 8)                                                                                                                                                                 
     }
     cleanUpBeforeRound()
     setupGame()
