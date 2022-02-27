@@ -538,8 +538,12 @@ function updateDeck() {
 function cleanUpBeforeRound() {
     console.log(playerBox0.getElementsByClassName("card")[0])
     playerBox0.getElementsByClassName("card")[0].classList.toggle("clean-deck-p0")
-   
     playerBox1.getElementsByClassName("card")[0].classList.toggle("clean-deck-p1")
     playerBox2.getElementsByClassName("card")[0].classList.toggle("clean-deck-p2")
-    playerBox3.getElementsByClassName("card")[0].classList.toggle("clean-deck-p3")                                                                                  
+    playerBox3.getElementsByClassName("card")[0].classList.toggle("clean-deck-p3")    
+    
+    computerBox0.getElementsByClassName("card")[0].classList.toggle("clean-deck-c0") 
+    computerBox1.getElementsByClassName("card")[0].classList.toggle("clean-deck-c1")  
+    computerBox2.getElementsByClassName("card")[0].classList.toggle("clean-deck-c2")
+    computerBox3.getElementsByClassName("card")[0].classList.toggle("clean-deck-c3")
 }
