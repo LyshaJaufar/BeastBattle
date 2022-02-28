@@ -14,6 +14,9 @@ export default class Deck {
     push(card) {
         this.cards.push(card)
     }
+    splice(start, number) {
+        this.cards.splice(start, number)
+    }
 
     shuffle() {
         for (let i = this.numberOfCards - 1; i > 0; i--){
