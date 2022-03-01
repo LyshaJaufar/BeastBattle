@@ -28,7 +28,7 @@ var playerPoints = 0, computerPoints = 0;
 var nextPlayerCard, nextComputerCard;
 var firstRound = true;
 var playerWinRound = false
-var computerWinRound = false
+var computerWinRound = false;
 
 startGame()
 function startGame() {
@@ -524,7 +524,6 @@ function battlePhase() {
 function updateDeck() {
     if (playerPoints > computerPoints)
     {
-        playerWinRound = true
         for (var i = 0; i < computerHand.length; i++) {
             playerHand[4 + i] = computerHand[i]
         }
@@ -542,13 +541,13 @@ function updateDeck() {
             playerDeck1.push(playerHand[i])
         }                                                                                          
         playerHand.splice(0, 8) 
+        setTimeout(() => {
+            cleanUpBeforeRoundWin()
+        }, 50)
                                                                                                                                                                                                                                                                                                                                                     
-    }
-
-    if (computerPoints > playerPoints)
-    {
-        computerWinRound = true
-        for (var i = 0; i < computerHand.length; i++) {
+    } else if (computerPoints > playerPoints) {
+ 
+        for (var i = 0; i < playerHand.length; i++) {
             computerHand[4 + i] = playerHand[i]
         }
         for (var i = 0; i < playerHand.length; i++) {
@@ -563,7 +562,10 @@ function updateDeck() {
         for (var i = 0; i < computerHand.length; i++) {
             computerDeck.push(computerHand[i])
             computerDeck1.push(computerHand[i])
-        }                                                                                          
+        }   
+        setTimeout(() => {
+            cleanUpBeforeRoundLose()
+        }, 50)                                                  
         computerHand.splice(0, 8)
     }
 
@@ -578,19 +580,14 @@ function updateDeck() {
 
     computerCardSlot.removeChild(computerCardSlot.getElementsByClassName("card")[0])
     playerCardSlot.removeChild(playerCardSlot.getElementsByClassName("card")[0])
-
-    setTimeout(() => {
-        cleanUpBeforeRound()
-    }, 50)
     
     setupGame()
 }
 
-function cleanUpBeforeRound() {
+function cleanUpBeforeRoundWin() {
 
     let img_src = "assets/poof.gif"
-
-    let img = document.createElement("img");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+    let img = document.createElement("img");
     img.classList.add("explosion-img")
 
     const createImage = () => {
@@ -600,41 +597,22 @@ function cleanUpBeforeRound() {
             img.style.opacity = 0;
         }, 1020);
     };
-    
-    if (playerWinRound) {
-        playerBox0.getElementsByClassName("card")[0].classList.toggle("clean-deck-p0")
-        playerBox1.getElementsByClassName("card")[0].classList.toggle("clean-deck-p1")
-        playerBox2.getElementsByClassName("card")[0].classList.toggle("clean-deck-p2")
-        playerBox3.getElementsByClassName("card")[0].classList.toggle("clean-deck-p3")    
-        
-        computerBox0.getElementsByClassName("card")[0].classList.toggle("clean-deck-c0") 
-        computerBox1.getElementsByClassName("card")[0].classList.toggle("clean-deck-c1")  
-        computerBox2.getElementsByClassName("card")[0].classList.toggle("clean-deck-c2")
-        computerBox3.getElementsByClassName("card")[0].classList.toggle("clean-deck-c3")
 
-        playerCardSlot.getElementsByClassName("card")[0].appendChild(img)
-        setTimeout(() => {
-            createImage()
-        }, 3250);
-    }
+    playerBox0.getElementsByClassName("card")[0].classList.toggle("clean-deck-p0")
+    playerBox1.getElementsByClassName("card")[0].classList.toggle("clean-deck-p1")
+    playerBox2.getElementsByClassName("card")[0].classList.toggle("clean-deck-p2")
+    playerBox3.getElementsByClassName("card")[0].classList.toggle("clean-deck-p3")
 
-    if (computerWinRound) {
-        console.log('here')
-        playerBox0.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-p0")
-        playerBox1.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-p1")
-        playerBox2.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-p2")
-        playerBox3.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-p3")    
-        
-        computerBox0.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c0") 
-        computerBox1.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c1")  
-        computerBox2.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c2")
-        computerBox3.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c3")
+    computerBox0.getElementsByClassName("card")[0].classList.toggle("clean-deck-c0")
+    computerBox1.getElementsByClassName("card")[0].classList.toggle("clean-deck-c1")  
+    computerBox2.getElementsByClassName("card")[0].classList.toggle("clean-deck-c2")
+    computerBox3.getElementsByClassName("card")[0].classList.toggle("clean-deck-c3")
 
-        playerCardSlot.getElementsByClassName("card")[0].appendChild(img)
-        setTimeout(() => {
-            createImage()
-        }, 3250);
-    }
+    playerCardSlot.getElementsByClassName("card")[0].appendChild(img)
+
+    setTimeout(() => {
+        createImage()
+    }, 3250);
     setTimeout(() => {
         playerBox0.removeChild(playerBox0.getElementsByClassName("card")[0])
         playerBox1.removeChild(playerBox1.getElementsByClassName("card")[0])
@@ -646,4 +624,49 @@ function cleanUpBeforeRound() {
         computerBox2.removeChild(computerBox2.getElementsByClassName("card")[0])
         computerBox3.removeChild(computerBox3.getElementsByClassName("card")[0])
     }, 3450);
+
 }
+
+function cleanUpBeforeRoundLose() {
+
+    let img_src = "assets/poof.gif"
+    let img = document.createElement("img");
+    img.classList.add("explosion-img")
+
+    const createImage = () => {
+        img.style.opacity = 1;
+        img.src = img_src;
+        setTimeout(() => {
+            img.style.opacity = 0;
+        }, 1020);
+    };
+
+    playerBox0.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-p0")
+    playerBox1.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-p1")
+    playerBox2.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-p2")
+    playerBox3.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-p3")
+
+    computerBox0.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c0")
+    computerBox1.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c1")  
+    computerBox2.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c2")
+    computerBox3.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c3")
+
+    computerCardSlot.getElementsByClassName("card")[0].appendChild(img)
+
+    setTimeout(() => {
+        createImage()
+    }, 3300);
+    setTimeout(() => {
+        playerBox0.removeChild(playerBox0.getElementsByClassName("card")[0])
+        playerBox1.removeChild(playerBox1.getElementsByClassName("card")[0])
+        playerBox2.removeChild(playerBox2.getElementsByClassName("card")[0])
+        playerBox3.removeChild(playerBox3.getElementsByClassName("card")[0])
+
+        computerBox0.removeChild(computerBox0.getElementsByClassName("card")[0])
+        computerBox1.removeChild(computerBox1.getElementsByClassName("card")[0])
+        computerBox2.removeChild(computerBox2.getElementsByClassName("card")[0])
+        computerBox3.removeChild(computerBox3.getElementsByClassName("card")[0])
+    }, 3450);
+
+}
+
