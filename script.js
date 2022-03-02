@@ -27,8 +27,7 @@ var battlePhaseStarted;
 var playerPoints = 0, computerPoints = 0;
 var nextPlayerCard, nextComputerCard;
 var firstRound = true;
-var playerWinRound = false
-var computerWinRound = false;
+
 
 startGame()
 function startGame() {
@@ -628,7 +627,7 @@ function cleanUpBeforeRoundWin() {
 }
 
 function cleanUpBeforeRoundLose() {
-
+ 
     let img_src = "assets/poof.gif"
     let img = document.createElement("img");
     img.classList.add("explosion-img")
