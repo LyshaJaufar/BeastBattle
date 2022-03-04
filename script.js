@@ -24,7 +24,7 @@ var card_lane_map;
 var i;
 var overlay;
 var battlePhaseStarted;
-var playerPoints = 0, computerPoints = 0;
+var playerPoints, computerPoints;
 var nextPlayerCard, nextComputerCard;
 var firstRound = true;
 
@@ -48,7 +48,7 @@ function setupGame() {
         playerDeck.shuffle()
         computerDeck.shuffle()
     }
-    
+    playerPoints = 0, computerPoints = 0;
     i = 0
     roundStarted = false
     battlePhaseStarted = true
@@ -65,6 +65,7 @@ function setupGame() {
     playerCard3.classList.add('playerCard')
     playerCard4.classList.add("next-card")
 
+    i = 0
     computerCard0 = createCard(computerDeck, "computerD")
     computerCard1 = createCard(computerDeck, "computerD")
     computerCard2 = createCard(computerDeck, "computerD")
@@ -113,6 +114,7 @@ function createCard(deck, deckId) {
 
     innerCardDiv.classList.add("card")
     innerInnerCardDiv2.classList.add("back")   
+    console.log(i, deck)
     
     var currentCard = deck.pop()
     innerCardDiv.id = currentCard.name
@@ -131,7 +133,7 @@ function createCard(deck, deckId) {
         playerHand[i] = currentCard
     }
     if (deckId == "computerD") {
-        computerHand[i - 5] = currentCard
+        computerHand[i] = currentCard
     }
     if (deckId == "playerNC") {
         nextPlayerCard = currentCard
@@ -339,6 +341,7 @@ function battlePhase() {
     var powerComputerCard = card_lane_map["computerBox2"].id
     var ageComputerCard = card_lane_map["computerBox3"].id
 
+
     for (var i = 0; i < computerHand.length; i++) {
 
         if (frightFactorPlayerCard == playerHand[i].name) {
@@ -538,12 +541,17 @@ function updateDeck() {
         for (var i = 0; i < playerHand.length; i++) {
             playerDeck.push(playerHand[i])
             playerDeck1.push(playerHand[i])
-        }                                                                                          
+        }    
+                                                                                           
         playerHand.splice(0, 8) 
-        setTimeout(() => {
-            cleanUpBeforeRoundWin()
-        }, 50)
-                                                                                                                                                                                                                                                                                                                                                    
+        if (computerDeck.numberOfCards != 0) {
+            setTimeout(() => {
+                cleanUpBeforeRoundWin()
+            }, 50)
+        } else {
+            playerWin() 
+        }
+
     } else if (computerPoints > playerPoints) {
  
         for (var i = 0; i < playerHand.length; i++) {
@@ -561,26 +569,32 @@ function updateDeck() {
         for (var i = 0; i < computerHand.length; i++) {
             computerDeck.push(computerHand[i])
             computerDeck1.push(computerHand[i])
-        }   
-        setTimeout(() => {
-            cleanUpBeforeRoundLose()
-        }, 50)                                                  
-        computerHand.splice(0, 8)
+        }  
+        computerHand.splice(0, 8) 
+        if (playerDeck.numberOfCards != 0) {
+            setTimeout(() => {
+                cleanUpBeforeRoundLose()
+            }, 50)        
+        } else {
+            playerLose()
+        }
     }
 
-    playerCard4.classList.remove("next-card")
-    computerCard4.classList.remove("next-card")
+    if (playerDeck.numberOfCards != 0 && computerDeck.numberOfCards != 0) {
+        playerCard4.classList.remove("next-card")
+        computerCard4.classList.remove("next-card")
 
-    playerCard4.classList.add("playerCard")
-    computerCard4.classList.add("computerCard")
+        playerCard4.classList.add("playerCard")
+        computerCard4.classList.add("computerCard")
+            
+        playerDeck.push(nextPlayerCard)
+        computerDeck.push(nextComputerCard)
+
+        computerCardSlot.removeChild(computerCardSlot.getElementsByClassName("card")[0])
+        playerCardSlot.removeChild(playerCardSlot.getElementsByClassName("card")[0])
         
-    playerDeck.push(nextPlayerCard)
-    computerDeck.push(nextComputerCard)
-
-    computerCardSlot.removeChild(computerCardSlot.getElementsByClassName("card")[0])
-    playerCardSlot.removeChild(playerCardSlot.getElementsByClassName("card")[0])
-    
-    setupGame()
+        setupGame()
+    }
 }
 
 function cleanUpBeforeRoundWin() {
@@ -669,3 +683,10 @@ function cleanUpBeforeRoundLose() {
 
 }
 
+function playerLose() {
+    console.log("you lose")
+}
+
+function playerWin() {
+    console.log("you win")
+}

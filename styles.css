@@ -10,7 +10,7 @@
 }
 
 body {
-    background: radial-gradient(#333, #111);
+    background: radial-gradient(rgb(18, 63, 0), #111);
     margin: 0;
     display: grid;
     grid-template-columns: repeat(8, 5.5rem);
@@ -21,19 +21,11 @@ body {
     padding-top: 1rem;    
     padding-bottom: 1rem;
     grid-gap: 2rem;
+    
+
 }
 
-.board {
-    grid-row-start: 2;
-    grid-column-start: 3;
-    grid-column-end: 8;
 
-    border:#ffffff;
-    border-width: 3cm;
-    user-select: none;
-    justify-content: center;
-    width: 415px;
-}
 
 .maincontainer {
 
