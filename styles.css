@@ -10,7 +10,6 @@
 }
 
 body {
-    background: radial-gradient(rgb(18, 63, 0), #111);
     margin: 0;
     display: grid;
     grid-template-columns: repeat(8, 5.5rem);
@@ -21,11 +20,16 @@ body {
     padding-top: 1rem;    
     padding-bottom: 1rem;
     grid-gap: 2rem;
-    
-
 }
 
-
+html { 
+  background: url(assets/bg.jpg) no-repeat 
+    center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 .maincontainer {
 
