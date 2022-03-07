@@ -12,6 +12,10 @@ var computerBox1 = document.querySelector(".computerBox1")
 var computerBox2 = document.querySelector(".computerBox2")
 var computerBox3 = document.querySelector(".computerBox3")
 
+var playerHealthBar = document.querySelector(".player-health-bar")
+
+var computerHealthBar = document.querySelector(".comp-health-bar")
+
 var wholeDeck;
 var playerDeck, computerDeck, playerDeck1, computerDeck1;
 var playerCard0, playerCard1, playerCard2, playerCard3, computerCard0, computerCard1, computerCard2, computerCard3;
@@ -551,6 +555,28 @@ function updateDeck() {
         } else {
             playerWin() 
         }
+
+        var compHBar = document.querySelector(".comp-health-bar")
+        var cBar = compHBar.querySelector(".bar")      
+        var cHit = compHBar.querySelector(".hit")
+
+        var compTotal = compHBar.getAttribute("data-total")
+        var compValue = compHBar.getAttribute("data-value")
+
+        var damage = 400;
+        var newValue = compValue - damage;
+
+        var barWidth = (newValue / compTotal) * 100
+        var hitWidth = (damage / compValue) * 100 + "%"
+
+        cHit.style.width = hitWidth
+        cBar.setAttribute("data-value", newValue)
+
+        setTimeout(function(){
+            cHit.style.width = 0;
+            cBar.style.width = barWidth + "%"
+        })
+         
 
     } else if (computerPoints > playerPoints) {
  
