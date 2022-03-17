@@ -12,10 +12,6 @@ var computerBox1 = document.querySelector(".computerBox1")
 var computerBox2 = document.querySelector(".computerBox2")
 var computerBox3 = document.querySelector(".computerBox3")
 
-var playerHealthBar = document.querySelector(".player-health-bar")
-
-var computerHealthBar = document.querySelector(".comp-health-bar")
-
 var wholeDeck;
 var playerDeck, computerDeck, playerDeck1, computerDeck1;
 var playerCard0, playerCard1, playerCard2, playerCard3, computerCard0, computerCard1, computerCard2, computerCard3;
@@ -557,11 +553,18 @@ function updateDeck() {
         }
 
         var compHBar = document.querySelector(".comp-health-bar")
+        var playerHBar = document.querySelector(".player-health-bar")
         var cBar = compHBar.querySelector(".bar")      
         var cHit = compHBar.querySelector(".hit")
 
         var compTotal = compHBar.getAttribute("data-total")
         var compValue = compHBar.getAttribute("data-value")
+
+        var playerTotal = playerHBar.getAttribute("data-total")
+        var playerValue = playerHBar.getAttribute("data-value")
+        if (playerValue != playerValue) {
+            playerHBar.setAttribute("data-value", playerValue + 400)
+        }
 
         var damage = 400;
         var newValue = compValue - damage;
@@ -570,13 +573,12 @@ function updateDeck() {
         var hitWidth = (damage / compValue) * 100 + "%"
 
         cHit.style.width = hitWidth
-        cBar.setAttribute("data-value", newValue)
+        compHBar.setAttribute("data-value", newValue)
 
         setTimeout(function(){
             cHit.style.width = 0;
             cBar.style.width = barWidth + "%"
         })
-         
 
     } else if (computerPoints > playerPoints) {
  
@@ -604,6 +606,51 @@ function updateDeck() {
         } else {
             playerLose()
         }
+
+        var compHBar = document.querySelector(".comp-health-bar")
+        var playerHBar = document.querySelector(".player-health-bar")
+        var pBar = playerHBar.querySelector(".bar")      
+        var pHit = playerHBar.querySelector(".hit")
+        var cBar = compHBar.querySelector(".bar")      
+        var cHit = compHBar.querySelector(".hit")
+
+        var playerTotal = playerHBar.getAttribute("data-total")
+        var playerValue = playerHBar.getAttribute("data-value")
+
+        var computerTotal = compHBar.getAttribute("data-total")
+        var computerValue = compHBar.getAttribute("data-value")
+
+        var damage = 400;
+        var newValue = playerValue - damage;
+
+        var barWidth = (newValue / playerTotal) * 100
+        var hitWidth = (damage / playerValue) * 100 + "%"
+
+        pHit.style.width = hitWidth
+        playerHBar.setAttribute("data-value", newValue)
+
+        setTimeout(function(){
+            pHit.style.width = 0;
+            pBar.style.width = barWidth + "%"
+        })
+
+        if (computerValue != computerTotal) {
+            compHBar.setAttribute("data-value", computerValue + 400)
+
+            var barWidth = (newValue / compTotal) * 100
+            var hitWidth = (damage / playerValue) * 100 + "%"
+
+            cHit.style.width = hitWidth
+            compHBar.setAttribute("data-value", newValue)
+
+            setTimeout(function(){
+                console.log("hello world")
+                console.log(barWidth)
+                cHit.style.width = 0;
+                cBar.style.width = barWidth + "%"
+            })
+        }
+
     }
 
     if (playerDeck.numberOfCards != 0 && computerDeck.numberOfCards != 0) {
