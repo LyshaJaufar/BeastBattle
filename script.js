@@ -554,6 +554,8 @@ function updateDeck() {
 
         var compHBar = document.querySelector(".comp-health-bar")
         var playerHBar = document.querySelector(".player-health-bar")
+        var pBar = playerHBar.querySelector(".bar")      
+        var pHit = playerHBar.querySelector(".hit")
         var cBar = compHBar.querySelector(".bar")      
         var cHit = compHBar.querySelector(".hit")
 
@@ -562,8 +564,21 @@ function updateDeck() {
 
         var playerTotal = playerHBar.getAttribute("data-total")
         var playerValue = playerHBar.getAttribute("data-value")
-        if (playerValue != playerValue) {
-            playerHBar.setAttribute("data-value", playerValue + 400)
+
+        if (playerValue != playerTotal) {
+
+            var playerVal = parseInt(playerValue)
+
+            var barWidthP = ((playerVal + 400) / playerTotal) * 100
+            var hitWidthP = (damage / playerValue) * 100 + "%"
+
+            pHit.style.width = hitWidthP
+            playerHBar.setAttribute("data-value", (playerVal + 400).toString())
+
+            setTimeout(function(){
+                pHit.style.width = 0;
+                pBar.style.width = barWidthP + "%"
+            })
         }
 
         var damage = 400;
@@ -635,22 +650,19 @@ function updateDeck() {
         })
 
         if (computerValue != computerTotal) {
-            compHBar.setAttribute("data-value", computerValue + 400)
+            var compVal = parseInt(computerValue)
 
-            var barWidth = (newValue / compTotal) * 100
-            var hitWidth = (damage / playerValue) * 100 + "%"
+            var barWidthC = ((compVal + 400) / compTotal) * 100
+            var hitWidthC = (damage / computerValue) * 100 + "%"
 
-            cHit.style.width = hitWidth
-            compHBar.setAttribute("data-value", newValue)
+            cHit.style.width = hitWidthC
+            compHBar.setAttribute("data-value", (compVal+400).toString())
 
             setTimeout(function(){
-                console.log("hello world")
-                console.log(barWidth)
                 cHit.style.width = 0;
-                cBar.style.width = barWidth + "%"
+                cBar.style.width = barWidthC + "%"
             })
         }
-
     }
 
     if (playerDeck.numberOfCards != 0 && computerDeck.numberOfCards != 0) {
