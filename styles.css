@@ -469,6 +469,7 @@ html {
   border-radius: 5px;
   position: relative;
   grid-column-start: 8;
+  user-select: none;
 }
 
 .player-health-bar {
@@ -485,6 +486,7 @@ html {
   position: relative;
   grid-column-start: 8;
   grid-row-start: 4;
+  user-select: none;
 }
 
 .bar {
