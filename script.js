@@ -80,9 +80,6 @@ function setupGame() {
 
     playerCardSlot.appendChild(playerCard0)
     computerCardSlot.appendChild(computerCard0)
-
-    console.log(playerDeck1, computerDeck1)
-
 }
 
 document.getElementById('button').onclick = function() {
@@ -114,7 +111,6 @@ function createCard(deck, deckId) {
 
     innerCardDiv.classList.add("card")
     innerInnerCardDiv2.classList.add("back")   
-    console.log(i, deck)
     
     var currentCard = deck.pop()
     innerCardDiv.id = currentCard.name
@@ -586,7 +582,7 @@ function updateDeck() {
 
         playerText.innerHTML = `PLAYER ${playerDeck.numberOfCards}`
         computerText.innerHTML = `COMPUTER ${computerDeck.numberOfCards}`
-        
+
         // Not first round
         if (playerValue != playerTotal) {
 
@@ -664,6 +660,21 @@ function updateDeck() {
                 cBar.style.width = barWidthC + "%"
             })
         }
+    } 
+    // Tie
+    else {
+
+        for (var i = 0; i < playerHand.length; i++) {
+            playerDeck.push(playerHand[i])
+            computerDeck.push(computerHand[i])
+        }    
+        computerHand.splice(0, 4)                                                                                           
+        playerHand.splice(0, 4) 
+        console.log(playerDeck, playerDeck1, computerDeck, computerDeck1)
+
+        setTimeout(() => {
+            cleanUpBeforeRoundTie()
+        }, 50)        
     }
 
     if (playerDeck.numberOfCards != 0 && computerDeck.numberOfCards != 0) {
@@ -768,6 +779,57 @@ function cleanUpBeforeRoundLose() {
     }, 3450);
 
 }
+
+function cleanUpBeforeRoundTie() {
+ 
+    let img_src = "assets/poof.gif"
+    let img = document.createElement("img");
+    let img1 = document.createElement("img");
+    img.classList.add("explosion-img")
+    img1.classList.add("explosion-img")
+
+    const createImage = () => {
+        img.style.opacity = 1;
+        img.src = img_src;
+
+        img1.style.opacity = 1;
+        img1.src = img_src;
+        setTimeout(() => {
+            img.style.opacity = 0;
+            img1.style.opacity = 0;
+        }, 1020);
+    };
+
+    playerBox0.getElementsByClassName("card")[0].classList.toggle("clean-deck-p0")
+    playerBox1.getElementsByClassName("card")[0].classList.toggle("clean-deck-p1")
+    playerBox2.getElementsByClassName("card")[0].classList.toggle("clean-deck-p2")
+    playerBox3.getElementsByClassName("card")[0].classList.toggle("clean-deck-p3")
+
+    computerBox0.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c0")
+    computerBox1.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c1")  
+    computerBox2.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c2")
+    computerBox3.getElementsByClassName("card")[0].classList.toggle("lose-clean-deck-c3")
+
+    playerCardSlot.getElementsByClassName("card")[0].appendChild(img)
+    computerCardSlot.getElementsByClassName("card")[0].appendChild(img1)
+    setTimeout(() => {
+        createImage()
+    }, 3300);
+
+    setTimeout(() => {
+        playerBox0.removeChild(playerBox0.getElementsByClassName("card")[0])
+        playerBox1.removeChild(playerBox1.getElementsByClassName("card")[0])
+        playerBox2.removeChild(playerBox2.getElementsByClassName("card")[0])
+        playerBox3.removeChild(playerBox3.getElementsByClassName("card")[0])
+
+        computerBox0.removeChild(computerBox0.getElementsByClassName("card")[0])
+        computerBox1.removeChild(computerBox1.getElementsByClassName("card")[0])
+        computerBox2.removeChild(computerBox2.getElementsByClassName("card")[0])
+        computerBox3.removeChild(computerBox3.getElementsByClassName("card")[0])
+    }, 3450);
+
+}
+
 
 function playerLose() {
     console.log("you lose")
