@@ -30,6 +30,7 @@ html {
 }
 
 .text {
+    user-select: none;
     position: absolute;
     top: 50%; 
     right: 50%;
@@ -38,7 +39,7 @@ html {
     font-family: verdana;
     font-size: 4.7em;
     font-weight: 700;
-    color: #351c1c;
+    color: #000000c3;
     text-shadow: 1px 1px 1px #919191,
         1px 2px 1px #919191,
         1px 3px 1px #919191,
@@ -53,4 +54,51 @@ html {
     1px 22px 10px rgba(16,16,16,0.2),
     1px 25px 35px rgba(16,16,16,0.2),
     1px 30px 60px rgba(16,16,16,0.4);
+}
+
+.button {
+    position: absolute;
+    top: 82%; 
+    right: 50%;
+    transform: translate(-20%,-50%);
+    user-select: none;
+    width: 200px;
+    padding: 15px 0;;
+    text-align: center;
+    margin: 20px 10px;
+    font-weight: 900;
+    font-size: larger;
+    border: 4.5px solid #000000c3;
+    border-radius: 25px;
+    background: transparent;
+    color: #000000c3;
+}
+
+.button1 {
+    position: absolute;
+    top: 82%; 
+    right: 50%;
+    transform: translate(105%,-50%);
+    user-select: none;
+    width: 200px;
+    padding: 15px 0;;
+    text-align: center;
+    margin: 20px 10px;
+    font-weight: 900;
+    font-size: larger;
+    border: 4.5px solid #000000c3;
+    border-radius: 25px;
+    background: transparent;
+    color: #000000c3;
+}
+
+span {
+  transition: 0.5s;
+}
+
+button:hover span {
+  width: 100%;
+}
+button:hover {
+  border: none;
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beast Battle</title>
+    <script src="./node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+    <script src="script.js"type="module"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="maincontainer computer-card-slot card-slot"></div>
+    <div class="maincontainer player-card-slot card-slot" draggable="true"></div>
+    <div class="computerBox0"></div>
+    <div class="computerBox1"></div>
+    <div class="computerBox2"></div>
+    <div class="computerBox3"></div>
+    <div class="playerBox playerBox0"></div>
+    <div class="playerBox playerBox1"></div>
+    <div class="playerBox playerBox2"></div>
+    <div class="playerBox playerBox3"></div>
+    <input class="startButton" id="button" type="submit" name="button" value="draw"/>
+    <input class="battleButton" id="battleButton" type="submit" name="button" value="battle"/>
+    <div class="comp-health-bar" data-total="800" data-value="800">
+        <div class="bar">
+            <div class="hit"></div>
+        </div>
+        <br />
+        <div class="textHP"> COMPUTER 8</div>
+    </div>
+    <div class="player-health-bar" data-total="800" data-value="800">
+        <div class="bar">
+            <div class="hit"></div>
+        </div>
+        <br />
+        <div class="textHPplayer"> PLAYER 8</div>
+    </div>
+    <a href="index.html">Home</a>
+</body> 
+</html> 
