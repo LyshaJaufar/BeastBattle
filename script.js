@@ -524,6 +524,24 @@ function battlePhase() {
 }
 
 function updateDeck() {
+
+    var compHBar = document.querySelector(".comp-health-bar")
+    var playerHBar = document.querySelector(".player-health-bar")
+    var pBar = playerHBar.querySelector(".bar")      
+    var pHit = playerHBar.querySelector(".hit")
+    var cBar = compHBar.querySelector(".bar")      
+    var cHit = compHBar.querySelector(".hit")
+
+    var computerText = compHBar.querySelector(".textHP")
+    var playerText = playerHBar.querySelector(".textHPplayer")
+
+    var computerTotal = compHBar.getAttribute("data-total")
+    var computerValue = compHBar.getAttribute("data-value")
+
+    var playerTotal = playerHBar.getAttribute("data-total")
+    var playerValue = playerHBar.getAttribute("data-value")    
+
+    // Player Wins    
     if (playerPoints > computerPoints)
     {
         for (var i = 0; i < computerHand.length; i++) {
@@ -552,24 +570,24 @@ function updateDeck() {
             playerWin() 
         }
 
-        var compHBar = document.querySelector(".comp-health-bar")
-        var playerHBar = document.querySelector(".player-health-bar")
-        var pBar = playerHBar.querySelector(".bar")      
-        var pHit = playerHBar.querySelector(".hit")
-        var cBar = compHBar.querySelector(".bar")      
-        var cHit = compHBar.querySelector(".hit")
+        var damage = 400;
+        var newValue = computerValue - damage;
 
-        var computerText = compHBar.querySelector(".textHP")
-        var playerText = playerHBar.querySelector(".textHPplayer")
+        var barWidth = (newValue / computerTotal) * 100
+        var hitWidth = (damage / computerValue) * 100 + "%"
 
-        var compTotal = compHBar.getAttribute("data-total")
-        var compValue = compHBar.getAttribute("data-value")
+        cHit.style.width = hitWidth
+        compHBar.setAttribute("data-value", newValue)
 
-        var playerTotal = playerHBar.getAttribute("data-total")
-        var playerValue = playerHBar.getAttribute("data-value")
+        setTimeout(function(){
+            cHit.style.width = 0;
+            cBar.style.width = barWidth + "%"
+        })
 
-        console.log(playerText)
-
+        playerText.innerHTML = `PLAYER ${playerDeck.numberOfCards}`
+        computerText.innerHTML = `COMPUTER ${computerDeck.numberOfCards}`
+        
+        // Not first round
         if (playerValue != playerTotal) {
 
             var playerVal = parseInt(playerValue)
@@ -585,25 +603,10 @@ function updateDeck() {
                 pBar.style.width = barWidthP + "%"
             })
         }
+    }
 
-        var damage = 400;
-        var newValue = compValue - damage;
-
-        var barWidth = (newValue / compTotal) * 100
-        var hitWidth = (damage / compValue) * 100 + "%"
-
-        cHit.style.width = hitWidth
-        compHBar.setAttribute("data-value", newValue)
-
-        setTimeout(function(){
-            cHit.style.width = 0;
-            cBar.style.width = barWidth + "%"
-        })
-
-        playerText.innerHTML = `PLAYER ${playerDeck.numberOfCards}`
-        computerText.innerHTML = `COMPUTER ${computerDeck.numberOfCards}`
-
-    } else if (computerPoints > playerPoints) {
+    // Computer Wins
+    else if (computerPoints > playerPoints) {
  
         for (var i = 0; i < playerHand.length; i++) {
             computerHand[4 + i] = playerHand[i]
@@ -630,22 +633,6 @@ function updateDeck() {
             playerLose()
         }
 
-        var compHBar = document.querySelector(".comp-health-bar")
-        var playerHBar = document.querySelector(".player-health-bar")
-        var pBar = playerHBar.querySelector(".bar")      
-        var pHit = playerHBar.querySelector(".hit")
-        var cBar = compHBar.querySelector(".bar")      
-        var cHit = compHBar.querySelector(".hit")
-
-        var computerText = compHBar.querySelector("textHP")
-        var playerText = playerHBar.querySelector(".textHPplayer")
-
-        var playerTotal = playerHBar.getAttribute("data-total")
-        var playerValue = playerHBar.getAttribute("data-value")
-
-        var computerTotal = compHBar.getAttribute("data-total")
-        var computerValue = compHBar.getAttribute("data-value")
-
         var damage = 400;
         var newValue = playerValue - damage;
 
@@ -661,13 +648,13 @@ function updateDeck() {
         })
 
         playerText.innerHTML = `PLAYER ${playerDeck.numberOfCards}`
-        computerDeck.innerHTML = `COMPUTER ${playerDeck.numberOfCards}`
+        computerText.innerHTML = `COMPUTER ${computerDeck.numberOfCards}`
 
         if (computerValue != computerTotal) {
             var compVal = parseInt(computerValue)
 
-            var barWidthC = ((compVal + 400) / compTotal) * 100
-            var hitWidthC = (damage / computerValue) * 100 + "%"
+            var barWidthC = ((compVal + 400) / computerTotal) * 100
+            var hitWidthC = (damage / compVal) * 100 + "%"
 
             cHit.style.width = hitWidthC
             compHBar.setAttribute("data-value", (compVal+400).toString())
