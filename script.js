@@ -559,11 +559,16 @@ function updateDeck() {
         var cBar = compHBar.querySelector(".bar")      
         var cHit = compHBar.querySelector(".hit")
 
+        var computerText = compHBar.querySelector(".textHP")
+        var playerText = playerHBar.querySelector(".textHPplayer")
+
         var compTotal = compHBar.getAttribute("data-total")
         var compValue = compHBar.getAttribute("data-value")
 
         var playerTotal = playerHBar.getAttribute("data-total")
         var playerValue = playerHBar.getAttribute("data-value")
+
+        console.log(playerText)
 
         if (playerValue != playerTotal) {
 
@@ -594,6 +599,9 @@ function updateDeck() {
             cHit.style.width = 0;
             cBar.style.width = barWidth + "%"
         })
+
+        playerText.innerHTML = `PLAYER ${playerDeck.numberOfCards}`
+        computerText.innerHTML = `COMPUTER ${computerDeck.numberOfCards}`
 
     } else if (computerPoints > playerPoints) {
  
@@ -629,6 +637,9 @@ function updateDeck() {
         var cBar = compHBar.querySelector(".bar")      
         var cHit = compHBar.querySelector(".hit")
 
+        var computerText = compHBar.querySelector("textHP")
+        var playerText = playerHBar.querySelector(".textHPplayer")
+
         var playerTotal = playerHBar.getAttribute("data-total")
         var playerValue = playerHBar.getAttribute("data-value")
 
@@ -648,6 +659,9 @@ function updateDeck() {
             pHit.style.width = 0;
             pBar.style.width = barWidth + "%"
         })
+
+        playerText.innerHTML = `PLAYER ${playerDeck.numberOfCards}`
+        computerDeck.innerHTML = `COMPUTER ${playerDeck.numberOfCards}`
 
         if (computerValue != computerTotal) {
             var compVal = parseInt(computerValue)
