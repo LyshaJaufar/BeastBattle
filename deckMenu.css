@@ -1,0 +1,53 @@
+body { 
+  margin-left: 80px;
+  margin-right: 80px;
+  background-color: red;
+}
+
+.container {
+  height: 85vh;
+  border: 12px solid rgb(49, 2, 2);
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: white;
+}
+
+.card-container {
+  margin-top: 45px;
+  margin-bottom: 15px;
+  margin-left: 170px;
+  margin-right: 50px;
+
+  background-color: blue;
+}
+
+.row{
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.card {
+  /*float: left;*/
+
+  padding: .75rem;
+  border: 0;
+  flex-basis: 33.333%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+img {
+  transform: scaleX(-1);
+
+}
+
+.card > img {
+
+  width: 55%;
+}
+
+
