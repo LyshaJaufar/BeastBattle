@@ -6,12 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beast Battle Deck</title>
     <link rel="stylesheet" href="deckMenu.css">
+    <script src="deckMenu.js"type="module"></script>
 </head>
 <body>
     <a href="index.html">
         <button class="home-btn">Back</button>
     </a>
-    <button class="sort-btn">Sort</button>
+    <div class="dropdown">
+        <button class="sort-btn">Sort</button>
+        <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div> 
     <div class="container">
         <div class="card-container">
             <div class="row">
@@ -56,3 +64,6 @@
     </div>
 </body>
 </html>
+
+
+

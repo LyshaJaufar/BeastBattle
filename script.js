@@ -48,6 +48,7 @@ function setupGame() {
         playerDeck.shuffle()
         computerDeck.shuffle()
     }
+
     playerPoints = 0, computerPoints = 0;
     i = 0
     roundStarted = false
@@ -170,7 +171,7 @@ function deckFlip() {
             playerCard3.classList.toggle("flip-player-card3")
             computerCard3.classList.toggle("flip-computer-card3")
             var cards = Array.from(document.getElementsByClassName("card"))
-            cards.forEach(card => {
+            cards.forEach(card => {                                                 
                 card.addEventListener("dragstart", () => {
                     card.classList.add("zoomCard")
                 });
