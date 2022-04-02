@@ -52,4 +52,50 @@ img {
   width: 95%;
 }
 
+.home-btn {
+    top: 20%; 
+    left: 12%;
+    transform: translate(-30%,-50%);
+    position: absolute;
+    user-select: none;
+    width: 140px;
+    text-align: center;
+	  display: inline-block;
+	  margin:5px;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px 0 10px 10px ;
+    background-color: lightgrey;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
+}
 
+.sort-btn {
+    top: 35%; 
+    left: 12%;
+    transform: translate(-30%,-50%);
+    position: absolute;
+    user-select: none;
+    width: 140px;
+    text-align: center;
+	  display: inline-block;
+	  margin:5px;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px 0 10px 10px ;
+    background-color: lightgrey;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
+}
