@@ -56,49 +56,57 @@ html {
     1px 30px 60px rgba(16,16,16,0.4);
 }
 
-.button {
+.game-btn {
     position: absolute;
     top: 82%; 
     right: 50%;
-    transform: translate(-20%,-50%);
+    transform: translate(-30%,-50%);
     user-select: none;
-    width: 200px;
-    padding: 15px 0;;
+    width: 155px;
     text-align: center;
-    margin: 20px 10px;
-    font-weight: 900;
-    font-size: larger;
-    border: 4.5px solid #000000c3;
-    border-radius: 25px;
-    background: transparent;
-    color: #000000c3;
+	  display: inline-block;
+	  margin:5px;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px 0 10px 10px ;
+    background-color: lightgrey;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
 }
 
-.button1 {
+.deck-btn {
     position: absolute;
     top: 82%; 
     right: 50%;
-    transform: translate(105%,-50%);
+    transform: translate(100%,-50%);
     user-select: none;
-    width: 200px;
-    padding: 15px 0;;
+    width: 155px;
     text-align: center;
-    margin: 20px 10px;
-    font-weight: 900;
-    font-size: larger;
-    border: 4.5px solid #000000c3;
-    border-radius: 25px;
-    background: transparent;
-    color: #000000c3;
+	  display: inline-block;
+	  margin:5px;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px 0 10px 10px ;
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
 }
 
-span {
-  transition: 0.5s;
+.game-btn:active, .deck-btn:active {
+	box-shadow: none;
+	position: relative;
 }
 
-button:hover span {
-  width: 100%;
-}
-button:hover {
-  border: none;
-}
+
