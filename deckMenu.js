@@ -45,14 +45,34 @@ for (var i = 0; i < deck.numberOfCards; i++) {
         }
     }
 }
-console.log(ageNames)
-
 
 var id = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "nineth"]
 
+var counter = 0
+for (var i = 0; i < 9; i++) {
+
+    var div = document.createElement("div")
+    var divImg1 = document.createElement("img")
+    var divImg2 = document.createElement("img")
+
+    div.classList.add("slot")
+    div.id = id[i]
+
+    divImg1.setAttribute("src", `assets/${ageNames[counter]}.png`)
+    counter += 1
+    divImg2.setAttribute("src", `assets/${ageNames[counter]}.png`)
+    counter += 1
+
+    div.appendChild(divImg1)
+    div.append(divImg2)
+
+    document.getElementById("row").appendChild(div)
+}
+
+
+// SORTING
+// Age
 document.getElementById("age").onclick = function() {
-    console.log(deck.cards[0].frightFactor)
-    var cardContainer = document.getElementsByClassName("container")[0].getElementsByClassName("card-container")[0]
 
     document.getElementById("row").removeChild(document.getElementById("first"))
     document.getElementById("row").removeChild(document.getElementById("second"))
@@ -87,4 +107,111 @@ document.getElementById("age").onclick = function() {
     }
 };
 
+// Power
+document.getElementById("power").onclick = function() {
+
+    document.getElementById("row").removeChild(document.getElementById("first"))
+    document.getElementById("row").removeChild(document.getElementById("second"))
+    document.getElementById("row").removeChild(document.getElementById("third"))
+    document.getElementById("row").removeChild(document.getElementById("fourth"))
+    document.getElementById("row").removeChild(document.getElementById("fifth"))
+    document.getElementById("row").removeChild(document.getElementById("sixth"))
+    document.getElementById("row").removeChild(document.getElementById("seventh"))
+    document.getElementById("row").removeChild(document.getElementById("eighth"))
+    document.getElementById("row").removeChild(document.getElementById("nineth"))
+
+
+    var counter = 0
+    for (var i = 0; i < 9; i++) {
+
+        var div = document.createElement("div")
+        var divImg1 = document.createElement("img")
+        var divImg2 = document.createElement("img")
+
+        div.classList.add("slot")
+        div.id = id[i]
+
+        divImg1.setAttribute("src", `assets/${powerNames[counter]}.png`)
+        counter += 1
+        divImg2.setAttribute("src", `assets/${powerNames[counter]}.png`)
+        counter += 1
+
+        div.appendChild(divImg1)
+        div.append(divImg2)
+
+        document.getElementById("row").appendChild(div)
+    }
+};
+
+// Magic Level
+document.getElementById("magic-level").onclick = function() {
+
+    document.getElementById("row").removeChild(document.getElementById("first"))
+    document.getElementById("row").removeChild(document.getElementById("second"))
+    document.getElementById("row").removeChild(document.getElementById("third"))
+    document.getElementById("row").removeChild(document.getElementById("fourth"))
+    document.getElementById("row").removeChild(document.getElementById("fifth"))
+    document.getElementById("row").removeChild(document.getElementById("sixth"))
+    document.getElementById("row").removeChild(document.getElementById("seventh"))
+    document.getElementById("row").removeChild(document.getElementById("eighth"))
+    document.getElementById("row").removeChild(document.getElementById("nineth"))
+
+
+    var counter = 0
+    for (var i = 0; i < 9; i++) {
+
+        var div = document.createElement("div")
+        var divImg1 = document.createElement("img")
+        var divImg2 = document.createElement("img")
+
+        div.classList.add("slot")
+        div.id = id[i]
+
+        divImg1.setAttribute("src", `assets/${magicLevelNames[counter]}.png`)
+        counter += 1
+        divImg2.setAttribute("src", `assets/${magicLevelNames[counter]}.png`)
+        counter += 1
+
+        div.appendChild(divImg1)
+        div.append(divImg2)
+
+        document.getElementById("row").appendChild(div)
+    }
+};
+
+// Fright Factor
+document.getElementById("fright-factor").onclick = function() {
+
+    document.getElementById("row").removeChild(document.getElementById("first"))
+    document.getElementById("row").removeChild(document.getElementById("second"))
+    document.getElementById("row").removeChild(document.getElementById("third"))
+    document.getElementById("row").removeChild(document.getElementById("fourth"))
+    document.getElementById("row").removeChild(document.getElementById("fifth"))
+    document.getElementById("row").removeChild(document.getElementById("sixth"))
+    document.getElementById("row").removeChild(document.getElementById("seventh"))
+    document.getElementById("row").removeChild(document.getElementById("eighth"))
+    document.getElementById("row").removeChild(document.getElementById("nineth"))
+
+
+    var counter = 0
+    for (var i = 0; i < 9; i++) {
+
+        var div = document.createElement("div")
+        var divImg1 = document.createElement("img")
+        var divImg2 = document.createElement("img")
+
+        div.classList.add("slot")
+        div.id = id[i]
+
+        divImg1.setAttribute("src", `assets/${frightFactorNames[counter]}.png`)
+        counter += 1
+        divImg2.setAttribute("src", `assets/${frightFactorNames[counter]}.png`)
+        counter += 1
+
+        div.appendChild(divImg1)
+        div.append(divImg2)
+
+        document.getElementById("row").appendChild(div)
+    }
+};
 
