@@ -599,6 +599,11 @@ function updateDeck() {
                 pBar.style.width = barWidthP + "%"
             })
         }
+
+        // Update player and computer values
+        playerValue = parseInt(playerValue) + 400
+        playerHBar.setAttribute("data-value", playerValue.toString())
+        compHBar.setAttribute("data-value", newValue.toString())
     }
 
     // Computer Wins
@@ -631,7 +636,7 @@ function updateDeck() {
 
         var damage = 400;
         var newValue = playerValue - damage;
-
+ 
         var barWidth = (newValue / playerTotal) * 100
         var hitWidth = (damage / playerValue) * 100 + "%"
 
@@ -660,6 +665,12 @@ function updateDeck() {
                 cBar.style.width = barWidthC + "%"
             })
         }
+
+        // Update computer & player values
+        computerValue = parseInt(computerValue) + 400
+        compHBar.setAttribute("data-value", computerValue.toString())
+        playerHBar.setAttribute("data-value", newValue.toString())
+
     } 
     // Tie
     else {
