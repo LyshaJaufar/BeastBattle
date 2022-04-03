@@ -28,6 +28,8 @@ var playerPoints, computerPoints;
 var nextPlayerCard, nextComputerCard;
 var firstRound = true;
 
+var age = [], power = [], magicLevel = [], frightFactor = []
+
 
 startGame()
 function startGame() {
@@ -280,16 +282,129 @@ function battlePhaseAnimation() {
         sword.appendChild(handle)
         document.body.appendChild(square)
 
+        
+        
+
+        for (var i = 0; i < computerHand.length; i++) {
+            age[i] = computerHand[i].age
+            power[i] = computerHand[i].power
+            magicLevel[i] = computerHand[i].magicLevel
+            frightFactor[i] = computerHand[i].frightFactor
+        }
+        age.sort()
+        power.sort()
+        magicLevel.sort()
+        frightFactor.sort()
+
+        age.reverse()
+        power.reverse()
+        magicLevel.reverse()
+        frightFactor.reverse()
+
+
+        var ageDict = {}, powerDict = {}, magicLevelDict = {}, frightFactorDict = {}
+        for (var i = 0; i < computerHand.length; i++) {
+            for (var j = 0; j < computerHand.length; j++) {
+                if (age[i] == computerHand[j].age) {
+                    ageDict[computerHand[j].name] = age[i]
+                }
+                if (power[i] == computerHand[j].power) {
+                    powerDict[computerHand[j].name] = power[i]
+                }
+                if (magicLevel[i] == computerHand[j].magicLevel) {
+                    magicLevelDict[computerHand[j].name] = magicLevel[i]
+                }
+                if (frightFactor[i] == computerHand[j].frightFactor) {
+                    frightFactorDict[computerHand[j].name] = frightFactor[i]
+                }
+            }
+        }
+
+        var highest = []
+        var throwaway = [age, power, magicLevel, frightFactor]
+
+        for (var i = 0; i < computerHand.length; i++) {
+            if (age[0] == ageDict[computerHand[i].name]) {
+                highest[0] = computerHand[i].name
+            }
+            if (power[0] == powerDict[computerHand[i].name]) {
+                if (!highest.includes(computerHand[i].name)){
+                    highest[1] = computerHand[i].name
+                } 
+                else {
+                    if (powerDict[computerHand[i].name] > 285) {
+                        highest[1] = computerHand[i].name
+                        highest[0] = age[1]
+                    }
+                }
+            }
+            if (magicLevel[0] == magicLevelDict[computerHand[i].name]) {
+                if (!highest.includes(computerHand[i].name)){
+                    highest[2] = computerHand[i].name
+                } 
+                else {
+                    if (magicLevelDict[computerHand[i].name] > 190) {
+                        highest[highest.indexOf(computerHand[i].name)] = throwaway[highest.indexOf(computerHand[i].name)][1]
+                        highest[2] = computerHand[i].name
+                    }
+                    else {
+                        for (var k = 0; k < computerHand.length; k++) {
+                            if (magicLevelDict[computerHand[k].name] == magicLevel[1]) {
+                                highest[2] = computerHand[k].name
+                            }
+                        }
+                    }
+                }
+            }
+            if (frightFactor[0] == frightFactorDict[computerHand[i].name]) {
+                if (!highest.includes(computerHand[i].name)){
+                    highest[3] = computerHand[i].name
+                } 
+                else {
+                    if (frightFactorDict[computerHand[i].name] > 91) {
+                        highest[highest.indexOf(computerHand[i].name)] = throwaway[highest.indexOf(computerHand[i].name)][1]
+                        highest[3] = computerHand[i].name
+                    }
+                    else {
+                        for (var k = 0; k < computerHand.length; k++) {
+                            if (frightFactorDict[computerHand[k].name] == frightFactor[1]) {
+                                highest[3] = computerHand[k].name
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        console.log(highest)
+
+        var computerCards = [computerCard0, computerCard1, computerCard2, computerCard3]
+        var finalComputerLineUp = []
+        for (var i = 0; i < computerHand.length; i++) {
+            if (highest[3] == computerCards[i].id) {
+                finalComputerLineUp[0] = computerCards[i]
+            }
+            if (highest[2] == computerCards[i].id) {
+                finalComputerLineUp[1] = computerCards[i]
+            }
+            if (highest[1] == computerCards[i].id) {
+                finalComputerLineUp[2] = computerCards[i]
+            }
+            if (highest[0] == computerCards[i].id) {
+                finalComputerLineUp[3] = computerCards[i]
+            }
+        }
+
         setTimeout(() => {
-            computerCard0.classList.add("computer-card-battle-start-lane-0")
-            computerCard1.classList.add("computer-card-battle-start-lane-3")
-            computerCard2.classList.add("computer-card-battle-start-lane-2")
-            computerCard3.classList.add("computer-card-battle-start-lane-1")
+            finalComputerLineUp[0].classList.add("computer-card-battle-start-lane-0")
+            finalComputerLineUp[1].classList.add("computer-card-battle-start-lane-1")
+            finalComputerLineUp[2].classList.add("computer-card-battle-start-lane-2")
+            finalComputerLineUp[3].classList.add("computer-card-battle-start-lane-3")
             
-            computerBox0.appendChild(computerCard0)
-            computerBox1.appendChild(computerCard3)
-            computerBox2.appendChild(computerCard2)
-            computerBox3.appendChild(computerCard1)
+            computerBox0.appendChild(finalComputerLineUp[0])
+            computerBox1.appendChild(finalComputerLineUp[1])
+            computerBox2.appendChild(finalComputerLineUp[2])
+            computerBox3.appendChild(finalComputerLineUp[3])
 
         },1500);
 
@@ -301,9 +416,9 @@ function battlePhaseAnimation() {
 
         card_lane_map = {
             "computerBox0" : computerCard0,
-            "computerBox1" : computerCard3,
+            "computerBox1" : computerCard1,
             "computerBox2" : computerCard2,
-            "computerBox3" : computerCard1
+            "computerBox3" : computerCard3
         }
         
         battlePhase()
