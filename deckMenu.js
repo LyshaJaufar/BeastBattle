@@ -238,17 +238,34 @@ document.getElementById("fright-factor").onclick = function() {
 
 var clicked = false
 var prevCard
+var overlay
 
 var cards = Array.from(document.getElementsByClassName("card"))
-cards.forEach(card => {                                  
+cards.forEach(card => { 
+    clicked = false                                 
     card.addEventListener("click", () => {
+
+        overlay = document.createElement("DIV")
+        overlay.classList.add("visible")
+        document.body.appendChild(overlay)
+
+        // another card clicked
         if (clicked) {
             prevCard.classList.remove(`moveCard${prevCard.id}`)
+            clicked = false
         }
+
+        // card clicked
         card.classList.add(`moveCard${card.id}`)
         prevCard = card
         clicked = true
     });
 });
 
-
+var ignoreClickOnMeElement = document.querySelector(".card-container")
+document.addEventListener('click', function(event) {
+    var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+    if (!isClickInsideElement) {
+        prevCard.classList.remove(`moveCard${prevCard.id}`)
+    }
+});

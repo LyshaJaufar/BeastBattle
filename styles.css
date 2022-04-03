@@ -94,47 +94,47 @@ html {
 }
 
 
-.flipcard {
-    transform: rotatey(180deg) rotatez(15deg); z-index: 1px;
+.flipCard {
+    transform: rotateY(180deg) rotateZ(15deg); z-index: 1px;
 }
 
 .flip-player-card0 {
     transition: 1.8s;
-    transform: translatey(-2650%) translatex(-510px) rotatey(180deg) rotatez(15deg) scale(1.5, 1.5); 
+    transform: translateY(-2650%) translateX(-510px) rotateY(180deg) rotateZ(15deg) scale(1.5, 1.5); 
 }
 .flip-player-card1 {
     transition: 1.8s;
-    transform: translatey(-3350%) translatex(-335px) rotatey(180deg) rotatez(7deg) scale(1.5, 1.5); 
+    transform: translateY(-3350%) translateX(-335px) rotateY(180deg) rotateZ(7deg) scale(1.5, 1.5); 
 }
 .flip-player-card2 {
     transition: 1.8s;
-    transform: translatey(-3050%) translatex(-140px) rotatey(180deg) rotatez(-7deg) scale(1.5, 1.5); 
+    transform: translateY(-3050%) translateX(-140px) rotatey(180deg) rotateZ(-7deg) scale(1.5, 1.5); 
 }
 .flip-player-card3 {
     transition: 1.8s;
-    transform: translatey(-2050%) translatex(30px) rotatey(180deg) rotatez(-15deg) scale(1.5, 1.5); 
+    transform: translateY(-2050%) translateX(30px) rotateY(180deg) rotateZ(-15deg) scale(1.5, 1.5); 
 }
 
 .flip-computer-card0 {
     transition: 1.8s;
-    transform: translatey(100%) translatex(-470px)  rotatez(5deg);
+    transform: translateY(100%) translateX(-470px)  rotateZ(5deg);
 }
 .flip-computer-card1 {
     transition: 1.8s;
-    transform: translatey(300%) translatex(-385px) rotatez(2deg); 
+    transform: translateY(300%) translateX(-385px) rotateZ(2deg); 
 }
 .flip-computer-card2 {
     transition: 1.8s;
-    transform: translatey(360%) translatex(-300px) rotatez(-2deg); 
+    transform: translateY(360%) translateX(-300px) rotateZ(-2deg); 
 }
 .flip-computer-card3 {
     transition: 1.8s;
-    transform: translatey(250%) translatex(-215px) rotatez(-5deg); 
+    transform: translateY(250%) translateX(-215px) rotateZ(-5deg); 
 }
 
-.zoomcard {
+.zoomCard {
     transition: 2s;
-    transform: rotatey(180deg) scale(1, 1);
+    transform: rotateY(180deg) scale(1, 1);
 }
 
 .box {
