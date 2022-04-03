@@ -47,6 +47,7 @@ for (var i = 0; i < deck.numberOfCards; i++) {
 }
 
 var id = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "nineth"]
+var cardId = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
 
 var counter = 0
 for (var i = 0; i < 9; i++) {
@@ -61,8 +62,10 @@ for (var i = 0; i < 9; i++) {
     div.id = id[i]
 
     divImg1.setAttribute("src", `assets/${ageNames[counter]}.png`)
+    divImg1.id = cardId[counter]
     counter += 1
     divImg2.setAttribute("src", `assets/${ageNames[counter]}.png`)
+    divImg2.id = cardId[counter]
     counter += 1
 
     div.appendChild(divImg1)
@@ -100,8 +103,10 @@ document.getElementById("age").onclick = function() {
         div.id = id[i]
 
         divImg1.setAttribute("src", `assets/${ageNames[counter]}.png`)
+        divImg1.id = cardId[counter]
         counter += 1
         divImg2.setAttribute("src", `assets/${ageNames[counter]}.png`)
+        divImg2.id = cardId[counter]
         counter += 1
 
         div.appendChild(divImg1)
@@ -138,8 +143,10 @@ document.getElementById("power").onclick = function() {
         div.id = id[i]
 
         divImg1.setAttribute("src", `assets/${powerNames[counter]}.png`)
+        divImg1.id = cardId[counter]
         counter += 1
         divImg2.setAttribute("src", `assets/${powerNames[counter]}.png`)
+        divImg2.id = cardId[counter]
         counter += 1
 
         div.appendChild(divImg1)
@@ -176,8 +183,10 @@ document.getElementById("magic-level").onclick = function() {
         div.id = id[i]
 
         divImg1.setAttribute("src", `assets/${magicLevelNames[counter]}.png`)
+        divImg1.id = cardId[counter]
         counter += 1
         divImg2.setAttribute("src", `assets/${magicLevelNames[counter]}.png`)
+        divImg2.id= cardId[counter]
         counter += 1
 
         div.appendChild(divImg1)
@@ -214,8 +223,10 @@ document.getElementById("fright-factor").onclick = function() {
         div.id = id[i]
 
         divImg1.setAttribute("src", `assets/${frightFactorNames[counter]}.png`)
+        divImg1.id = cardId[counter]
         counter += 1
         divImg2.setAttribute("src", `assets/${frightFactorNames[counter]}.png`)
+        divImg2.id = cardId[counter]
         counter += 1
 
         div.appendChild(divImg1)
@@ -224,25 +235,20 @@ document.getElementById("fright-factor").onclick = function() {
         document.getElementById("row").appendChild(div)
     }
 };
-var widthCenter = window.innerWidth / 2
-var heightCenter = window.innerHeight /2
+
+var clicked = false
+var prevCard
+
 var cards = Array.from(document.getElementsByClassName("card"))
-
-
-
-
-cards.forEach(card => {            
-                                 
+cards.forEach(card => {                                  
     card.addEventListener("click", () => {
-      
-        card.style.position = "fixed"
-        card.style.width = 200 + "px"
-        card.style.height = 285.21 + "px"
-        card.style.right = (widthCenter) - (parseInt(cards[0].style.width)/2) + "px"
-        card.style.top = ((heightCenter) - (parseInt(cards[0].style.height)/2)) - 50 + "px"
-   
+        if (clicked) {
+            prevCard.classList.remove(`moveCard${prevCard.id}`)
+        }
+        card.classList.add(`moveCard${card.id}`)
+        prevCard = card
+        clicked = true
     });
-
 });
 
 

@@ -39,7 +39,7 @@ body {
 }
 .slot {
   user-select: none;
-  white-space: pre-wrap;
+  white-space:pre-wrap;
   flex-basis: 17.333%;
   flex-grow: 0;
   flex-shrink: 0;
@@ -144,8 +144,154 @@ img {
 
 .card {
   z-index: 1;
-  transition: left 500ms cubic-bezier(0, .5, .5, 1);
 }
+
+.moveCardone {
+  position: relative;
+  right: -300px;
+  top: 90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardtwo {
+  position: relative;
+  right: -300px;
+  top: -90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardthree {
+  position: relative;
+  right: -150px;
+  top: 90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardfour {
+  position: relative;
+  right: -150px;
+  top: -90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardfive {
+  position: relative;
+  right: 0px;
+  top: 90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardsix {
+  position: relative;
+  right: 0px;
+  top: -90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardseven {
+  position: relative;
+  right: 120px;
+  top: 90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardeight {
+  position: relative;
+  right: 120px;
+  top: -90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardnine {
+  position: relative;
+  right: 270px;
+  top: 90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardten {
+  position: relative;
+  right: 270px;
+  top: -90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardeleven {
+  position: relative;
+  right: 400px;
+  top: 90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardtwelve {
+  position: relative;
+  right: 400px;
+  top: -90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardthirteen {
+  position: relative;
+  right: 300px;
+  top: 90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardfourteen {
+  position: relative;
+  right: 300px;
+  top: -90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardfifteen {
+  position: relative;
+  right: 400px;
+  top: 90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardsixteen {
+  position: relative;
+  right: 400px;
+  top: -90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardseventeen {
+  position: relative;
+  right: 350px;
+  top: 90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+.moveCardeighteen {
+  position: relative;
+  right: 350px;
+  top: -90px;
+  transition-duration: 1500ms;
+  transform: scaleX(-1) rotate(0deg) scale(1.5);
+}
+
+
+
 
 
 @keyframes fade {

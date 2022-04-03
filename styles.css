@@ -82,6 +82,7 @@ html {
 	 transform: translateY(-100px) rotate(0deg) scale(2);
 	 transition-duration: 0ms;
 	 z-index: 5;
+
 }
 
 .flippedPlayerCard:hover .front:after {
