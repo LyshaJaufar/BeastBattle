@@ -60,7 +60,7 @@ html {
     position: absolute;
     top: 82%; 
     right: 50%;
-    transform: translate(-30%,-50%);
+    transform: translate(-80%,-50%);
     user-select: none;
     width: 155px;
     text-align: center;
@@ -84,7 +84,31 @@ html {
     position: absolute;
     top: 82%; 
     right: 50%;
-    transform: translate(100%,-50%);
+    transform: translate(40%,-50%);
+    user-select: none;
+    width: 155px;
+    text-align: center;
+	  display: inline-block;
+	  margin:5px;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px 0 10px 10px ;
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
+}
+
+.info-btn {
+    position: absolute;
+    top: 82%; 
+    right: 50%;
+    transform: translate(160%,-50%);
     user-select: none;
     width: 155px;
     text-align: center;
