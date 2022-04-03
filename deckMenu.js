@@ -56,6 +56,8 @@ for (var i = 0; i < 9; i++) {
     var divImg2 = document.createElement("img")
 
     div.classList.add("slot")
+    divImg1.classList.add("card")
+    divImg2.classList.add("card")
     div.id = id[i]
 
     divImg1.setAttribute("src", `assets/${ageNames[counter]}.png`)
@@ -93,6 +95,8 @@ document.getElementById("age").onclick = function() {
         var divImg2 = document.createElement("img")
 
         div.classList.add("slot")
+        divImg1.classList.add("card")
+        divImg2.classList.add("card")
         div.id = id[i]
 
         divImg1.setAttribute("src", `assets/${ageNames[counter]}.png`)
@@ -129,6 +133,8 @@ document.getElementById("power").onclick = function() {
         var divImg2 = document.createElement("img")
 
         div.classList.add("slot")
+        divImg1.classList.add("card")
+        divImg2.classList.add("card")
         div.id = id[i]
 
         divImg1.setAttribute("src", `assets/${powerNames[counter]}.png`)
@@ -165,6 +171,8 @@ document.getElementById("magic-level").onclick = function() {
         var divImg2 = document.createElement("img")
 
         div.classList.add("slot")
+        divImg1.classList.add("card")
+        divImg2.classList.add("card")
         div.id = id[i]
 
         divImg1.setAttribute("src", `assets/${magicLevelNames[counter]}.png`)
@@ -201,6 +209,8 @@ document.getElementById("fright-factor").onclick = function() {
         var divImg2 = document.createElement("img")
 
         div.classList.add("slot")
+        divImg1.classList.add("card")
+        divImg2.classList.add("card")
         div.id = id[i]
 
         divImg1.setAttribute("src", `assets/${frightFactorNames[counter]}.png`)
@@ -214,4 +224,25 @@ document.getElementById("fright-factor").onclick = function() {
         document.getElementById("row").appendChild(div)
     }
 };
+var widthCenter = window.innerWidth / 2
+var heightCenter = window.innerHeight /2
+var cards = Array.from(document.getElementsByClassName("card"))
+
+
+
+
+cards.forEach(card => {            
+                                 
+    card.addEventListener("click", () => {
+      
+        card.style.position = "fixed"
+        card.style.width = 200 + "px"
+        card.style.height = 285.21 + "px"
+        card.style.right = (widthCenter) - (parseInt(cards[0].style.width)/2) + "px"
+        card.style.top = ((heightCenter) - (parseInt(cards[0].style.height)/2)) - 50 + "px"
+   
+    });
+
+});
+
 
