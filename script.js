@@ -325,61 +325,278 @@ function battlePhaseAnimation() {
 
         for (var i = 0; i < computerHand.length; i++) {
             if (age[0] == ageDict[computerHand[i].name]) {
-                highest[0] = computerHand[i].name
+                console.log(computerHand[i].name)
+                if (!highest.includes(computerHand[i].name)){
+                    console.log("age")
+                    highest[0] = computerHand[i].name
+                } 
+                else {
+                    if (ageDict[computerHand[i].name] > 400) {
+                        if (highest.indexOf(computerHand[i].name) == 2) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (magicLevelDict[computerHand[k].name] == magicLevel[1]) {
+                                    console.log('a1')
+                                    highest[2] = computerHand[k].name
+                                }
+                            }    
+                        }
+                        else if (highest.indexOf(computerHand[i].name) == 1) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (powerDict[computerHand[k].name] == power[1]) {
+                                    console.log('a2')
+                                    highest[1] = computerHand[k].name
+                                }
+                            }                             
+                        }
+                        else if (highest.indexOf(computerHand[i].name) == 3) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (frightFactor[computerHand[k].name] == frightFactor[1]) {
+                                    console.log('a3')
+                                    highest[1] = computerHand[k].name
+                                }
+                            }                             
+                        }
+                    }
+                    else {
+                        var included = false, included1 = false
+                        for (var k = 0; k < computerHand.length; k++) {
+                            if (ageDict[computerHand[k].name] == age[1]) {
+                                if (highest.includes(computerHand[k].name)){
+                                    included = true
+                                }
+                                else {
+                                    highest[0] = computerHand[k].name 
+                                }
+                            }
+                        }
+                        if (included) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (ageDict[computerHand[k].name] == age[2]) {
+                                    if (highest.includes(computerHand[k].name)){
+                                        included1 = true
+                                    }
+                                    else {
+                                        highest[0] = computerHand[k].name 
+                                    }
+                                }
+                            }
+                        }
+                        if (included1) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (ageDict[computerHand[k].name] == age[3]) {
+                                    highest[0] = computerHand[k].name 
+                                }
+                            }
+                        }
+                    }
+                }
             }
             if (power[0] == powerDict[computerHand[i].name]) {
+                console.log(computerHand[i].name)
                 if (!highest.includes(computerHand[i].name)){
+                    console.log("power")
                     highest[1] = computerHand[i].name
                 } 
                 else {
                     if (powerDict[computerHand[i].name] > 285) {
-                        highest[highest.indexOf(computerHand[i].name)] = throwaway[highest.indexOf(computerHand[i].name)][1]
-                        console.log(throwaway[highest.indexOf(computerHand[i].name)][1])
-                        highest[1] = computerHand[i].name
+                        if (highest.indexOf(computerHand[i].name) == 0) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (ageDict[computerHand[k].name] == age[1]) {
+                                    console.log('p1')
+                                    highest[0] = computerHand[k].name
+                                }
+                            }    
+                        }
+                        else if (highest.indexOf(computerHand[i].name) == 2) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (magicLevelDict[computerHand[k].name] == magicLevel[2]) {
+                                    console.log("p2")
+                                    highest[2] = computerHand[k].name
+                                }
+                            }                             
+                        }
+                        else if (highest.indexOf(computerHand[i].name) == 3) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (frightFactor[computerHand[k].name] == frightFactor[1]) {
+                                    console.log("p3")
+                                    highest[1] = computerHand[k].name
+                                }
+                            }                             
+                        }
                     }
                     else {
+                        var included = false, included1 = false
                         for (var k = 0; k < computerHand.length; k++) {
                             if (powerDict[computerHand[k].name] == power[1]) {
-                                highest[1] = computerHand[k].name
+                                if (highest.includes(computerHand[k].name)){
+                                    included = true
+                                }
+                                else {
+                                    highest[1] = computerHand[k].name 
+                                }
+                            }
+                        }
+                        if (included) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (powerDict[computerHand[k].name] == power[2]) {
+                                    if (highest.includes(computerHand[k].name)){
+                                        included1 = true
+                                    }
+                                    else {
+                                        highest[1] = computerHand[k].name 
+                                    }
+                                }
+                            }
+                        }
+                        if (included1) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (powerDict[computerHand[k].name] == power[3]) {
+                                    highest[1] = computerHand[k].name 
+                                }
                             }
                         }
                     }
                 }
             }
             if (magicLevel[0] == magicLevelDict[computerHand[i].name]) {
+                console.log(computerHand[i].name)
                 if (!highest.includes(computerHand[i].name)){
+                    console.log("magic")
                     highest[2] = computerHand[i].name
                 } 
                 else {
                     if (magicLevelDict[computerHand[i].name] > 190) {
-                        highest[highest.indexOf(computerHand[i].name)] = throwaway[highest.indexOf(computerHand[i].name)][1]
+                        if (highest.indexOf(computerHand[i].name) == 0) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (ageDict[computerHand[k].name] == age[1]) {
+                                    console.log('m1')
+                                    highest[0] = computerHand[k].name
+                                }
+                            }    
+                        }
+                        else if (highest.indexOf(computerHand[i].name) == 1) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (powerDict[computerHand[k].name] == power[1]) {
+                                    console.log('m2')
+                                    highest[1] = computerHand[k].name
+                                }
+                            }                             
+                        }
+                        else if (highest.indexOf(computerHand[i].name) == 3) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (frightFactor[computerHand[k].name] == frightFactor[1]) {
+                                    console.log('m3')
+                                    highest[1] = computerHand[k].name
+                                }
+                            }                             
+                        }
+
                         highest[2] = computerHand[i].name
                     }
                     else {
+                        var included = false, included1 = false
                         for (var k = 0; k < computerHand.length; k++) {
                             if (magicLevelDict[computerHand[k].name] == magicLevel[1]) {
-                                highest[2] = computerHand[k].name
+                                if (highest.includes(computerHand[k].name)){
+                                    included = true
+                                }
+                                else{
+                                    highest[2] = computerHand[k].name 
+                                }
+                            }
+                        }
+                        if (included) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (magicLevelDict[computerHand[k].name] == magicLevel[2]) {
+                                    if (highest.includes(computerHand[k].name)){
+                                        included1 = true
+                                    }
+                                    else {
+                                        highest[2] = computerHand[k].name 
+                                    }
+                                }
+                            }
+                        }
+                        if (included1) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (magicLevelDict[computerHand[k].name] == magicLevel[3]) {
+                                    highest[2] = computerHand[k].name 
+                                }
                             }
                         }
                     }
                 }
             }
             if (frightFactor[0] == frightFactorDict[computerHand[i].name]) {
+                console.log(computerHand[i].name)
                 if (!highest.includes(computerHand[i].name)){
+                    console.log("ff")
                     highest[3] = computerHand[i].name
                 } 
                 else {
                     if (frightFactorDict[computerHand[i].name] > 91) {
-                        highest[highest.indexOf(computerHand[i].name)] = throwaway[highest.indexOf(computerHand[i].name)][1]
-                        highest[3] = computerHand[i].name
+                        if (highest.indexOf(computerHand[i].name) == 0) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (ageDict[computerHand[k].name] == age[1]) {
+                                    console.log("f1")
+                                    highest[0] = computerHand[k].name
+                                    highest[3] = computerHand[i].name
+                                }
+                            }    
+                        }
+                        else if (highest.indexOf(computerHand[i].name) == 1) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (powerDict[computerHand[k].name] == power[1]) {
+                                    console.log('f2')
+                                    highest[1] = computerHand[k].name
+                                    highest[3] = computerHand[i].name
+                                }
+                            }                             
+                        }
+                        else if (highest.indexOf(computerHand[i].name) == 2) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (magicLevelDict[computerHand[k].name] == magicLevel[1]) {
+                                    console.log("f3")
+                                    highest[2] = computerHand[k].name
+                                    highest[3] = computerHand[i].name
+                                }
+                            }                             
+                        }
                     }
                     else {
+                        var included = false, included1 = false
                         for (var k = 0; k < computerHand.length; k++) {
                             if (frightFactorDict[computerHand[k].name] == frightFactor[1]) {
-                                highest[3] = computerHand[k].name
+                                if (highest.includes(computerHand[k].name)){
+                                    included = true
+                                }
+                                else {
+                                    highest[3] = computerHand[k].name 
+                                }
+                            }
+                        }
+                        if (included) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (frightFactorDict[computerHand[k].name] == frightFactor[2]) {
+                                    if (highest.includes(computerHand[k].name)){
+                                        included1 = true
+                                    }
+                                    else {
+                                        highest[3] = computerHand[k].name 
+                                    }
+
+                                }
+                            }
+                        }
+                        if (included1) {
+                            for (var k = 0; k < computerHand.length; k++) {
+                                if (frightFactorDict[computerHand[k].name] == frightFactor[3]) {
+                                    highest[3] = computerHand[k].name 
+                                }
                             }
                         }
                     }
+
                 }
             }
         }
@@ -806,8 +1023,7 @@ function updateDeck() {
             computerDeck.push(computerHand[i])
         }    
         computerHand.splice(0, 4)                                                                                           
-        playerHand.splice(0, 4) 
-        console.log(playerDeck, playerDeck1, computerDeck, computerDeck1)
+        playerHand.splice(0, 4)  
 
         setTimeout(() => {
             cleanUpBeforeRoundTie()
