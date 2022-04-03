@@ -333,8 +333,16 @@ function battlePhaseAnimation() {
                 } 
                 else {
                     if (powerDict[computerHand[i].name] > 285) {
+                        highest[highest.indexOf(computerHand[i].name)] = throwaway[highest.indexOf(computerHand[i].name)][1]
+                        console.log(throwaway[highest.indexOf(computerHand[i].name)][1])
                         highest[1] = computerHand[i].name
-                        highest[0] = age[1]
+                    }
+                    else {
+                        for (var k = 0; k < computerHand.length; k++) {
+                            if (powerDict[computerHand[k].name] == power[1]) {
+                                highest[1] = computerHand[k].name
+                            }
+                        }
                     }
                 }
             }
@@ -381,6 +389,7 @@ function battlePhaseAnimation() {
         var computerCards = [computerCard0, computerCard1, computerCard2, computerCard3]
         var finalComputerLineUp = []
         for (var i = 0; i < computerHand.length; i++) {
+            console.log(computerCards)
             if (highest[3] == computerCards[i].id) {
                 finalComputerLineUp[0] = computerCards[i]
             }
@@ -394,6 +403,7 @@ function battlePhaseAnimation() {
                 finalComputerLineUp[3] = computerCards[i]
             }
         }
+        console.log(finalComputerLineUp)
 
         setTimeout(() => {
             finalComputerLineUp[0].classList.add("computer-card-battle-start-lane-0")
@@ -415,10 +425,10 @@ function battlePhaseAnimation() {
         },2450);
 
         card_lane_map = {
-            "computerBox0" : computerCard0,
-            "computerBox1" : computerCard1,
-            "computerBox2" : computerCard2,
-            "computerBox3" : computerCard3
+            "computerBox0" : finalComputerLineUp[0],
+            "computerBox1" : finalComputerLineUp[1],
+            "computerBox2" : finalComputerLineUp[2],
+            "computerBox3" : finalComputerLineUp[3]
         }
         
         battlePhase()
