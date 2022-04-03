@@ -971,9 +971,48 @@ function cleanUpBeforeRoundTie() {
 
 
 function playerLose() {
-    console.log("you lose")
+
+    var gameOverText = document.createElement('span')
+    var playAgainText = document.createElement('span')
+
+    gameOverText.classList.add("gameOverText")
+    gameOverText.innerHTML = "YOU LOSE!"
+    document.body.appendChild(gameOverText)
+
+    playAgainText.classList.add("playAgain")
+    playAgainText.innerHTML = "click anywhere to play again"
+    document.body.appendChild(playAgainText)
+
+    var overlay = document.createElement("DIV")
+    overlay.classList.add('overlay-text')
+    overlay.classList.add("visible")
+    document.body.appendChild(overlay)
+
+    overlay.addEventListener("click", () => {
+        location.reload()
+    });
 }
 
 function playerWin() {
-    console.log("you win")
+    var gameWinText = document.createElement('span')
+    var playAgainText = document.createElement('span')
+
+    gameWinText.classList.add("gameOverText")
+    gameWinText.innerHTML = "YOU WIN!"
+    document.body.appendChild(gameWinText)
+
+    playAgainText.classList.add("playAgain")
+    playAgainText.innerHTML = "click anywhere to play again"
+    document.body.appendChild(playAgainText)
+
+    var overlay = document.createElement("DIV")
+    overlay.classList.add('overlay-text')
+    overlay.classList.add("visible")
+    document.body.appendChild(overlay)
+
+
+    overlay.addEventListener("click", () => {
+        location.reload()
+    });
 }
+
