@@ -3,6 +3,9 @@ import Deck from "./deck.js"
 var deck = new Deck()
 var age = [], power = [], magicLevel = [], frightFactor = []
 
+var sorted = false
+var cards
+
 for (var i = 0; i < deck.numberOfCards; i++) {
     age[i]= deck.cards[i].age
     power[i]= deck.cards[i].power
@@ -79,6 +82,8 @@ for (var i = 0; i < 9; i++) {
 // Age
 document.getElementById("age").onclick = function() {
 
+    sorted = true
+
     document.getElementById("row").removeChild(document.getElementById("first"))
     document.getElementById("row").removeChild(document.getElementById("second"))
     document.getElementById("row").removeChild(document.getElementById("third"))
@@ -114,10 +119,14 @@ document.getElementById("age").onclick = function() {
 
         document.getElementById("row").appendChild(div)
     }
+    cards = Array.from(document.getElementsByClassName("card"))
+    cardZoom()
 };
 
 // Power
 document.getElementById("power").onclick = function() {
+
+    sorted = true
 
     document.getElementById("row").removeChild(document.getElementById("first"))
     document.getElementById("row").removeChild(document.getElementById("second"))
@@ -154,10 +163,14 @@ document.getElementById("power").onclick = function() {
 
         document.getElementById("row").appendChild(div)
     }
+    cards = Array.from(document.getElementsByClassName("card"))
+    cardZoom()
 };
 
 // Magic Level
 document.getElementById("magic-level").onclick = function() {
+
+    sorted = true
 
     document.getElementById("row").removeChild(document.getElementById("first"))
     document.getElementById("row").removeChild(document.getElementById("second"))
@@ -194,10 +207,14 @@ document.getElementById("magic-level").onclick = function() {
 
         document.getElementById("row").appendChild(div)
     }
+    cards = Array.from(document.getElementsByClassName("card"))
+    cardZoom()
 };
 
 // Fright Factor
 document.getElementById("fright-factor").onclick = function() {
+
+    sorted = true
 
     document.getElementById("row").removeChild(document.getElementById("first"))
     document.getElementById("row").removeChild(document.getElementById("second"))
@@ -234,38 +251,53 @@ document.getElementById("fright-factor").onclick = function() {
 
         document.getElementById("row").appendChild(div)
     }
+    cards = Array.from(document.getElementsByClassName("card"))
+    cardZoom()
 };
 
-var clicked = false
-var prevCard
-var overlay
+function cardZoom() {
+    var clicked = false
+    var prevCard
+    var overlay
 
-var cards = Array.from(document.getElementsByClassName("card"))
-cards.forEach(card => { 
-    clicked = false                                 
-    card.addEventListener("click", () => {
+    cards = Array.from(document.getElementsByClassName("card"))
+    console.log(cards)
+    cards.forEach(card => { 
+        clicked = false                                 
+        card.addEventListener("click", () => {
 
-        overlay = document.createElement("DIV")
-        overlay.classList.add("visible")
-        document.body.appendChild(overlay)
+            console.log("yes")
 
-        // another card clicked
-        if (clicked) {
-            prevCard.classList.remove(`moveCard${prevCard.id}`)
-            clicked = false
-        }
+            overlay = document.createElement("DIV")
+            overlay.classList.add("overlay")
+            overlay.classList.add("visible")
+            document.body.appendChild(overlay)
 
-        // card clicked
-        card.classList.add(`moveCard${card.id}`)
-        prevCard = card
-        clicked = true
+            // another card clicked
+            if (clicked) {
+                prevCard.classList.remove(`moveCard${prevCard.id}`)
+                clicked = false
+            }
+
+            // card clicked
+            card.classList.add(`moveCard${card.id}`)
+            prevCard = card
+            clicked = true
+        });
     });
-});
 
-var ignoreClickOnMeElement = document.querySelector(".card-container")
-document.addEventListener('click', function(event) {
-    var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
-    if (!isClickInsideElement) {
-        prevCard.classList.remove(`moveCard${prevCard.id}`)
-    }
-});
+    var ignoreClickOnMeElement = document.querySelector(".card-container")
+    document.addEventListener('click', function(event) {
+        var isClickInsideElement = ignoreClickOnMeElement.contains(event.target);
+        console.log(sorted)
+        if (!isClickInsideElement) {
+            prevCard.classList.remove(`moveCard${prevCard.id}`)
+            overlay.classList.add("overlay-gone")
+            setTimeout(() => {
+                document.body.removeChild(overlay)
+            }, 1000)
+        }
+    });
+}
+
+cardZoom()

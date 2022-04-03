@@ -151,7 +151,7 @@ img {
   right: -300px;
   top: 90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardtwo {
@@ -159,7 +159,7 @@ img {
   right: -300px;
   top: -90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardthree {
@@ -167,7 +167,7 @@ img {
   right: -150px;
   top: 90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardfour {
@@ -175,7 +175,7 @@ img {
   right: -150px;
   top: -90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardfive {
@@ -183,7 +183,7 @@ img {
   right: 0px;
   top: 90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardsix {
@@ -191,7 +191,7 @@ img {
   right: 0px;
   top: -90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardseven {
@@ -199,7 +199,7 @@ img {
   right: 120px;
   top: 90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardeight {
@@ -207,7 +207,7 @@ img {
   right: 120px;
   top: -90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardnine {
@@ -215,7 +215,7 @@ img {
   right: 270px;
   top: 90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardten {
@@ -223,7 +223,7 @@ img {
   right: 270px;
   top: -90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardeleven {
@@ -231,7 +231,7 @@ img {
   right: 400px;
   top: 90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardtwelve {
@@ -239,7 +239,7 @@ img {
   right: 400px;
   top: -90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardthirteen {
@@ -247,7 +247,7 @@ img {
   right: 300px;
   top: 90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardfourteen {
@@ -255,7 +255,7 @@ img {
   right: 300px;
   top: -90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardfifteen {
@@ -263,7 +263,7 @@ img {
   right: 400px;
   top: 90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardsixteen {
@@ -271,7 +271,7 @@ img {
   right: 400px;
   top: -90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardseventeen {
@@ -279,7 +279,7 @@ img {
   right: 350px;
   top: 90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
 }
 
 .moveCardeighteen {
@@ -287,17 +287,31 @@ img {
   right: 350px;
   top: -90px;
   transition-duration: 1500ms;
-  transform: scaleX(-1) rotate(0deg) scale(1.5);
+  transform: scaleX(-1) rotate(0deg) scale(2);
+}
+
+.overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #205f02;
+  transition: background-color 500ms, font-size 500ms;
 }
 
 .overlay.visible {
   display: flex;
-  animation: overlay-grow 2200ms forwards;
+  animation: overlay-grow 1000ms forwards;
 }
 
 .overlay-gone.visible {
     display: flex;
-    animation: overlay-fade 1800ms forwards;
+    animation: overlay-fade 1000ms forwards;
 }
 
 @keyframes fade {
