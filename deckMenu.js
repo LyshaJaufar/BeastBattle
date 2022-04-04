@@ -64,10 +64,10 @@ for (var i = 0; i < 9; i++) {
     divImg2.classList.add("card")
     div.id = id[i]
 
-    divImg1.setAttribute("src", `assets/${ageNames[counter]}.png`)
+    divImg1.setAttribute("src", `assets/${ageNames[counter].toLowerCase()}.png`)
     divImg1.id = cardId[counter]
     counter += 1
-    divImg2.setAttribute("src", `assets/${ageNames[counter]}.png`)
+    divImg2.setAttribute("src", `assets/${ageNames[counter].toLowerCase()}.png`)
     divImg2.id = cardId[counter]
     counter += 1
 
@@ -107,10 +107,10 @@ document.getElementById("age").onclick = function() {
         divImg2.classList.add("card")
         div.id = id[i]
 
-        divImg1.setAttribute("src", `assets/${ageNames[counter]}.png`)
+        divImg1.setAttribute("src", `assets/${ageNames[counter].toLowerCase()}.png`)
         divImg1.id = cardId[counter]
         counter += 1
-        divImg2.setAttribute("src", `assets/${ageNames[counter]}.png`)
+        divImg2.setAttribute("src", `assets/${ageNames[counter].toLowerCase()}.png`)
         divImg2.id = cardId[counter]
         counter += 1
 
@@ -151,10 +151,10 @@ document.getElementById("power").onclick = function() {
         divImg2.classList.add("card")
         div.id = id[i]
 
-        divImg1.setAttribute("src", `assets/${powerNames[counter]}.png`)
+        divImg1.setAttribute("src", `assets/${powerNames[counter].toLowerCase()}.png`)
         divImg1.id = cardId[counter]
         counter += 1
-        divImg2.setAttribute("src", `assets/${powerNames[counter]}.png`)
+        divImg2.setAttribute("src", `assets/${powerNames[counter].toLowerCase()}.png`)
         divImg2.id = cardId[counter]
         counter += 1
 
@@ -195,10 +195,10 @@ document.getElementById("magic-level").onclick = function() {
         divImg2.classList.add("card")
         div.id = id[i]
 
-        divImg1.setAttribute("src", `assets/${magicLevelNames[counter]}.png`)
+        divImg1.setAttribute("src", `assets/${magicLevelNames[counter].toLowerCase()}.png`)
         divImg1.id = cardId[counter]
         counter += 1
-        divImg2.setAttribute("src", `assets/${magicLevelNames[counter]}.png`)
+        divImg2.setAttribute("src", `assets/${magicLevelNames[counter].toLowerCase()}.png`)
         divImg2.id= cardId[counter]
         counter += 1
 
@@ -239,10 +239,10 @@ document.getElementById("fright-factor").onclick = function() {
         divImg2.classList.add("card")
         div.id = id[i]
 
-        divImg1.setAttribute("src", `assets/${frightFactorNames[counter]}.png`)
+        divImg1.setAttribute("src", `assets/${frightFactorNames[counter].toLowerCase()}.png`)
         divImg1.id = cardId[counter]
         counter += 1
-        divImg2.setAttribute("src", `assets/${frightFactorNames[counter]}.png`)
+        divImg2.setAttribute("src", `assets/${frightFactorNames[counter].toLowerCase()}.png`)
         divImg2.id = cardId[counter]
         counter += 1
 
