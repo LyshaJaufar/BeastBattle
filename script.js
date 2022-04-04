@@ -39,7 +39,7 @@ function startGame() {
 function setupGame() {
     if (firstRound) {
         wholeDeck = new Deck()
-        //deck.shuffle()
+        wholeDeck.shuffle()
         const deckMidpoint = Math.ceil(wholeDeck.numberOfCards / 2)
         playerDeck = new Deck(wholeDeck.cards.slice(0, deckMidpoint))
         computerDeck = new Deck(wholeDeck.cards.slice(deckMidpoint, wholeDeck.numberOfCards))
