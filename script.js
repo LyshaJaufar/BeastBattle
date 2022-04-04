@@ -997,11 +997,11 @@ function playerWin() {
     var gameWinText = document.createElement('span')
     var playAgainText = document.createElement('span')
 
-    gameWinText.classList.add("gameOverText")
+    gameWinText.classList.add("gameWinText")
     gameWinText.innerHTML = "YOU WIN!"
     document.body.appendChild(gameWinText)
 
-    playAgainText.classList.add("playAgain")
+    playAgainText.classList.add("playAgainWin")
     playAgainText.innerHTML = "click anywhere to play again"
     document.body.appendChild(playAgainText)
 
