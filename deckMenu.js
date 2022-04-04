@@ -196,6 +196,7 @@ document.getElementById("magic-level").onclick = function() {
         div.id = id[i]
 
         divImg1.setAttribute("src", `assets/${magicLevelNames[counter].toLowerCase()}.png`)
+        console.log(magicLevelNames[counter].toLowerCase())
         divImg1.id = cardId[counter]
         counter += 1
         divImg2.setAttribute("src", `assets/${magicLevelNames[counter].toLowerCase()}.png`)
